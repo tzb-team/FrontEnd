@@ -42,15 +42,17 @@
       <br/>
       <div v-if=isAlumni><!--是否校友-->
         <el-row :gutter="36">
+          
           <el-col :span="6">
             <el-card shadow="always" class="mycard card_A">
               <p>投资总额</p>
               <span>{{ user.investAmount }}</span> 元
               <br/><br/><br/>
-              <p>借款总额</p>
-              <span>{{ user.loanAmount }}</span> 元
+              <p>获利总额</p>
+              <span>{{ user.earnAmount }}</span> 元
             </el-card>
           </el-col>
+          
           <el-col :span="13">
             <el-card shadow="always" class="mycard card_B">
               <el-row :gutter="2">
@@ -64,6 +66,7 @@
               </el-row>
             </el-card>
             <br/>
+
             <el-card shadow="always" class="mycard card_B">
               <el-row :gutter="2">
                 <el-col :span="8">
@@ -76,6 +79,7 @@
               </el-row>
             </el-card>
           </el-col>
+
           <el-col :span="5">
             <el-card shadow="always" class="mycard card_A">
               <p>信用评分</p>
@@ -88,6 +92,8 @@
           </el-col>
         </el-row>
       </div>
+
+
       <div v-if=!isAlumni><!--是否校友-->
         <el-row :gutter="24">
           <el-col :span="6">
@@ -230,7 +236,7 @@
             console.log(response.data);
             var res = response.data;
             self.user.investAmount = res.totalInvestment;
-            self.user.loanAmount = res.totalLoan;
+            self.user.earnAmount = res.totalLoan;
             self.user.captial.amountToCover = res.getMoney;
             self.user.captial.progress = res.getMoneyProgress;
             self.user.interest.amountToCove = res.payMoney;
@@ -241,7 +247,7 @@
             //todo Maybe some bugs? 账户总览
             // let regUser= {
             //   investAmount: 12869,
-            //   loanAmount: 19857,
+            //   earnAmount: 19857,
             //   captial:{
             //     amountToCover: '856',
             //     progress: 37
@@ -286,7 +292,7 @@
 
             // let regUser= {
             //   investAmount: 12869,
-            //   loanAmount: 19857,
+            //   earnAmount: 19857,
             //   captial:{
             //     amountToCover: '856',
             //     progress: 37
@@ -413,7 +419,7 @@
         realName: '',
         user: {
           investAmount: 12869,
-          loanAmount: 19857,
+          earnAmount: 19857,
           captial:{
             amountToCover: '856',
             progress: 37
