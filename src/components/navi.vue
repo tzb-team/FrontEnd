@@ -7,10 +7,10 @@
       <div class="container-fluid" style="width: 100%">
         <div class="collapse navbar-collapse" id="myNavbar" style="display: inline-block;font-size: 16px;width: 100%">
           <ul class="nav navbar-nav" id="nav" style="width: 100%">
-            <li><a id="invest" href="/enterInvest">投资大厅</a></li>
-            <li><a id="loan" href="/enterLoan">我要借款</a></li>
-            <li><a id="trade" href="/trade">南大鱼塘</a></li>
-            <li><a id="notice" href="/notice">失物/寻物</a></li>
+            <li><a id="invest" href="/enterInvest">专利市场</a></li>
+            <li><a id="loan" href="/enterLoan">买卖申请</a></li>
+            <li><a id="trade" href="/trade">专利池展示</a></li>
+            <li><a id="notice" href="/notice/found">求购信息</a></li>
             <li><a id="guide" href="/guide">平台指南</a></li>
             <el-dropdown style="float:right;position: relative;" v-if="login">
               <span>
