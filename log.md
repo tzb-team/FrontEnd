@@ -17,3 +17,16 @@ leftAlumniBar
             
 
 profile/todo todoList
+
+
+                name: res.username,
+                realName: res.realName,
+                sex: res.gender,
+                age: res.age,
+                phone: res.phoneNumber,
+                email: res.email,
+                profession: res.profession,
+                workaddr: res.institution,
+                address: res.livingPlace,
+                description: res.description,
+                IDcard: res.IDcard

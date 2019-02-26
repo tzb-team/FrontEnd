@@ -1,3 +1,6 @@
+// Author:SDJ
+// Date:2019/2/26
+
 <template>
   <div>
     <el-menu
@@ -44,9 +47,9 @@
         </template>
         <el-menu-item-group>
           <el-menu-item index="/UserSpace/NormalCheck">我的专利池</el-menu-item>
-          <el-menu-item index="/UserSpace/NormalCheck">校园验证</el-menu-item>
+          <!-- <el-menu-item index="/UserSpace/NormalCheck">校园验证</el-menu-item>
           <el-menu-item index="/UserSpace/AdvancedCheck">财务验证</el-menu-item>
-          <el-menu-item index="/UserSpace/CrossCheck">关系验证</el-menu-item>
+          <el-menu-item index="/UserSpace/CrossCheck">关系验证</el-menu-item> -->
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -62,19 +65,7 @@
         }
       },
       methods:{
-        setA: function () {
-          this.$store.commit('newAuthor','基本信息')
-        },
-        setB: function () {
-          this.$store.commit('newAuthor','普通验证');
-          //document.getElementById("checkA").style.color = "#ffffff";
-          //document.getElementById("temptitle").style.color="#ffffff";
-        },
-        setC: function () {
-          document.getElementById("userinformation").style.display="none";
-          // document.getElementById("tmptitle").color = "#ffffff";
-          // this.$store.commit('newAuthor','财务统计');
-        }
+        
       }
   }
 </script>
