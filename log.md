@@ -1,0 +1,6 @@
+UserSpace
+
+leftUserBar
+删除校园表现和财务状况栏目
+leftAlumniBar
+在personalCenter框架设置，始终显示leftUserBar，不显示leftAlumniBar

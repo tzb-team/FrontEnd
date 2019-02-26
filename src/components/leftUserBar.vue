@@ -11,8 +11,8 @@
         </template>
         <el-menu-item-group>
           <el-menu-item index="/UserSpace">账户总览</el-menu-item>
-          <el-menu-item index="/UserSpace/SchoolPerformance">校园表现</el-menu-item>
-          <el-menu-item index="/UserSpace/FinancialStanding">财务状况</el-menu-item>
+          <!-- <el-menu-item index="/UserSpace/SchoolPerformance">校园表现</el-menu-item> -->
+          <!-- <el-menu-item index="/UserSpace/FinancialStanding">财务状况</el-menu-item> -->
           <el-menu-item index="/UserSpace/BasicInformation">基本信息</el-menu-item>
         </el-menu-item-group>
       </el-submenu>

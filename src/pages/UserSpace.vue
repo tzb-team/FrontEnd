@@ -12,7 +12,7 @@
             <p class="wel_words" v-if="evening">晚上好，{{realName}}</p>
             <p class="wel_words wel_texts">欢迎进入个人中心</p>
             <br/>
-            <!--<p> 最近回款时间：无</p>-->
+            <!-- <p> 最近交易时间：无</p> -->
           </div>
         </el-col>
         <el-col :span="10">
@@ -21,7 +21,7 @@
             <br/>
             <br/>
             <br/>
-            <!--<el-row>-->
+            <!-- <el-row>-->
               <!--<el-button type="primary" plain class="wel_right_btn">充值</el-button>-->
               <!--<el-button type="primary" plain class="wel_right_btn">提现</el-button>-->
             <!--</el-row>-->
@@ -29,15 +29,18 @@
               <!--<p>账户总额</p>-->
               <!--<p><b style="font-size: 28px">0</b> 元</p>-->
               <!--<p>可用余额：0元</p>-->
-            <!--</div>-->
+            <!--</div> -->
           </div>
         </el-col>
       </el-row>
-    </div><hr/>
+    </div>
+    
+    <hr/>
+    
     <div id="user_overview">
       <h4><b>账户总览</b></h4>
       <br/>
-      <div v-if="true"><!--是否校友-->
+      <div v-if=isAlumni><!--是否校友-->
         <el-row :gutter="36">
           <el-col :span="6">
             <el-card shadow="always" class="mycard card_A">
@@ -85,7 +88,7 @@
           </el-col>
         </el-row>
       </div>
-      <div v-if="false"><!--是否校友-->
+      <div v-if=!isAlumni><!--是否校友-->
         <el-row :gutter="24">
           <el-col :span="6">
             <el-card shadow="always" class="mycard card_C">
@@ -122,7 +125,9 @@
         </el-row>
       </div>
     </div>
+    
     <br/><br/>
+
     <div id="user_financial">
       <div style="margin-left: 10px; margin-right: 10px">
         <el-row :gutter="10" id="welcome_down">
@@ -178,7 +183,9 @@
         </el-row>
       </div>
     </div>
+    
     <hr/>
+
     <div id="user_calendar">
       <vue-event-calendar :events="demoEvents" title="提示"  @monthChanged="" @dayChanged=""></vue-event-calendar>
     </div>
@@ -398,6 +405,7 @@
       var evening = (hours>=18) || (hours<6);
 
       return {
+        isAlumni : true,
         hours,
         morning,
         afternoon,

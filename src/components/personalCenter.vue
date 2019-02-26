@@ -1,10 +1,12 @@
 <template>
   <div :style=back>
     <div id="personalCenter" style="width: 100%">
+      <!-- 导航栏 -->
       <div style="padding: 0;position: relative;background-color: black">
         <navi style="position: relative"></navi>
       </div>
 
+      <!-- 个人中心顶栏 -->
       <div style="padding: 0;position: relative;z-index: 1;width: 100%">
         <div class="myspace">
           <div>
@@ -13,6 +15,8 @@
           </div>
         </div>
       </div>
+
+      <!-- 主界面 -->
       <!--background-color: #D9F3FB-->
       <div style="padding: 0;position: relative; min-height: 800px;width: 100%">
         <div class="container-fluid" style="width: 100%;">
@@ -31,11 +35,13 @@
                 <el-col :span="18" id="mainbody">
                   <div class="panel-group">
                     <div class="panel panel-default" id="mainpanel" style="min-height: 650px">
+                      <!-- 标题 4types -->
                       <div class="panel-heading">
                         <h4 class="panel-title" id="tmptitle">
                           {{ paneltitle }}
                         </h4>
                       </div>
+                      <!-- 主页面详细信息框架 -->
                       <div>
                         <div class="panel-body" id="maincontext">
                           <div class="row placeholders">
@@ -51,6 +57,8 @@
           </div>
         </div>
       </div>
+
+      <!-- 底栏 -->
       <div class="col-xs-12 col-md-12" style="padding: 0;position: relative;background-color: black;">
         <footer-bar></footer-bar>
       </div>

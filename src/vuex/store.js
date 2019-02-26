@@ -23,7 +23,7 @@ export default new Vuex.Store({
       return (localStorage.token !== null && localStorage.token !== undefined);
     },
     isAdmin: state => {
-      if(localStorage.roles.length > 1 && localStorage.roles.indexOf("ROLE_ADMIN") >= 0) {
+      if(localStorage.roles && localStorage.roles.length > 1 && localStorage.roles.indexOf("ROLE_ADMIN") >= 0) {
         return true;
       }
       return false;
