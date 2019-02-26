@@ -60,7 +60,7 @@
                   <el-progress type="circle" :percentage="user.captial.progress" :width="81"></el-progress>
                 </el-col>
                 <el-col :span="16">
-                  <p>待收回本息 <span>{{ user.captial.amountToCover }}</span> 元</p>
+                  <p>待收回 <span>{{ user.captial.amountToCover }}</span> 元</p>
                   <p>已收回 {{ user.captial.progress }}%</p>
                 </el-col>
               </el-row>
@@ -73,21 +73,30 @@
                   <el-progress type="circle" :percentage="user.interest.progress" :width="81"></el-progress>
                 </el-col>
                 <el-col :span="16">
-                  <p>待偿还本息 <span>{{ user.interest.amountToCove }}</span> 元</p>
-                  <p>已偿还 {{ user.interest.progress }}%</p>
+                  <p>待付款 <span>{{ user.interest.amountToCover }}</span> 元</p>
+                  <p>已付款 {{ user.interest.progress }}%</p>
                 </el-col>
               </el-row>
             </el-card>
           </el-col>
 
-          <el-col :span="5">
+          <!-- <el-col :span="5">
             <el-card shadow="always" class="mycard card_A">
               <p>信用评分</p>
               <span>{{ user.credit.points }}分</span>
               <br/><br/><br/>
               <p>信用等级</p>
               <span>{{ user.credit.level }}</span> 级
-              <!--<p class="CreditJudge"><b>AA</b>级</p>-->
+            </el-card>
+          </el-col> -->
+
+          <el-col :span="5">
+            <el-card shadow="always" class="mycard card_A">
+              <p>专利持有数</p>
+              <span>{{ user.patent.patentNum }}</span> 个
+              <br/><br/><br/>
+              <p>专利池持有数</p>
+              <span>{{ user.patent.poolNum }}</span> 个
             </el-card>
           </el-col>
         </el-row>
@@ -109,7 +118,7 @@
                   <el-progress type="circle" :percentage=user.captial.progress :width="81"></el-progress>
                 </el-col>
                 <el-col :span="16">
-                  <p>待收回本息 <span>{{ user.captial.amountToCover }}</span> 元</p>
+                  <p>待收回 <span>{{ user.captial.amountToCover }}</span> 元</p>
                   <p>已收回 {{ user.captial.progress }}%</p>
                 </el-col>
               </el-row>
@@ -122,8 +131,8 @@
                   <el-progress type="circle" :percentage=user.interest.progress :width="81"></el-progress>
                 </el-col>
                 <el-col :span="16">
-                  <p>待偿还本息 <span>{{ user.interest.amountToCove }}</span> 元</p>
-                  <p>已偿还 {{ user.captial.progress }}%</p>
+                  <p>待付款 <span>{{ user.interest.amountToCover }}</span> 元</p>
+                  <p>已付款 {{ user.captial.progress }}%</p>
                 </el-col>
               </el-row>
             </el-card>
@@ -133,7 +142,7 @@
     </div>
     
     <br/><br/>
-
+<!-- 
     <div id="user_financial">
       <div style="margin-left: 10px; margin-right: 10px">
         <el-row :gutter="10" id="welcome_down">
@@ -189,7 +198,7 @@
         </el-row>
       </div>
     </div>
-    
+     -->
     <hr/>
 
     <div id="user_calendar">
@@ -235,14 +244,14 @@
             console.log("用户总览success");
             console.log(response.data);
             var res = response.data;
-            self.user.investAmount = res.totalInvestment;
-            self.user.earnAmount = res.totalLoan;
-            self.user.captial.amountToCover = res.getMoney;
-            self.user.captial.progress = res.getMoneyProgress;
-            self.user.interest.amountToCove = res.payMoney;
-            self.user.interest.progress = res.payMoneyProgress;
-            self.user.credit.points = res.creditRatingScore;
-            self.user.credit.level = res.creditRating;
+            self.user.investAmount = res.totalInvestment;//总投资
+            self.user.earnAmount = res.totalLoan;//总收入
+            self.user.captial.amountToCover = res.getMoney;//待收回资产
+            self.user.captial.progress = res.getMoneyProgress;//已收回资产百分比
+            self.user.interest.amountToCover = res.payMoney;//待付款百分比
+            self.user.interest.progress = res.payMoneyProgress;//已付款百分比
+            self.user.patent.patentNum = res.creditRatingScore;//专利持有数（信用分）
+            self.user.patent.poolNum = res.creditRating;//专利池持有数（积分等级）
             // alert("success");
             //todo Maybe some bugs? 账户总览
             // let regUser= {
@@ -253,7 +262,7 @@
             //     progress: 37
             //   },
             //   interest:{
-            //     amountToCove: '7263.33',
+            //     amountToCover: '7263.33',
             //     progress: 21
             //   },
             //   credit:{
@@ -298,7 +307,7 @@
             //     progress: 37
             //   },
             //   interest:{
-            //     amountToCove: '7263.33',
+            //     amountToCover: '7263.33',
             //     progress: 21
             //   },
             //   credit:{
@@ -425,12 +434,12 @@
             progress: 37
           },
           interest:{
-            amountToCove: '7263.33',
+            amountToCover: '7263.33',
             progress: 21
           },
-          credit:{
-            points: 91,
-            level: 'AA'
+          patent:{
+            patentNum: 91,
+            poolNum: 3
           },
           amountAll: 4356,
           balance: 3500,
@@ -440,53 +449,13 @@
         },
         demoEvents: [{
           date: '2018/10/1',
-          title: '待还款',
-          desc: '您还有一笔还款在10月1号'
-        }, {
-          date: '2018/10/4',
-          title: '待还款',
-          desc: '您还有一笔还款在10月4号'
-        },{
-          date: '2018/10/5',
-          title: '待还款',
-          desc: '您还有一笔还款在10月5号'
-        }, {
-          date: '2018/10/7',
-          title: '待还款',
-          desc: '您还有一笔还款在10月7号'
-        }, {
-          date: '2018/10/9',
-          title: '待还款',
-          desc: '您还有一笔还款在10月9号'
-        }, {
-          date: '2018/10/11',
-          title: '待还款',
-          desc: '您还有一笔还款在10月11号'
-        }, {
-          date: '2018/9/11',
-          title: '已收款',
-          desc: '您已在9月11日收款'
-        }, {
-          date: '2018/9/9',
-          title: '已收款',
-          desc: '您已在9月9日收款'
-        }, {
-          date: '2018/9/4',
-          title: '已收款',
-          desc: '您已在9月4日收款'
-        }, {
-          date: '2018/9/5',
-          title: '已收款',
-          desc: '您已在9月5日收款'
-        }, {
-          date: '2018/8/5',
-          title: '已收款',
-          desc: '您已在8月5日收款'
+          title: '待支付',
+          desc: '您还有一笔支付在10月1号'
         }, {
           date: '2018/7/5',
           title: '已收款',
           desc: '您已在7月5日收款'
-        }, ]
+        }]
       }
     },
     beforeCreate: function () {

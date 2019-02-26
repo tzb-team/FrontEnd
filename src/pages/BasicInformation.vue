@@ -1,9 +1,11 @@
 <template>
   <personalCenter paneltitle="基本信息">
     <el-tabs v-model="activeName" @tab-click="handleClick">
+      
       <el-tab-pane label="个人资料" name="first">
         <user-information v-bind:user-name="userName"></user-information>
       </el-tab-pane>
+
       <el-tab-pane label="修改资料" name="second">
         <div style="padding-left: 60px;padding-right: 200px">
           <br/>
@@ -33,7 +35,7 @@
 
         </div>
       </el-tab-pane>
-      <!--<el-tab-pane label="安全服务" name="third">-->
+      <!-- <el-tab-pane label="安全服务" name="third">-->
         <!--<div class="user_sec">-->
           <!--<div class="chooseButton">-->
             <!--<el-radio v-model="secService" label="1" >修改密码</el-radio>-->
@@ -55,7 +57,7 @@
           <!--</div>-->
         <!--</div>-->
 
-      <!--</el-tab-pane>-->
+      <!--</el-tab-pane> -->
     </el-tabs>
   </personalCenter>
 </template>
