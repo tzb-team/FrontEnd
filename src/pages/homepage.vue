@@ -3,14 +3,14 @@
     <div style="position: absolute">
     <div id="mainPic">
       <img src="/static/pic/标语.png" class="img-responsive" alt="Cinque Terre" style="padding-top: 15%;z-index: 0;width: 56%;margin-left: 22%;">
-      <el-button type="primary" class="mainButton" v-on:click="trustNow()">即刻trust</el-button>
+      <el-button type="primary" class="mainButton" v-on:click="trustNow()">即刻交易</el-button>
       <img src="/static/pic/特色.png" class="img-responsive" alt="Cinque Terre" style="margin-top:4%;z-index: 0;width: 40%;margin-left: 30%;">
     </div>
     <rightBar></rightBar>
 
     <div style="width: 100%;padding-bottom: 50px;padding-top: 20px">
       <h2 style="width: 100%;text-align: center">全方位平台优势</h2>
-      <p style="width: 100%;font-size: 16px;text-align: center;letter-spacing: 1px">从借款到投资，全面贴心设计，让您的体验更轻松愉悦</p>
+      <p style="width: 100%;font-size: 16px;text-align: center;letter-spacing: 1px">从出售到购买，全面贴心服务，让您的体验更轻松愉快。</p>
       <div style="width: 100%;text-align: center;margin-top: 50px">
         <div class="el-card is-always-shadow advantage-card">
           <img src="/static/pic/anonymity.png"/>
@@ -68,7 +68,7 @@
 
 
     <div style="width: 100%;text-align: center;margin-top: 60px">
-      <h2>优质标量身推荐</h2>
+      <h2>优质专利身推荐</h2>
       <br><br>
       <!--<el-button type="plain" id="shiftRecommend"  v-on:click="shiftRecommend()" round>小额/大额推荐</el-button>-->
       <a href="/enterInvest"><el-button type="plain" id="goInvest" style="margin-left: 60%" round>进入投资中心</el-button></a>
