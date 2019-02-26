@@ -11,6 +11,12 @@
                   <th>用户名</th>
                   <td> {{ userName.name }} </td>
                 </tr>
+
+                <tr>
+                  <th>真实姓名</th>
+                  <td> {{ userName.realName }} </td>
+                </tr>
+
                 <tr>
                   <th>性别</th>
                   <td> {{ userName.sex }} </td>
@@ -19,42 +25,45 @@
                   <th>年龄</th>
                   <td> {{ userName.age }} </td>
                 </tr>
-                <tr>
-                  <th>账户等级</th>
-                  <td> {{ userName.level }} </td>
-                </tr>
-                <tr v-if="true">
-                  <th>学号</th>
-                  <td> {{ userName.stuNum }} </td>
-                </tr>
-                <tr v-if="true">
-                  <th>年级</th>
-                  <td> {{ userName.grade }} </td>
-                </tr>
-                <tr v-if="true">
-                  <th>专业</th>
-                  <td> {{ userName.major }} </td>
-                </tr>
+
                 <tr>
                   <th>手机号</th>
                   <td> {{ userName.phone }} </td>
                 </tr>
-                <tr>
-                  <th>支付宝账号</th>
-                  <td> {{ userName.alipay }} </td>
-                </tr>
+                
                 <tr>
                   <th>邮箱</th>
                   <td> {{ userName.email }} </td>
                 </tr>
+
+                <tr>
+                  <th>从事行业</th>
+                  <td> {{ userName.profession }} </td>
+                </tr>
+
                 <tr v-if="true">
                   <th>工作单位</th>
                   <td> {{ userName.workaddr }} </td>
                 </tr>
+
                 <tr>
                   <th>现居地</th>
                   <td colspan="3" rowspan="2">{{ userName.address }}</td>
                 </tr>
+                
+                <tr>
+                </tr>
+                
+                <tr>
+                  <th>自我描述</th>
+                  <td> {{ userName.description }} </td>
+                </tr>
+
+                <tr>
+                  <th>身份证号</th>
+                  <td> {{ userName.IDcard }} </td>
+                </tr>
+
                 </tbody>
               </table>
             </div>

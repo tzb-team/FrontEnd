@@ -12,8 +12,8 @@ leftAlumniBar
             self.user.captial.progress = res.getMoneyProgress;//已收回资产百分比
             self.user.interest.amountToCover = res.payMoney;//待付款百分比
             self.user.interest.progress = res.payMoneyProgress;//已付款百分比
-            self.user.credit.patentNum = res.creditRatingScore;//专利持有数（信用分）
-            self.user.credit.poolNum = res.creditRating;//专利池持有数（积分等级）
+            self.user.patent.patentNum = res.creditRatingScore;//专利持有数（信用分）
+            self.user.patent.poolNum = res.creditRating;//专利池持有数（积分等级）
             
 
 profile/todo todoList

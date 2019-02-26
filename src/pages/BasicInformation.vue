@@ -1,3 +1,6 @@
+// Author: D.J. Song
+// Date: 2019/2/26
+
 <template>
   <personalCenter paneltitle="基本信息">
     <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -10,24 +13,30 @@
         <div style="padding-left: 60px;padding-right: 200px">
           <br/>
           <el-form ref="userName"  :model="userName" label-width="80px" :label-position="labelPosition">
+            
             <el-form-item label="用户名" prop="name">
               <el-input v-model="userName.name" :disabled="true"></el-input>
             </el-form-item>
+            
             <el-form-item label="性别" prop="sex">
               <template>
                 <el-radio v-model="userName.sex" label="男">男</el-radio>
                 <el-radio v-model="userName.sex" label="女">女</el-radio>
               </template>
             </el-form-item>
+            
             <el-form-item label="年龄" prop="age">
               <el-input v-model="userName.age"></el-input>
             </el-form-item>
+            
             <el-form-item label="工作单位" prop="workaddr">
               <el-input v-model="userName.workaddr"></el-input>
             </el-form-item>
+            
             <el-form-item label="现居地" prop="address">
               <el-input v-model="userName.address"></el-input>
             </el-form-item>
+            
             <el-form-item style="float:right;">
               <el-button type="primary" @click="submitChange">提交</el-button>
             </el-form-item>
@@ -84,17 +93,16 @@
         activeName: 'first',
         userName: {
           name: 'test',
+          realName: '真实名字',
           sex: '女',
           age: '20',
-          level: '高级账户',
-          stuNum: '161090000',
-          grade: '大二',
-          major: '金融学',
           phone: '13055644123',
-          alipay: '13055644123',
           email: 'lovetrust@trust.com',
+          profession: '学生',
           workaddr: '南京大学',
-          address: '江苏省南京市栖霞区仙林大道163号南京大学仙林校区'
+          address: '江苏省南京市栖霞区仙林大道163号南京大学仙林校区',
+          description: 'I\'m a student',
+          IDcard: '4420**********6117'
         },
         secService: '1',
         labelPosition: 'right',
@@ -127,27 +135,18 @@
             console.log(response.data);
             let res = response.data;
 
-            let ulevel = 0;
-            switch (res.userLevel) {
-              case 'PRIMARY': ulevel ='高级账号';break;
-              //TODO to complete it
-              default:
-                ulevel = '普通账号';
-            }
-
             let regUser= {
                 name: res.username,
+                realName: res.realName,
                 sex: res.gender,
                 age: res.age,
-                level: ulevel,
-                stuNum: res.studentId,
-                grade: res.grade,
-                major: res.major,
                 phone: res.phoneNumber,
-                alipay: res.alipay,
                 email: res.email,
+                profession: res.profession,
                 workaddr: res.institution,
                 address: res.livingPlace,
+                description: res.description,
+                IDcard: res.IDcard
               };
 
             self.userName = regUser;
