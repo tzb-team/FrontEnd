@@ -19,27 +19,31 @@
       <el-submenu index="2" class="bar-main">
         <template slot="title">
           <i class="el-icon-menu bar-icon"></i>
-          <span>借款管理</span>
+          <span>钱包管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/UserSpace/LoanInformation">项目信息</el-menu-item>
+          <el-menu-item index="/UserSpace/LoanInformation">我的钱包</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3" class="bar-main">
         <template slot="title">
           <i class="el-icon-menu bar-icon"></i>
-          <span>投资管理</span>
+          <span>专利管理</span>
         </template>
         <el-menu-item-group class="bar-main">
-          <el-menu-item index="/UserSpace/InvestInformation">项目信息</el-menu-item>
+          <el-menu-item index="/UserSpace/InvestInformation">我的专利</el-menu-item>
+          <el-menu-item index="/UserSpace/InvestInformation">专利登记</el-menu-item>
+          <el-menu-item index="/UserSpace/InvestInformation">我的求购</el-menu-item>
+          <el-menu-item index="/UserSpace/InvestInformation">我的挂单</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="4" class="bar-main">
         <template slot="title">
           <i class="el-icon-location bar-icon"></i>
-          <span>信用验证</span>
+          <span>专利池管理</span>
         </template>
         <el-menu-item-group>
+          <el-menu-item index="/UserSpace/NormalCheck">我的专利池</el-menu-item>
           <el-menu-item index="/UserSpace/NormalCheck">校园验证</el-menu-item>
           <el-menu-item index="/UserSpace/AdvancedCheck">财务验证</el-menu-item>
           <el-menu-item index="/UserSpace/CrossCheck">关系验证</el-menu-item>
