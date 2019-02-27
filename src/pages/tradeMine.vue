@@ -6,8 +6,8 @@
     </div>
     <div class="col-xs-12 col-md-12" style="padding: 0;position:relative;">
       <div class="myspace">
-        <h2 class="myspace">闲置市场</h2>
-        <p style="color: #777777;">欢迎来这里，让您的闲置创造价值！</p>
+        <h2 class="myspace">专利市场</h2>
+        <p style="color: #777777;">欢迎来这里，让您的专利创造价值！</p>
       </div>
     </div>
 

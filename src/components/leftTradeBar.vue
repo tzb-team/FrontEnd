@@ -42,10 +42,10 @@
     <el-submenu index="1" style="background-color:#f5f5f5">
       <template slot="title">
         <i class="el-icon-bell"></i>
-        <span ><strong>我的闲置</strong></span>
+        <span ><strong>我的专利</strong></span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="/trade/mine">闲置上传</el-menu-item>
+        <el-menu-item index="/trade/mine">专利登记</el-menu-item>
         <el-menu-item index="/trade/going">正在进行</el-menu-item>
         <el-menu-item index="/trade/finished">成功交易</el-menu-item>
       </el-menu-item-group>
@@ -62,7 +62,7 @@
 
 <style scoped>
   .my_menu{
-  //active-text-color:#409EFF;
+    active-text-color:#409EFF;
     height: auto;
     margin-top: 30px;
     margin-left:25%;

@@ -191,7 +191,7 @@
                         <el-row >
                           <el-col :span="6">
                             <div class="grid-content bg-purple">
-                              <img v-bind:src=commentData[i-1].pic   class="picbox" alt="User_pic">
+                              <!-- <img v-bind:src=commentData[i-1].pic   class="picbox" alt="User_pic"> -->
                             </div>
                           </el-col>
                           <el-col :span="16" style="margin-top:2%;margin-left:8%;">

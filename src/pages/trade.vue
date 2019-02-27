@@ -6,8 +6,8 @@
     </div>
     <div class="col-xs-12 col-md-12" style="padding: 0;position:relative;">
       <div class="myspace">
-        <h2 class="myspace">闲置市场</h2>
-        <p style="color: #777777;">欢迎来这里，让您的闲置创造价值！</p>
+        <h2 class="myspace">专利市场</h2>
+        <p style="color: #777777;">欢迎来这里，让您的专利创造价值！</p>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
           <div style="position:relative;top:20px;margin-left:3%;margin-right:3%;">
             <el-tabs type="border-card">
                 <el-tab-pane >
-                  <span slot="label" style="font-size:19px;"><i class="el-icon-message"></i>&nbsp;&nbsp;鱼塘上新</span>
+                  <span slot="label" style="font-size:19px;"><i class="el-icon-message"></i>&nbsp;&nbsp;专利池上新</span>
                   <div style="position:relative;top:20px;margin-left:5%;margin-right:5%;">
                     <template>
                       <el-carousel :interval="3000" type="card" height="250px">
@@ -33,17 +33,23 @@
                             trigger="hover">
                             <div >
                               <div style="position:relative;top:3px;">
-                                <span style="position:relative;left:20px;"><i class="el-icon-goods"></i>&nbsp;&nbsp;{{ topData[i-1].name}}</span>
+                                <span style="position:relative;left:20px;"><i class="">专利 id</i><br/>{{ topData[i-1].name}}</span>
                                 <br/>
-                                <span style="position:relative;left:20px;">￥&nbsp;  {{ topData[i-1].price}}</span>
+                                <span style="position:relative;left:20px;"><i class="">专利 id</i><br/>{{ topData[i-1].price}}</span>
                                 <br/>
-                                <span style="position:relative;left:20px;"><i class="el-icon-phone"></i>&nbsp;&nbsp;{{ topData[i-1].contact}}</span>
+                                <span style="position:relative;left:20px;"><i class="">专利 id</i><br/>{{ topData[i-1].PatentNum}}</span>
+                                <br/>
+                                <span style="position:relative;left:20px;"><i class="">专利 id</i><br/>{{ topData[i-1].PatentNum}}</span>
+                                <br/>
+                                <span style="position:relative;left:20px;"><i class="">专利 id</i><br/>{{ topData[i-1].PatentNum1}}</span>
+                                <br/>
+                                <span style="position:relative;left:20px;"><i class="">专利 id</i><br/>{{ topData[i-1].PatentNum2}}</span>
                               </div>
                               <hr/>
                               <div style="margin-top:-10%;width:150px;">
-                                <img v-bind:src=topData[i-1].headPic style="width:30px;height:30px;position:relative;left:10px;top:-15px;"  alt="User_pic" >
-                                <!--<img src="../../static/pic/testuserpic1.png" style="width:30px;height:30px;position:relative;left:10px;top:-15px;"  alt="User_pic" >-->
-                                <span style="position:relative;margin-top:-10%;">&nbsp;&nbsp;&nbsp;&nbsp;“{{ topData[i-1].description}}”</span>
+                                <!-- <img v-bind:src=topData[i-1].headPic style="width:30px;height:30px;position:relative;left:10px;top:-15px;"  alt="User_pic" >
+                                <img src="../../static/pic/testuserpic1.png" style="width:30px;height:30px;position:relative;left:10px;top:-15px;"  alt="User_pic" >
+                                <span style="position:relative;margin-top:-10%;">&nbsp;&nbsp;&nbsp;&nbsp;“{{ topData[i-1].description}}”</span> -->
                               </div>
                             </div>
                             <el-button slot="reference">
@@ -64,54 +70,54 @@
           <div style="position:relative;top:20px;margin-left:3%;margin-right:3%;">
             <el-tabs type="border-card" >
                 <el-tab-pane >
-                  <span slot="label" style="font-size:19px;"><i class="el-icon-search"></i>&nbsp;&nbsp;分类检索</span>
+                  <span slot="label" style="font-size:19px;"><i class="el-icon-search"></i>&nbsp;&nbsp;推荐排序</span>
                   <el-row :gutter="20">
                     <el-col :span="20"><template>
                       <div style="margin-top: 20px">
-                        <span><strong>&nbsp;&nbsp;类别筛选&nbsp;&nbsp;</strong></span>
+                        <span><strong>&nbsp;&nbsp;排序标准&nbsp;&nbsp;</strong></span>
                         <br/>
                         <br/>
                         <el-checkbox v-model="options" v-for="type in types" :key="type" :label="type" style="margin-left:2%;">{{ type }}</el-checkbox>
                         <br/>
                         <br/>
-                        <el-input v-model="searchText" placeholder="搜索名字" class="input-with-select" style="width: 250px;">
+                        <el-input v-model="searchText" placeholder="搜索专利池id" class="input-with-select" style="width: 250px;">
                           <el-button @click="search" slot="append" icon="el-icon-search"></el-button>
                         </el-input>
                       </div>
                     </template></el-col>
                     <el-col :span="4"><div style="margin-top: 15px;">
                       <br/>
-                      <el-button type="primary" icon="el-icon-search" @click="filter">过滤</el-button>
+                      <el-button type="primary" icon="el-icon-search" @click="filter">查询</el-button>
                     </div>
                     </el-col>
                   </el-row>
                   <el-row :gutter="5" v-for="r in 2" :key="r" style="position:relative;top:20px;">
-                    <el-col :span="7" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 1 : 0"style="position:relative;top:20px;">
+                    <el-col :span="7" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 1 : 0" style="position:relative;top:20px;">
                       <el-card :body-style="{ padding: '5px' }" v-if="((r-1)*3+o-1) < commData.length" >
                         <img v-bind:src=commData[(r-1)*3+o-1].pic class="image" style="height:200px;">
                         <div style="padding: 14px;">
                           <strong style="font-size: 18px;">{{commData[(r-1)*3+o-1].name}}</strong>
                           <el-collapse accordion >
                             <el-collapse-item  name="1">
-                              <span slot="title" style="font-size: 17px;">详细信息</span>
+                              <span slot="title" style="font-size: 17px;">专利1：</span> <!--更改了名称-->
                               <div style="position:relative;top:3px;">
-                                <i class="el-icon-menu"></i><strong style="font-size: 14px;">种类</strong>
+                                <i class="el-icon-menu"></i><strong style="font-size: 14px;">专利2：</strong><!--更改了名称-->
                                 <span style="position:relative;left:20px;">{{commData[(r-1)*3+o-1].type}}</span>
                               </div>
                               <div style="position:relative;top:3px;">
 
-                                <i class="el-icon-phone"></i><strong style="font-size: 15px;">电话</strong>
-                                <span style="position:relative;left:20px;">{{commData[(r-1)*3+o-1].contact}}</span>
+                                <i class="el-icon-phone"></i><strong style="font-size: 15px;">专利3：</strong><!--更改了名称-->
+                                <span style="position:relative;left:20px;">{{commData[(r-1)*3+o-1].PatentNum}}</span>
                               </div>
                               <div style="position:relative;top:3px;">
-                                <i class="el-icon-document"></i><strong style="font-size: 15px;">详细描述</strong>
+                                <i class="el-icon-document"></i><strong style="font-size: 15px;">专利4：</strong><!--更改了名称-->
                                 <span style="position:relative;left:0px;right:20px;">{{commData[(r-1)*3+o-1].description}}</span>
                               </div>
                             </el-collapse-item>
 
                           </el-collapse>
                           <div class="bottom clearfix">
-                            <i class="el-icon-goods" style='font-size:25px;'></i>
+                            <i class="" style='font-size:25px;'></i>
                             <strong style="position:relative;left:20px;font-size: 17px;">{{commData[(r-1)*3+o-1].price}}元</strong>
                           </div>
                         </div>
@@ -156,7 +162,7 @@
   import footerBar from '@/components/footerBar.vue';
   import rightBar from '@/components/rightBar.vue';
   import leftTradeBar from "@/components/leftTradeBar.vue";
-  const typeOptions = ['数码零件', '影音家电', '鞋服配饰', '化妆洗漱','图书教材','其他'];
+  const typeOptions = ['专利池主', '池中专利数量', '专利池估值' ];
   export default {
     name: "trade",
     components:{ leftTradeBar, navi, footerBar, rightBar},
@@ -184,46 +190,54 @@
         topData:[{
           num:'000001',
           type:'化妆洗漱',
-          name:'DHC橄榄润唇膏',
-          description:'日本 大国药妆店购入 全新未拆封',
-          price:'50',
-          contact:'15876209838',
+          name:'0000000000000001',
+          description:'0000000000000002',
+          price:'0000000000000003',
+          PatentNum:'0000000000000004',
+          PatentNum1:'000000000000000y',
+          PatentNum2:'000000000000000x',
           pic:"../../static/pic/dhc.jpeg",
-          headPic:'../../static/pic/person-flat.png',
+          // headPic:'../../static/pic/person-flat.png',ddddddddddddddddddddddddddddddddddddddddddddddddddddd了注释
           date:"2018/06/04",
           state: true
         },
           {
-            num:'000002',
-            type:'化妆洗漱',
-            name:'无印良品卸妆啫喱',
-            description:'日本 大国药妆店购入 全新未拆封',
-            price:'70',
-            contact:'13329048392',
-            pic:'../../static/pic/wylp.jpeg',
-            headPic:'../../static/pic/person-flat.png',
-            date:"2018/05/02",
-            state: true
+          num:'000002',
+          type:'化妆洗漱',
+          name:'0000000000000005',
+          description:'0000000000000006',
+          price:'0000000000000007',
+          PatentNum:'0000000000000008',
+          PatentNum1:'000000000000000y',
+          PatentNum2:'000000000000000x',
+          pic:'../../static/pic/wylp.jpeg',
+          // headPic:'../../static/pic/person-flat.png',dddddddddddddddddddddddddddddd
+          date:"2018/05/02",
+          state: true
           },
           {
-            num:'000003',
+            num:'0000000000000009',
             type:'影音家电',
-            name:'铁三角msr',
-            description:'自用一年，音质良好。',
-            price:'750',
-            contact:'1997939399',
+            name:'000000000000000z',
+            // description:'自用一年，音质良好。',
+            price:'0000000000000002',
+            PatentNum:'000000000000000h',
+            PatentNum1:'000000000000000x',
+            PatentNum2:'000000000000000y',
             pic:'../../static/pic/msr.jpg',
-            headPic:'../../static/pic/person-flat.png',
+            // headPic:'../../static/pic/person-flat.png',
             date:"2018/8/12",
             state: true
           },
           {
-            num:'000004',
+            num:'0000000000000002',
             type:'化妆洗漱',
-            name:'YSL粉底液B10色号',
-            description:'因为皮肤偏干，这款比较哑光，不适合我，仅用过一次',
-            price:'300',
-            contact:'1997939399',
+            name:'0000000000000001',
+            // description:'因为皮肤偏干，这款比较哑光，不适合我，仅用过一次',
+            price:'0000000000000003',
+            PatentNum:'000000000000000z',
+            PatentNum1:'000000000000000y',
+            PatentNum2:'000000000000000x',
             pic:'../../static/pic/ysl.JPG',
             headPic:'../../static/pic/person-flat.png',
 
@@ -233,10 +247,12 @@
           {
             num:'000005',
             type:'影音家电',
-            name:'Acer宏碁572G-528R',
+            name:'000000000000000y',
             description:'自用2年半，硬件全原装，第四代i5标压版 8g(ddr3) gtx840m2g 120g（三星固态，自己加的，根据需求另卖）+1000g。',
-            price:'2500',
-            contact:'1997939399',
+            price:'000000000000000l',
+            PatentNum:'000000000000000z',
+            PatentNum1:'0000000000000004',
+            PatentNum2:'000000000000000x',
             pic:'../../static/pic/acer.jpg',
             headPic:'../../static/pic/person-flat.png',
 
@@ -251,7 +267,7 @@
         //   name:'名创优品粉红顽皮帽子',
         //   description:'名创优品39.9入 带过一次 可小刀',
         //   price:'35',
-        //   contact:'13323389923',
+        //   PatentNum:'13323389923',
         //   pic:"../../static/pic/hat.jpg",
         //   state: true
         // },
@@ -261,7 +277,7 @@
         //     name:'DHC橄榄润唇膏',
         //     description:'日本 大国药妆店购入 全新未拆封',
         //     price:'50',
-        //     contact:'123456',
+        //     PatentNum:'123456',
         //     pic:"../../static/pic/dhc.jpeg",
         //     state: true
         //   },
@@ -271,7 +287,7 @@
         //     name:'无印良品卸妆啫喱',
         //     description:'日本 大国药妆店购入 全新未拆封',
         //     price:'70',
-        //     contact:'13329048392',
+        //     PatentNum:'13329048392',
         //     pic:'../../static/pic/wylp.jpeg',
         //     state: true
         //   },
@@ -281,7 +297,7 @@
         //     name:'铁三角msr',
         //     description:'自用一年，音质良好。',
         //     price:'750',
-        //     contact:'1997939399',
+        //     PatentNum:'1997939399',
         //     pic:'../../static/pic/msr.jpg',
         //     state: true
         //   },
@@ -291,7 +307,7 @@
         //     name:'YSL粉底液B10色号',
         //     description:'因为皮肤偏干，这款比较哑光，不适合我，仅用过一次',
         //     price:'300',
-        //     contact:'1997939399',
+        //     PatentNum:'1997939399',
         //     pic:'../../static/pic/ysl.JPG',
         //     state: true
         //   },
@@ -299,9 +315,9 @@
         //     num:'000005',
         //     type:'影音家电',
         //     name:'Acer宏碁572G-528R',
-        //     description:'自用2年半，硬件全原装，第四代i5标压版 8g(ddr3) gtx840m2g 120g（三星固态，自己加的，根据需求另卖）+1000g。',
+        //     description:'，硬件全原装，第四代i5标压版 8g(ddr3) gtx840m2g 120g（三星固态，自己加的，根据需求另卖）+1000g。',
         //     price:'2500',
-        //     contact:'1997939399',
+        //     PatentNum:'1997939399',
         //     pic:'../../static/pic/acer.jpg',
         //     state: true
         //   }
@@ -328,25 +344,25 @@
         goodsName: '',
         username: ''
       }
-      this.$axios.post('/flea/getNew', getData).then(function (response) {
-        let topNewData = []
-        for(let i=0;i<response.data.tradeInfoList.length;i++){
-          topNewData.push({
-            num: response.data.tradeInfoList[i].id,
-            type: response.data.tradeInfoList[i].goodsType,
-            name: response.data.tradeInfoList[i].goodsName,
-            description: response.data.tradeInfoList[i].goodsDesc,
-            price: response.data.tradeInfoList[i].price,
-            contact: response.data.tradeInfoList[i].contact,
-            headPic:'../../static/pic/person-flat.png',
-            pic: response.data.tradeInfoList[i].pic,
-          })
-        }
-        self.topData = topNewData;
+      // this.$axios.post('/flea/getNew', getData).then(function (response) {
+      //   let topNewData = []
+      //   for(let i=0;i<response.data.tradeInfoList.length;i++){
+      //     topNewData.push({
+      //       num: response.data.tradeInfoList[i].id,
+      //       type: response.data.tradeInfoList[i].goodsType,
+      //       name: response.data.tradeInfoList[i].goodsName,
+      //       description: response.data.tradeInfoList[i].goodsDesc,
+      //       price: response.data.tradeInfoList[i].price,
+      //       PatentNum: response.data.tradeInfoList[i].PatentNum,
+      //       headPic:'../../static/pic/person-flat.png',
+      //       pic: response.data.tradeInfoList[i].pic,
+      //     })
+      //   }
+      //   self.topData = topNewData;
 
-      }).catch(function (error) {
-        console.log("error:"+error)
-      });
+      // }).catch(function (error) {
+      //   console.log("error:"+error)
+      // });
       getData = {
         size: 6,
         page: 0,
@@ -360,24 +376,24 @@
         goodsName: '',
         username: ''
       }
-      this.$axios.post('/flea/getNew', getData).then(function (response) {
-        let topNewData = []
-        for(let i=0;i<response.data.tradeInfoList.length;i++){
-          topNewData.push({
-            num: response.data.tradeInfoList[i].id,
-            type: response.data.tradeInfoList[i].goodsType,
-            name: response.data.tradeInfoList[i].goodsName,
-            description: response.data.tradeInfoList[i].goodsDesc,
-            price: response.data.tradeInfoList[i].price,
-            contact: response.data.tradeInfoList[i].contact,
-            pic: response.data.tradeInfoList[i].pic,
-          })
-        }
-        self.commData = topNewData;
-        self.totalNum = response.data.total;
-      }).catch(function (error) {
-        console.log("error:"+error)
-      });
+      // this.$axios.post('/flea/getNew', getData).then(function (response) {
+      //   let topNewData = []
+      //   for(let i=0;i<response.data.tradeInfoList.length;i++){
+      //     topNewData.push({
+      //       num: response.data.tradeInfoList[i].id,
+      //       type: response.data.tradeInfoList[i].goodsType,
+      //       name: response.data.tradeInfoList[i].goodsName,
+      //       description: response.data.tradeInfoList[i].goodsDesc,
+      //       price: response.data.tradeInfoList[i].price,
+      //       PatentNum: response.data.tradeInfoList[i].PatentNum,
+      //       pic: response.data.tradeInfoList[i].pic,
+      //     })
+      //   }
+      //   self.commData = topNewData;
+      //   self.totalNum = response.data.total;
+      // }).catch(function (error) {
+      //   console.log("error:"+error)
+      // });
 
     },
     methods: {
@@ -396,26 +412,26 @@
           goodsName: '',
           username: ''
         }
-        this.$axios.post('/flea/getNew', getData).then(function (response) {
-          console.log(response)
-          let topNewData = []
-          for(let i=0;i<response.data.tradeInfoList.length;i++){
-            topNewData.push({
-              num: response.data.tradeInfoList[i].id,
-              type: response.data.tradeInfoList[i].goodsType,
-              name: response.data.tradeInfoList[i].goodsName,
-              description: response.data.tradeInfoList[i].goodsDesc,
-              price: response.data.tradeInfoList[i].price,
-              contact: response.data.tradeInfoList[i].contact,
-              pic: response.data.tradeInfoList[i].pic,
-            })
-          }
-          self.commData = topNewData;
-          self.totalNum = response.data.total;
+        // this.$axios.post('/flea/getNew', getData).then(function (response) {
+        //   console.log(response)
+        //   let topNewData = []
+        //   for(let i=0;i<response.data.tradeInfoList.length;i++){
+        //     topNewData.push({
+        //       num: response.data.tradeInfoList[i].id,
+        //       type: response.data.tradeInfoList[i].goodsType,
+        //       name: response.data.tradeInfoList[i].goodsName,
+        //       description: response.data.tradeInfoList[i].goodsDesc,
+        //       price: response.data.tradeInfoList[i].price,
+        //       PatentNum: response.data.tradeInfoList[i].PatentNum,
+        //       pic: response.data.tradeInfoList[i].pic,
+        //     })
+        //   }
+        //   self.commData = topNewData;
+        //   self.totalNum = response.data.total;
 
-        }).catch(function (error) {
-          console.log("error:"+error)
-        });
+        // }).catch(function (error) {
+        //   console.log("error:"+error)
+        // });
       },
       search() {
         const self = this;
@@ -442,7 +458,7 @@
               name: response.data.tradeInfoList[i].goodsName,
               description: response.data.tradeInfoList[i].goodsDesc,
               price: response.data.tradeInfoList[i].price,
-              contact: response.data.tradeInfoList[i].contact,
+              PatentNum: response.data.tradeInfoList[i].PatentNum,
               pic: response.data.tradeInfoList[i].pic,
             })
           }
@@ -478,7 +494,7 @@
               name: response.data.tradeInfoList[i].goodsName,
               description: response.data.tradeInfoList[i].goodsDesc,
               price: response.data.tradeInfoList[i].price,
-              contact: response.data.tradeInfoList[i].contact,
+              PatentNum: response.data.tradeInfoList[i].PatentNum,
               pic: response.data.tradeInfoList[i].pic,
             })
           }
@@ -547,7 +563,7 @@
 
   /*消息框*/
   .mesboxborder{
-    //width:950px;
+    width:950px;
     border-radius: 3px;
     margin-right: 10%;
     margin-left: 5%;
