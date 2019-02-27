@@ -22,29 +22,12 @@
           <el-row :gutter="2">
             <el-col :span="16" style="width:50%">
               <p><span style="font-size:30px">{{num_of_patents}}</span></p>
-              <!-- <p>待收回投资额:<span>{{i_money_toEarn}}</span> 元</p>
-              <p>正在进行项目数:<span>{{i_pro_ing}}</span> 元</p>
-              <p>待审核转让项目数:<span>{{i_pro_toChange}}</span> 元</p> -->
             </el-col>
-            <!-- <el-col :span="16" style="width:50%">
-              <p>投资总项目数:<span>{{i_pro_sum}}</span> 元</p>
-              <p>已收回投资额:<span>{{i_money_earn}}</span> 元</p>
-              <p>成功投资项目数:<span>{{i_pro_done}}</span> 元</p>
-              <p>已转让项目数:<span>{{i_pro_change}}</span> 元</p>
-            </el-col> -->
           </el-row>
         </el-card>
         <div style="margin-top:20px;font-size:30px;background-color:#E4E7ED">&nbsp;专利列表</div>
         <el-card shadow="always" class="sum_break">
-          <!-- <el-row :gutter="2">
-            <el-col :span="1" style="width:50%">
-              <p>坏账项目投资数:<span>{{b_pro_sum}}</span> 元</p>
-            </el-col>
-            <el-col :span="1" style="width:50%">
-              <p>已损失投资总额:<span>{{b_money_done}}</span> 元</p>
-            </el-col>
-          </el-row> -->
-    <!-- 增加专利列表，具有滚动功能 -->
+    <!-- 增加专利列表，不具有滚动功能 -->
           <el-container>
             <el-header style="text-align: right; font-size: 12px">
               <el-dropdown>
