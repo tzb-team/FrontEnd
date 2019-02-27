@@ -72,10 +72,6 @@
     color: dodgerblue;
   }
 
-  .bar-main{
-    /*background-color:ghostwhite;*/
-  }
-
   div.leftsidenav{
     background:white;
     border:1px solid #e4e4e4;

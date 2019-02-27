@@ -218,8 +218,8 @@
   .publishmes{
     background:white;
     border:1px solid #e4e4e4;
-    //height:630px;
-  //width:850px;
+    height:630px;
+    width:850px;
     margin: 30px 10% 50px 3%;
     box-shadow:
       0 1px 6px 0 rgba(0,0,0, .12),

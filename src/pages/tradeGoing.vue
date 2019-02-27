@@ -320,7 +320,7 @@
 
   /*消息框*/
   .mesboxborder{
-  //width:850px;
+    width:850px;
     margin-right: 10%;
     border-radius: 3px;
     margin-left: 5%;
@@ -361,8 +361,8 @@
 
   /*卡片样式*/
   .box-card {
-    //min-height: 250px;
-    //min-width:800px;
+    min-height: 250px;
+    min-width:800px;
     border-radius: 5px;
     box-shadow:
       0 1px 6px 0 rgba(0,0,0, .12),
