@@ -23,7 +23,7 @@
           <span>钱包管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/UserSpace/LoanInformation">我的钱包</el-menu-item>
+          <el-menu-item index="/UserSpace/Wallet">我的钱包</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3" class="bar-main">

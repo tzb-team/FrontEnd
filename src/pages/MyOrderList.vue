@@ -8,7 +8,9 @@
         <el-col span="18">
           <div class="mesboxborder" >
           <el-tabs v-model="activeName2" type="card"  @tab-click="handleClick">
-              <div v-for="(item, index) in commData">
+              <div v-for="item in commData"
+                v-bind:key='item.id'
+                >
                 <el-row>
                   <el-col :span="24">
                     <div class="grid-content bg-purple-dark">
@@ -126,7 +128,9 @@
           backgroundSize:"100% auto",
           backgroundPosition: "0% 0%",
         },
-        commData:[{
+        commData:[
+          {
+          id: 0,
           num:'000000',
           type:'鞋服配饰',
           name:'名创优品粉红顽皮帽子',
@@ -135,8 +139,9 @@
           contact:'13323389923',
           pic:"../../static/pic/patentLogo1.png",
           state: true
-        },
+          },
           {
+            id: 1,
             num:'000001',
             type:'化妆洗漱',
             name:'DHC橄榄润唇膏',
@@ -147,6 +152,7 @@
             state: true
           },
           {
+            id: 2,
             num:'000002',
             type:'化妆洗漱',
             name:'无印良品卸妆啫喱',
