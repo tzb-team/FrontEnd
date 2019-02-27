@@ -14,8 +14,6 @@
         </template>
         <el-menu-item-group>
           <el-menu-item index="/UserSpace">账户总览</el-menu-item>
-          <!-- <el-menu-item index="/UserSpace/SchoolPerformance">校园表现</el-menu-item> -->
-          <!-- <el-menu-item index="/UserSpace/FinancialStanding">财务状况</el-menu-item> -->
           <el-menu-item index="/UserSpace/BasicInformation">基本信息</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -47,10 +45,7 @@
         </template>
         <el-menu-item-group>
           <el-menu-item index="/UserSpace/NormalCheck">我的专利池</el-menu-item>
-          <!-- <el-menu-item index="/UserSpace/NormalCheck">校园验证</el-menu-item>
-          <el-menu-item index="/UserSpace/AdvancedCheck">财务验证</el-menu-item>
-          <el-menu-item index="/UserSpace/CrossCheck">关系验证</el-menu-item> -->
-        </el-menu-item-group>
+          </el-menu-item-group>
       </el-submenu>
     </el-menu>
   </div>
