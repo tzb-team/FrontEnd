@@ -8,12 +8,12 @@
     </div>
     <div style="margin: 20px 40px 20px 40px;">
       <el-row>
-        <el-col span="16">
-          <el-tabs type="border-card" style="margin-left:7%;"><!--左侧留白7%-->
+        <el-col>
+          <el-tabs type="border-card" style="margin-left:14%;margin-right:14%"><!--左侧留白7%-->
             <el-tab-pane label="未成交">
               <div class="form">
               <el-form :inline="true" label-width="100px">
-                <el-form-item label="标的分类" class="form_item">
+                <el-form-item label="专利的分类" class="form_item">
                   <el-dropdown class="dropdown" @command="handleSmallCommand">
                     <el-button type="primary" plain>
                       购物<i class="el-icon-arrow-down el-icon--right"></i>
@@ -114,13 +114,13 @@
                 </el-form-item>
               </el-form>
               </div>
-              <div style="margin-top: 10px;">
-                <el-radio-group v-model="value_radio">
+              <div >
+                <!-- <el-radio-group v-model="value_radio">
                   <el-radio-button label="money" >标的金额</el-radio-button>
                   <el-radio-button label="target_rating_score">标的评价</el-radio-button>
                   <el-radio-button label="comletion_rate">标的完成度</el-radio-button>
-                </el-radio-group>
-                <div style="float: right;width: 170px;" @keydown.enter="search">
+                </el-radio-group> -->
+                <div style="width: 250px;align:center;margin-top:25px" @keydown.enter="search">
                   <el-input
                     placeholder="请输入内容"
                     v-model="content"
@@ -141,8 +141,8 @@
             </el-tab-pane>
           </el-tabs>
         </el-col>
-        <el-col span="8">
-          <el-card shadow="hover" style="margin-left: 10px;margin-right: 9%"><!--右侧留白9%-->
+        <!-- <el-col span="8">
+          <el-card shadow="hover" style="margin-left: 10px;margin-right: 9%"><!--右侧留白9%--
             <el-tabs>
               <el-tab-pane label="标的推荐" >
                 <el-form label-position="right">
@@ -187,7 +187,7 @@
               </el-tab-pane>
             </el-tabs>
           </el-card>
-        </el-col>
+        </el-col> -->
       </el-row>
     </div>
     <div class="col-sm-12 col-md-12" style="float:bottom; padding:0;margin-top:100px;">
@@ -259,12 +259,12 @@
       return{
         /* 未成交数据*/
         investInformation: [
-          // {id:"0001", beginTime:"2018.09.01", endTime:"2018.10.08", name:"AJ13熊猫", type:"SHOES", profit:"5.55%", money:"1800", remainMoney:"360", finishProgress:0.8,range:"AA"},
-          // {id:"0002", beginTime:"2018.09.14", endTime:"2018.10.03", name:"炉石砰砰计划", type:"GAME", profit:"9.99%", money:"388", remainMoney:"88", finishProgress:0.7731,range:"AA"},
-          // {id:"0003", beginTime:"2018.09.17", endTime:"2018.10.28", name:"国庆省内", type:"TRAVEL", profit:"6.73%", money:"2000", remainMoney:"400", finishProgress:0.8,range:"A"},
-          // {id:"0004", beginTime:"2018.10.12", endTime:"2018.10.25", name:"托福考试", type:"EXAM", profit:"5.85%", money:"1800", remainMoney:"360", finishProgress:0.8,range:"A"},
-          // {id:"0005", beginTime:"2018.10.15", endTime:"2018.11.20", name:"方大同演唱会", type:"CONCERT", profit:"7.67%", money:"1000", remainMoney:"470", finishProgress:0.53,range:"A"},
-          // {id:"0006", beginTime:"2018.10.22", endTime:"2018.11.21", name:"d'zzit地素连衣裙", type:"CLOTH", profit:"7.06%", money:"1300", remainMoney:"741", finishProgress:0.43,range:"B"},
+          {id:"0001", beginTime:"2018.09.01", endTime:"2018.10.08", name:"AJ13熊猫", type:"SHOES", profit:"5.55%", money:"1800", remainMoney:"360", finishProgress:0.8,range:"AA"},
+          {id:"0002", beginTime:"2018.09.14", endTime:"2018.10.03", name:"炉石砰砰计划", type:"GAME", profit:"9.99%", money:"388", remainMoney:"88", finishProgress:0.7731,range:"AA"},
+          {id:"0003", beginTime:"2018.09.17", endTime:"2018.10.28", name:"国庆省内", type:"TRAVEL", profit:"6.73%", money:"2000", remainMoney:"400", finishProgress:0.8,range:"A"},
+          {id:"0004", beginTime:"2018.10.12", endTime:"2018.10.25", name:"托福考试", type:"EXAM", profit:"5.85%", money:"1800", remainMoney:"360", finishProgress:0.8,range:"A"},
+          {id:"0005", beginTime:"2018.10.15", endTime:"2018.11.20", name:"方大同演唱会", type:"CONCERT", profit:"7.67%", money:"1000", remainMoney:"470", finishProgress:0.53,range:"A"},
+          {id:"0006", beginTime:"2018.10.22", endTime:"2018.11.21", name:"d'zzit地素连衣裙", type:"CLOTH", profit:"7.06%", money:"1300", remainMoney:"741", finishProgress:0.43,range:"B"},
           // {id:"0007", beginTime:"2018.10.26", endTime:"2018.11.22", name:"预购", type:"GAME", profit:"6.45%", money:"1800", remainMoney:"1116", finishProgress:0.38,range:"B"},
           // {id:"0008", beginTime:"2018.10.30", endTime:"2018.11.23", name:"生活费周转", type:"TURNOVER", profit:"5.27%", money:"1000", remainMoney:"140", finishProgress:0.86,range:"C"},
           // {id:"0009", beginTime:"2018.11.03", endTime:"2018.12.01", name:"Chanel香水", type:"CONSMETIC", profit:"8.56%", money:"800", remainMoney:"320", finishProgress:0.6,range:"C"},

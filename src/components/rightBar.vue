@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  var title="安全理财，轻松借款，即刻加入trust平台";
+  var title="放心出售，轻松购买，即刻加入区块链专利交易平台";
   var url="http://193.112.82.110:3030/";
   var picurl="/static/pic/logo3_blue.png";
 
@@ -52,9 +52,9 @@
           $("#favourite").click(function() {
             var ctrl = (navigator.userAgent.toLowerCase()).indexOf('mac') != -1 ? 'Command/Cmd': 'CTRL';
             if (document.all) {
-              window.external.addFavorite('http://'+ this.url_config +  ':8080', 'trust平台')
+              window.external.addFavorite('http://'+ this.url_config +  ':8080', '专利交易平台')
             } else if (window.sidebar) {
-              window.sidebar.addPanel('trust平台', 'http://'+ this.url_config +  ':8080', "")
+              window.sidebar.addPanel('专利交易平台', 'http://'+ this.url_config +  ':8080', "")
             } else {
               alert('您可以尝试通过快捷键' + ctrl + ' + D 加入到收藏夹~')
             }
@@ -79,7 +79,7 @@
         },
 
         wechatShare : function () {
-          var text ="trust校园金融互助平台";
+          var text ="区块链专利交易平台";
           //生成二维码可能和网上其他地方的资料不一样，添加了logo图片路径（之前不知道哪位高手写的第一版本，貌似没有logo功能，小弟在此基础上加的）
           $('#div_code').qrcode({
             text: utf16to8(text),
