@@ -34,8 +34,8 @@
         <el-menu-item-group class="bar-main">
           <el-menu-item index="/UserSpace/InvestEarnings">我的专利</el-menu-item>
           <el-menu-item index="/UserSpace/PatentRegister">专利登记</el-menu-item>
-          <el-menu-item index="/UserSpace/InvestInformation">我的求购</el-menu-item>
-          <el-menu-item index="/UserSpace/InvestInformation">我的挂单</el-menu-item>
+          <el-menu-item index="/UserSpace/MyExpectation">我的求购</el-menu-item>
+          <el-menu-item index="/UserSpace/MyOrderList">我的挂单</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="4" class="bar-main">
