@@ -10,7 +10,7 @@ import repay from '@/pages/repay'
 import checkInvest from '@/pages/checkInvest'
 import signup from '@/pages/signup'
 import UserSpace from '@/pages/UserSpace'
-import NormalCheck from '@/pages/NormalCheck'
+import InvestPools from '@/pages/InvestPools'
 import AdvancedCheck from '@/pages/AdvancedCheck'
 import FinancialStanding from '@/pages/FinancialStanding'
 import BasicInformation from '@/pages/BasicInformation'
@@ -147,9 +147,9 @@ export default new Router({
       },
     },
     {
-      path: '/UserSpace/NormalCheck',
-      name: 'NormalCheck',
-      component: NormalCheck,
+      path: '/UserSpace/InvestPools',
+      name: 'InvestPools',
+      component: InvestPools,
       meta: {
         requireAuth: true
       },
