@@ -71,7 +71,7 @@
         <el-table-column
           prop="tag"
           label="专利池种类"
-          width="120"
+          width="150"
           :filters="[{ text: '医药', value: '医药' }, { text: '电子', value: '电子' }]"
           :filter-method="filterTag"
           filter-placement="bottom-end">
@@ -81,6 +81,15 @@
               disable-transitions>{{scope.row.tag}}</el-tag>
             </template>
         </el-table-column>
+
+        <el-table-column
+          fixed="right"
+          width="120"
+          label="查看详情">
+            <template slot-scope="scope"><el-button @click="showDetails(scope.row)">查看详情</el-button></template>
+
+        </el-table-column>
+
       </el-table>
     </div>
   </personalCenter>
@@ -93,11 +102,16 @@
     components: {personalCenter},
     data(){
       return{
+        connetDetails: {
+          id: 0,
+          isTrue: true
+        },
         tableData: [{
           enterDate: '2016-05-02',
           poolID: '001',
           agent: '上海市XX公司',
-          tag: '电子'
+          tag: '电子',
+          details: '/userSpace'
         },
         {
           enterDate: '2019-05-02',
@@ -126,6 +140,11 @@
       filterHandler(value, row, column) {
         const property = column['property'];
         return row[property] === value;
+      },
+      showDetails(row){
+        this.connetDetails.id = row.poolID;
+        this.connetDetails.isTrue = true;
+        this.$router.push({name: 'poolDetails', params:{id:this.connetDetails.poolID, isShow:this.connetDetails.isShow} })
       },
       // getState: function(){
       //   let self = this;
