@@ -4,16 +4,16 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <div style="display: inline;float: left;margin: -2px;padding: 0">
-            <p class="text">{{investList.range}}</p>
+            <p class="text">{{investList.pool}}</p>
             <div class="triangle-topleft">
             </div>
           </div>
           <div class="grid-content bg-purple" style="margin-left:30%;">
             <div style="margin-top:10%;">
-              <p class="month" style="display: inline;">Profit : </p>
+              <!-- <p class="month" style="display: inline;">Profit : </p>
               <p class="profit" style="display: inline;">{{investList.profit}}</p>
-              <p class="month" >/ per year</p>
-              <p style="font-size:10px;display: inline-block;">标的编号：</p>
+              <p class="month" >/ per year</p> -->
+              <p style="font-size:10px;display: inline-block;">专利号码：</p>
               <p style="display: inline-block;font-weight:800;">{{investList.id}}</p>
             </div>
           </div>
@@ -24,11 +24,11 @@
           </div>
           <div class="grid-content bg-purple">
             <p class="itemName">{{investList.name}}</p>
-            <p class="money">￥{{investList.remainMoney}}</p><p class="moneyName"> / 剩余金额</p>
-            <p>借款总金额：￥{{investList.money}}</p>
-            <vm-progress :percentage="investList.finishProgress * 100"  :text-inside="true" :stroke-width="18" strokeColor="info" :striped="true">
+            <!-- <p class="money">￥{{investList.remainMoney}}</p><p class="moneyName"> / 剩余金额</p> -->
+            <p>售价：{{investList.money}}积分</p>
+            <!-- <vm-progress :percentage="investList.finishProgress * 100"  :text-inside="true" :stroke-width="18" strokeColor="info" :striped="true">
               {{investList.finishProgress * 100}}%
-            </vm-progress>
+            </vm-progress> -->
           </div>
         </el-col>
         <el-col :span="6">
@@ -39,7 +39,8 @@
                   <el-button type="primary" round @click="showDetails">查看详情</el-button>
                 </el-row>
                 <br/>
-                <p style="font-size:10px;">借款截止：{{investList.beginTime}}</p>
+                <p style="font-size:10px;">专利所有者：{{investList.owner}}</p>
+                <p style="font-size:10px;">专利所在地址：{{investList.walletaddress}}</p>
               </div>
             </div>
           </div>
