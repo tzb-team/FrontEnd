@@ -33,7 +33,7 @@
         </template>
         <el-menu-item-group class="bar-main">
           <el-menu-item index="/UserSpace/InvestEarnings">我的专利</el-menu-item>
-          <el-menu-item index="/UserSpace/InvestInformation">专利登记</el-menu-item>
+          <el-menu-item index="/UserSpace/PatentRegister">专利登记</el-menu-item>
           <el-menu-item index="/UserSpace/InvestInformation">我的求购</el-menu-item>
           <el-menu-item index="/UserSpace/InvestInformation">我的挂单</el-menu-item>
         </el-menu-item-group>

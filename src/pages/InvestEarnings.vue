@@ -1,21 +1,6 @@
 <template>
   <personalCenter paneltitle="我的专利">
     <el-container class="sheet">
-      <!-- <el-header class="emphasize">
-        <div style="width:50%;float:left">
-          <label style="font-size:30px">总投资金额:</label>
-          <span class="keypoint">{{money_invest}}</span>
-          <label style="font-size:30px">元</label><br>
-          <span style="font-size:18px">总借款金额:{{money_loan}}元</span>
-        </div>
-        <div style="width:50%;float:right">
-          <label style="font-size:30px">加权平均投资利率:</label>
-          <span class="keypoint">{{rate_invest}}</span>
-          <label style="font-size:30px">%</label><br>
-          <span style="font-size:18px">加权平均借款利率:{{rate_loan}}%</span>
-        </div>
-      </el-header> -->
-      
       <el-main class="inform1" >
         <div shadow="always" style="font-size:30px;background-color:#E4E7ED">&nbsp;当前持有专利数</div>
         <el-card shadow="always" class="sum_repay">

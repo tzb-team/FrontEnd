@@ -51,6 +51,7 @@ import findPassword from '@/pages/findPassword'
 import resetPassword from '@/pages/resetPassword'
 import messageList from '@/pages/messageList'
 import guide from '@/pages/guide'
+import patentRegister from '@/pages/PatentRegister'
 
 Vue.use(Router)
 
@@ -308,7 +309,8 @@ export default new Router({
       meta: {
         requireAuth: true
       },
-    },{
+    },
+    {
       path:'/notice',
       name:'notice',
       component:notice,
@@ -441,8 +443,12 @@ export default new Router({
       name:'guide',
       component:guide
     },
-
-
+    // 新增专利登记page
+    {
+      path:'/UserSpace/PatentRegister',
+      name:'PatentRegister',
+      component:patentRegister
+    }
   ],
   mode:"history"
 })
