@@ -1,7 +1,7 @@
 <template>
-  <personalCenter paneltitle="投资收益">
+  <personalCenter paneltitle="我的专利">
     <el-container class="sheet">
-      <el-header class="emphasize">
+      <!-- <el-header class="emphasize">
         <div style="width:50%;float:left">
           <label style="font-size:30px">总投资金额:</label>
           <span class="keypoint">{{money_invest}}</span>
@@ -14,36 +14,73 @@
           <label style="font-size:30px">%</label><br>
           <span style="font-size:18px">加权平均借款利率:{{rate_loan}}%</span>
         </div>
-      </el-header>
+      </el-header> -->
       
       <el-main class="inform1" >
-        <div shadow="always" style="font-size:30px;background-color:#E4E7ED">&nbsp;投标统计</div>
+        <div shadow="always" style="font-size:30px;background-color:#E4E7ED">&nbsp;当前持有专利数</div>
         <el-card shadow="always" class="sum_repay">
           <el-row :gutter="2">
-            <el-col :span="8" style="width:50%">
-              <p>投资总收益:<span>{{i_money_done}}</span> 元</p>
-              <p>待收回投资额:<span>{{i_money_toEarn}}</span> 元</p>
-              <p>正在进行项目数:<span>{{i_pro_ing}}</span> 元</p>
-              <p>待审核转让项目数:<span>{{i_pro_toChange}}</span> 元</p>
-            </el-col>
             <el-col :span="16" style="width:50%">
+              <p><span style="font-size:30px">{{num_of_patents}}</span></p>
+              <!-- <p>待收回投资额:<span>{{i_money_toEarn}}</span> 元</p>
+              <p>正在进行项目数:<span>{{i_pro_ing}}</span> 元</p>
+              <p>待审核转让项目数:<span>{{i_pro_toChange}}</span> 元</p> -->
+            </el-col>
+            <!-- <el-col :span="16" style="width:50%">
               <p>投资总项目数:<span>{{i_pro_sum}}</span> 元</p>
               <p>已收回投资额:<span>{{i_money_earn}}</span> 元</p>
               <p>成功投资项目数:<span>{{i_pro_done}}</span> 元</p>
               <p>已转让项目数:<span>{{i_pro_change}}</span> 元</p>
-            </el-col>
+            </el-col> -->
           </el-row>
         </el-card>
-        <div style="margin-top:20px;font-size:30px;background-color:#E4E7ED">&nbsp;坏账统计</div>
+        <div style="margin-top:20px;font-size:30px;background-color:#E4E7ED">&nbsp;专利列表</div>
         <el-card shadow="always" class="sum_break">
-          <el-row :gutter="2">
-            <el-col :span="8" style="width:50%">
+          <!-- <el-row :gutter="2">
+            <el-col :span="1" style="width:50%">
               <p>坏账项目投资数:<span>{{b_pro_sum}}</span> 元</p>
             </el-col>
-            <el-col :span="16" style="width:50%">
+            <el-col :span="1" style="width:50%">
               <p>已损失投资总额:<span>{{b_money_done}}</span> 元</p>
             </el-col>
-          </el-row>  
+          </el-row> -->
+    <!-- 增加专利列表，具有滚动功能 -->
+          <el-container>
+            <el-header style="text-align: right; font-size: 12px">
+              <el-dropdown>
+                <i class="el-icon-setting" style="margin-right: 15px"></i>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item>查看</el-dropdown-item>
+                  <el-dropdown-item>新增</el-dropdown-item>
+                  <el-dropdown-item>删除</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+              <span>Mike</span>
+            </el-header>
+      
+            <el-main>
+              <el-table :data="tableData" stripe="true">
+                <el-table-column prop="patentID" label="专利号" >
+                </el-table-column>
+                <el-table-column prop="patentName" label="专利名" >
+                </el-table-column>
+                <el-table-column prop="patentOwner" label="专利持有人" >
+                </el-table-column>
+                <el-table-column prop="patentState" label="状态" >
+                </el-table-column>
+                <el-table-column label="详情">
+                  <template slot-scope="scope">
+                    <el-button
+                      @click.native.prevent="getdetails(scope.$index, tableData4)"
+                      type="text"
+                      size="small">
+                      详情
+                    </el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </el-main>
+          </el-container>
         </el-card>
       </el-main>  
     </el-container>
@@ -58,24 +95,17 @@
     name:"LoanStatistics",
     components: {ProjectList, personalCenter},
     data(){
+      const item = {
+        patentID: 'order#53431',
+        patentName: '新型口腔器械',
+        patentOwner: 'Mike 丁',
+        patentState: '正常',
+        // patentDetails: '详情'
+      };
       return{
-        money_loan:2000,
-        rate_loan:5.34,
-        money_invest:2000,
-        rate_invest:5.34,
+        num_of_patents:10,
+        tableData: Array(10).fill(item)
 
-        i_money_done:100,
-        i_money_toEarn:100,
-        i_pro_ing:100,
-        i_pro_toChange:100,
-
-        i_pro_sum:100,
-        i_money_earn:100,
-        i_pro_done:100,
-        i_pro_change:100,
-        
-        b_pro_sum:100,
-        b_money_done:100
       }
     }
   }
