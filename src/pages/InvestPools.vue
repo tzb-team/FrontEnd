@@ -113,7 +113,7 @@
       },
       getState: function(){
         let self = this;
-        this.$axios.get('/verify/getUserPools',{
+        this.$axios.get('/verify/getInvestPools',{
           params:{
 
           }
