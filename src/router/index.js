@@ -52,6 +52,7 @@ import resetPassword from '@/pages/resetPassword'
 import messageList from '@/pages/messageList'
 import guide from '@/pages/guide'
 import patentRegister from '@/pages/PatentRegister'
+import patentSetDetails from '@/pages/patentSetDetails'
 
 Vue.use(Router)
 
@@ -448,7 +449,13 @@ export default new Router({
       path:'/UserSpace/PatentRegister',
       name:'PatentRegister',
       component:patentRegister
+    },
+    {
+      path:'/trade/patentSetDetails',
+      name:'PatentSetDetails',
+      component:patentSetDetails
     }
+
   ],
   mode:"history"
 })

@@ -57,7 +57,6 @@
                               <img v-bind:src=topData[i-1].pic style="width:422px;height:250px;" class="picbox" alt="User_pic">
                             </el-button>
                           </el-popover>
-
                         </el-carousel-item>
                       </el-carousel>
                     </template>
@@ -88,6 +87,10 @@
                     <el-col :span="4"><div style="margin-top: 15px;">
                       <br/>
                       <el-button type="primary" icon="el-icon-search" @click="filter">查询</el-button>
+                      <br/>
+                      <br/>>
+                      <a href="/trade/patentSetDetails"><el-button type="primary" icon="el-icon-search">专利池详情</el-button></a>
+
                     </div>
                     </el-col>
                   </el-row>
@@ -448,26 +451,26 @@
           goodsName: self.searchText,
           username: ''
         }
-        this.$axios.post('/flea/getNew', getData).then(function (response) {
-          console.log(response)
-          let topNewData = []
-          for(let i=0;i<response.data.tradeInfoList.length;i++){
-            topNewData.push({
-              num: response.data.tradeInfoList[i].id,
-              type: response.data.tradeInfoList[i].goodsType,
-              name: response.data.tradeInfoList[i].goodsName,
-              description: response.data.tradeInfoList[i].goodsDesc,
-              price: response.data.tradeInfoList[i].price,
-              PatentNum: response.data.tradeInfoList[i].PatentNum,
-              pic: response.data.tradeInfoList[i].pic,
-            })
-          }
-          self.commData = topNewData;
-          self.totalNum = response.data.total;
+        // this.$axios.post('/flea/getNew', getData).then(function (response) {
+        //   console.log(response)
+        //   let topNewData = []
+        //   for(let i=0;i<response.data.tradeInfoList.length;i++){
+        //     topNewData.push({
+        //       num: response.data.tradeInfoList[i].id,
+        //       type: response.data.tradeInfoList[i].goodsType,
+        //       name: response.data.tradeInfoList[i].goodsName,
+        //       description: response.data.tradeInfoList[i].goodsDesc,
+        //       price: response.data.tradeInfoList[i].price,
+        //       PatentNum: response.data.tradeInfoList[i].PatentNum,
+        //       pic: response.data.tradeInfoList[i].pic,
+        //     })
+        //   }
+        //   self.commData = topNewData;
+        //   self.totalNum = response.data.total;
 
-        }).catch(function (error) {
-          console.log("error:"+error)
-        });
+        // }).catch(function (error) {
+        //   console.log("error:"+error)
+        // });
       },
       handleCurrentChange(val) {
         const self = this;
@@ -484,26 +487,26 @@
           goodsName: '',
           username: ''
         }
-        this.$axios.post('/flea/getNew', getData).then(function (response) {
-          console.log(response)
-          let topNewData = []
-          for(let i=0;i<response.data.tradeInfoList.length;i++){
-            topNewData.push({
-              num: response.data.tradeInfoList[i].id,
-              type: response.data.tradeInfoList[i].goodsType,
-              name: response.data.tradeInfoList[i].goodsName,
-              description: response.data.tradeInfoList[i].goodsDesc,
-              price: response.data.tradeInfoList[i].price,
-              PatentNum: response.data.tradeInfoList[i].PatentNum,
-              pic: response.data.tradeInfoList[i].pic,
-            })
-          }
-          self.commData = topNewData;
-          console.log(self.commData)
+        // this.$axios.post('/flea/getNew', getData).then(function (response) {
+        //   console.log(response)
+        //   let topNewData = []
+        //   for(let i=0;i<response.data.tradeInfoList.length;i++){
+        //     topNewData.push({
+        //       num: response.data.tradeInfoList[i].id,
+        //       type: response.data.tradeInfoList[i].goodsType,
+        //       name: response.data.tradeInfoList[i].goodsName,
+        //       description: response.data.tradeInfoList[i].goodsDesc,
+        //       price: response.data.tradeInfoList[i].price,
+        //       PatentNum: response.data.tradeInfoList[i].PatentNum,
+        //       pic: response.data.tradeInfoList[i].pic,
+        //     })
+        //   }
+        //   self.commData = topNewData;
+        //   console.log(self.commData)
 
-        }).catch(function (error) {
-          console.log("error:"+error)
-        });
+        // }).catch(function (error) {
+        //   console.log("error:"+error)
+        // });
 
       },
       remoteMethod(query) {
