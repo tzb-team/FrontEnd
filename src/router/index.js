@@ -52,6 +52,8 @@ import resetPassword from '@/pages/resetPassword'
 import messageList from '@/pages/messageList'
 import guide from '@/pages/guide'
 import patentRegister from '@/pages/PatentRegister'
+import myOrderList from '@/pages/MyOrderList'
+import wallet from '@/pages/Wallet'
 import poolDetails from '@/pages/poolDetails'
 
 Vue.use(Router)
@@ -449,6 +451,18 @@ export default new Router({
       path:'/UserSpace/PatentRegister',
       name:'PatentRegister',
       component:patentRegister
+    },
+    //新增我的挂单page
+    {
+      path:'/UserSpace/MyOrderList',
+      name:'MyOrderList',
+      component:myOrderList
+    },
+    //新增我的钱包page
+    {
+      path:'/UserSpace/Wallet',
+      name:'Wallet',
+      component:wallet
     },
     {
       path:'/UserSpace/poolDetails',

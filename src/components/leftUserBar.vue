@@ -23,7 +23,7 @@
           <span>钱包管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/UserSpace/LoanInformation">我的钱包</el-menu-item>
+          <el-menu-item index="/UserSpace/Wallet">我的钱包</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3" class="bar-main">
@@ -34,8 +34,8 @@
         <el-menu-item-group class="bar-main">
           <el-menu-item index="/UserSpace/InvestEarnings">我的专利</el-menu-item>
           <el-menu-item index="/UserSpace/PatentRegister">专利登记</el-menu-item>
-          <el-menu-item index="/UserSpace/InvestInformation">我的求购</el-menu-item>
-          <el-menu-item index="/UserSpace/InvestInformation">我的挂单</el-menu-item>
+          <el-menu-item index="/UserSpace/MyExpectation">我的求购</el-menu-item>
+          <el-menu-item index="/UserSpace/MyOrderList">我的挂单</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="4" class="bar-main">
@@ -70,10 +70,6 @@
 
   .bar-icon{
     color: dodgerblue;
-  }
-
-  .bar-main{
-    /*background-color:ghostwhite;*/
   }
 
   div.leftsidenav{
