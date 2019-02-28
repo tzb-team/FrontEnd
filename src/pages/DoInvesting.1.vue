@@ -16,30 +16,28 @@ Date: 2019/2/28
         
         <el-col :span="12">
           <div style="padding-left: 70px;padding-right: 70px">
-            <div style="color: white;text-align: center">
-              <span style="color: aquamarine;font-size: 60px">{{percentage}}</span><label>%已完成</label>
-              <br/>
-              <vm-progress :percentage="percentage" :text-inside="true" :stroke-width="18" strokeColor="info" :striped="true">.</vm-progress>
-            </div>
-          
+          <div style="color: white;text-align: center">
+            <span style="color: aquamarine;font-size: 60px">{{percentage}}</span><label>%已完成</label>
+            <br/>
+            <vm-progress :percentage="percentage" :text-inside="true" :stroke-width="18" strokeColor="info" :striped="true">.</vm-progress>
+          </div>
             <br/>
             <br/>
-            <el-row>
-              <el-col :span="8">
-                <div style="padding:0px 40px 0px 0px;text-align: center">
-                <span class="keypoint">{{revenueRate}}</span><label class="small"> %</label><br/>
-                <label class="small">预期年化收益率</label>
-              </div></el-col>
-              
-              <el-col :span="8"> <div style="padding:0px 40px 0px 0px;text-align: center">
-                <span class="keypoint">{{lifeOfLoan}}</span><br/>
-                <label class="small">借款期限</label>
-              </div></el-col>
-              <el-col :span="8">   <div style="padding:0px 40px 0px 0px;text-align: center">
-                <span class="keypoint">{{totalLoan}}</span><label class="small"> 元</label><br/>
-                <label class="small">总额度</label>
-              </div></el-col>
-            </el-row>
+          <el-row>
+            <el-col :span="8">
+              <div style="padding:0px 40px 0px 0px;text-align: center">
+              <span class="keypoint">{{revenueRate}}</span><label class="small"> %</label><br/>
+              <label class="small">预期年化收益率</label>
+            </div></el-col>
+            <el-col :span="8"> <div style="padding:0px 40px 0px 0px;text-align: center">
+              <span class="keypoint">{{lifeOfLoan}}</span><br/>
+              <label class="small">借款期限</label>
+            </div></el-col>
+            <el-col :span="8">   <div style="padding:0px 40px 0px 0px;text-align: center">
+              <span class="keypoint">{{totalLoan}}</span><label class="small"> 元</label><br/>
+              <label class="small">总额度</label>
+            </div></el-col>
+          </el-row>
           </div>
         </el-col>
 
@@ -99,10 +97,10 @@ Date: 2019/2/28
                 <div style="padding:25px 70px;width:500px;">
                   <el-card class="box-card" style="width:430px;">
                     <div slot="header" class="clearfix">
-                      <strong><span style="font-size: 20px;">专利简介</span></strong>
+                      <strong><span style="font-size: 20px;">借款项目简介</span></strong>
                     </div>
                     <div>
-                      <div>专利持有人：{{username}}</div>
+                      <div>还款方式：{{username}}</div>
                       <div>还款方式：{{payWay}}</div>
                       <div>借款用途：{{useWay}}</div>
                       <div>月还本息：{{monthInterest}}</div>
@@ -125,7 +123,7 @@ Date: 2019/2/28
 
 
           </el-tab-pane>
-          <el-tab-pane name="two" label="专利持有人信息" style="padding:60px 60px 10px 30px;font-size:18px;line-height: 30px;">
+          <el-tab-pane name="two" label="借款人信息" style="padding:60px 60px 10px 30px;font-size:18px;line-height: 30px;">
             <doInvestingLoanerInfo :username="username"></doInvestingLoanerInfo>
           </el-tab-pane>
           <el-tab-pane name="three" label="投标记录" style="padding:80px 60px 10px 30px;font-size:18px;line-height: 30px;">
@@ -173,7 +171,7 @@ Date: 2019/2/28
           isShow:true,
           activeName:'one',
           tableData:[
-            {date: '2018-05-03',
+            /*{date: '2018-05-03',
             name: '陈文博',
             money: '5000'
             },
@@ -192,11 +190,11 @@ Date: 2019/2/28
             {date: '2018-08-29',
               name: '王刚',
               money: '400'
-            },
+            },*/
           ],
           userLevel:"",
           projectLevel:"",
-          username:"Mike丁",
+          username:"",
           target_id:"723972",
           percentage:80,
           leftTime:2 * 24 * 60 * 60 * 1000,

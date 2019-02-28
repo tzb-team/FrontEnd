@@ -47,3 +47,11 @@ profile/todo todoList
         }]
     
     调用用户持有的专利池
+
+
+专利信息：
+patentOwner 专利持有人
+patentID 专利号
+patentName 专利名
+patentState 专利状态
+patentDetails 专利详情
