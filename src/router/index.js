@@ -10,7 +10,7 @@ import repay from '@/pages/repay'
 import checkInvest from '@/pages/checkInvest'
 import signup from '@/pages/signup'
 import UserSpace from '@/pages/UserSpace'
-import NormalCheck from '@/pages/NormalCheck'
+import InvestPools from '@/pages/InvestPools'
 import AdvancedCheck from '@/pages/AdvancedCheck'
 import FinancialStanding from '@/pages/FinancialStanding'
 import BasicInformation from '@/pages/BasicInformation'
@@ -23,7 +23,7 @@ import CrossCheck from '@/pages/CrossCheck'
 import LoanInformation from '@/pages/LoanInformation'
 import ProjectFavorite from '@/pages/ProjectFavorite'
 import InvestInformation from '@/pages/InvestInformation'
-import InvestEarnings from '@/pages/InvestEarnings'
+import MyPatent from '@/pages/MyPatent'
 import LoanStatistics from '@/pages/LoanStatistics'
 import SchoolPerformance from '@/pages/SchoolPerformance'
 import EnterVerify from '@/pages/EnterVerify'
@@ -52,7 +52,13 @@ import resetPassword from '@/pages/resetPassword'
 import messageList from '@/pages/messageList'
 import guide from '@/pages/guide'
 import patentRegister from '@/pages/PatentRegister'
+<<<<<<< HEAD
 import patentSetDetails from '@/pages/patentSetDetails'
+=======
+import myOrderList from '@/pages/MyOrderList'
+import wallet from '@/pages/Wallet'
+import poolDetails from '@/pages/poolDetails'
+>>>>>>> 58f02a5de2364d3a7705e9eff8ec8bb794a3f266
 
 Vue.use(Router)
 
@@ -147,9 +153,9 @@ export default new Router({
       },
     },
     {
-      path: '/UserSpace/NormalCheck',
-      name: 'NormalCheck',
-      component: NormalCheck,
+      path: '/UserSpace/InvestPools',
+      name: 'InvestPools',
+      component: InvestPools,
       meta: {
         requireAuth: true
       },
@@ -208,9 +214,9 @@ export default new Router({
       },
     },
     {
-      path: '/UserSpace/InvestEarnings',
-      name: 'InvestEarnings',
-      component: InvestEarnings,
+      path: '/UserSpace/MyPatent',
+      name: 'MyPatent',
+      component: MyPatent,
       meta: {
         requireAuth: true
       },
@@ -450,10 +456,29 @@ export default new Router({
       name:'PatentRegister',
       component:patentRegister
     },
+<<<<<<< HEAD
     {
       path:'/trade/patentSetDetails',
       name:'PatentSetDetails',
       component:patentSetDetails
+=======
+    //新增我的挂单page
+    {
+      path:'/UserSpace/MyOrderList',
+      name:'MyOrderList',
+      component:myOrderList
+    },
+    //新增我的钱包page
+    {
+      path:'/UserSpace/Wallet',
+      name:'Wallet',
+      component:wallet
+    },
+    {
+      path:'/UserSpace/poolDetails',
+      name:'poolDetails',
+      component:poolDetails
+>>>>>>> 58f02a5de2364d3a7705e9eff8ec8bb794a3f266
     }
 
   ],

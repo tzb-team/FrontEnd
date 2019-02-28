@@ -95,11 +95,6 @@
 
 <style scoped>
 
-  #personalCenter{
-    /*background-image: url("../../static/pic/infoback.jpg");*/
-    /*background-size: 100%;*/
-  }
-
   div.myspace{
     /*个人中心*/
     /*text-indent: 6.3%;*/

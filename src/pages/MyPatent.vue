@@ -57,11 +57,10 @@
 
 <script>
   import personalCenter from "../components/personalCenter";
-  import ProjectList from "../components/projectList";
 
   export default {
-    name:"LoanStatistics",
-    components: {ProjectList, personalCenter},
+    name:"myPatent",
+    components: {personalCenter},
     data(){
       const item = {
         patentID: 'order#53431',
@@ -94,9 +93,4 @@
     margin-top: 50px;
   }
 </style>
-<style>
-  /*#leftOV,#leftFS,#leftSP,#leftLI,#leftLS,#leftII,#leftBI,#leftNC,#leftAC,#leftCC{ color: #777777 !important; }*/
-  #leftIE { color: dodgerblue !important}
-</style>
-
 

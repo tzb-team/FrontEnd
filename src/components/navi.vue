@@ -23,7 +23,7 @@
 
               </el-dropdown-menu>
             </el-dropdown>
-            <li id="last" style="float: right;min-width: 8%;"><a id="signup" v-on:click="prompt">注册</a></li>
+            <li id="last" style="float: right;min-width: 8%;"><a id="signup" href="/signup">注册</a></li>
             <li id="secondLast" style="float: right;min-width: 8%;">
               <a id="login" href="/login">登录</a>
             </li>
@@ -44,11 +44,14 @@
     inject:['reload'],
     name: 'navi',
     mounted: function () {
+      
       this.login = store.state.token;
       if(localStorage.route=="#homepage"){
         document.getElementById("naviLogo").src="/static/pic/logo3.png";
       }
       $("#manageAccount").css('display','none');
+
+      //如果登陆成功，则更改样式如下
       if (store.getters.isLogin){
         this.login = store.getters.isLogin;
         document.getElementById('last').removeChild(document.getElementById('signup'));
@@ -116,14 +119,6 @@
         store.commit(types.LOGOUT);
         this.$router.replace("/login");
         this.reload();
-      },
-      prompt() {
-        this.$alert('由于花旗用户的限制，暂时不提供注册', '注意', {
-          confirmButtonText: '确定',
-          callback: action => {
-
-          }
-        });
       }
     },
     data() {

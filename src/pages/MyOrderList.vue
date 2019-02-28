@@ -1,18 +1,6 @@
 <template>
-<div :style=back>
-  <!--顶栏 -->
-  <div class="col-xs-12 col-md-12" style="padding: 0;position: relative;background-color: black;">
-    <navi style="position: relative"></navi>
-  </div>
-  <div class="col-xs-12 col-md-12" style="padding: 0;position:relative;">
-    <div class="myspace">
-      <h2 class="myspace">闲置市场</h2>
-      <p style="color: #777777;">欢迎来这里，让您的闲置创造价值！</p>
-    </div>
-  </div>
-
-  <!--正文-->
-  <el-row>
+  <personalCenter paneltitle="我的挂单">
+    <el-row>
         <el-col span="6">
           <left-trade-bar></left-trade-bar>
         </el-col>
@@ -20,7 +8,9 @@
         <el-col span="18">
           <div class="mesboxborder" >
           <el-tabs v-model="activeName2" type="card"  @tab-click="handleClick">
-              <div v-for="(item, index) in commData">
+              <div v-for="item in commData"
+                v-bind:key='item.id'
+                >
                 <el-row>
                   <el-col :span="24">
                     <div class="grid-content bg-purple-dark">
@@ -40,11 +30,11 @@
                               <el-col :span="12">
                                 <div class="grid-content bg-purple">
                                   <div>
-                                    <strong style="font-size: 15px;">物品名称</strong>
+                                    <strong style="font-size: 15px;">专利名称</strong>
                                     <span style="position:relative;left:20px;">{{ item.name}}</span>
                                   </div>
                                   <div>
-                                    <strong style="font-size: 15px;">物品种类</strong>
+                                    <strong style="font-size: 15px;">专利种类</strong>
                                     <span style="position:relative;left:20px;">{{ item.type}}</span>
                                   </div>
                                   <div>
@@ -120,28 +110,15 @@
           </div>
         </el-col>
       </el-row>
-  <!--右边栏-->
-  <div>
-    <right-bar></right-bar>
-  </div>
-
-  <!--底栏-->
-  <div class="col-xs-12 col-md-12" style="padding: 0;position: relative;background-color: black;">
-    <footer-bar></footer-bar>
-  </div>
-
-</div>
+  </personalCenter>
 </template>
 
 <script>
-  import navi from '@/components/navi.vue';
-  import footerBar from '@/components/footerBar.vue';
-  import rightBar from '@/components/rightBar.vue';
-  import leftTradeBar from "@/components/leftTradeBar.vue"
+  import personalCenter from "../components/personalCenter";
 
   export default {
-    name: "tradeGoing",
-    components:{ leftTradeBar, navi, footerBar, rightBar},
+    name:"MyOrderList",
+    components: {personalCenter},
     data() {
       return {
         back:{
@@ -151,34 +128,38 @@
           backgroundSize:"100% auto",
           backgroundPosition: "0% 0%",
         },
-        commData:[{
+        commData:[
+          {
+          id: 0,
           num:'000000',
           type:'鞋服配饰',
           name:'名创优品粉红顽皮帽子',
           description:'名创优品39.9入 带过一次 可小刀',
           price:'35',
           contact:'13323389923',
-          pic:"../../static/pic/hat.jpg",
+          pic:"../../static/pic/patentLogo1.png",
           state: true
-        },
+          },
           {
+            id: 1,
             num:'000001',
             type:'化妆洗漱',
             name:'DHC橄榄润唇膏',
             description:'日本 大国药妆店购入 全新未拆封',
             price:'50',
             contact:'123456',
-            pic:"../../static/pic/dhc.jpeg",
+            pic:"../../static/pic/patentLogo2.png",
             state: true
           },
           {
+            id: 2,
             num:'000002',
             type:'化妆洗漱',
             name:'无印良品卸妆啫喱',
             description:'日本 大国药妆店购入 全新未拆封',
             price:'70',
             contact:'13329048392',
-            pic:'../../static/pic/wylp.jpeg',
+            pic:'../../static/pic/patentLogo3.png',
             state: true
           }
         ],
@@ -295,9 +276,11 @@
     },
     beforeCreate:function(){
       localStorage.route="#trade";
-    },
     }
+  }
+
 </script>
+
 
 <style scoped>
   div.myspace{
@@ -327,11 +310,7 @@
     margin-top: 30px;
     margin-bottom:5%;
     background:white;
-    /*border:1px solid #e4e4e4;*/
     min-height:800px;
-    /*box-shadow:*/
-      /*0 1px 6px 0 rgba(0,0,0, .12),*/
-      /*0 1px 6px 0 rgba(0,0,0, .12);*/
     border-radius: 3px;
   }
   .text {
@@ -341,12 +320,6 @@
   .item {
     margin-bottom: 18px;
   }
-  /*.textitem{*/
-    /*position:relative;*/
-    /*left:300px;*/
-    /*top:-180px;*/
-
-  /*}*/
 
   .picbox{
     box-shadow:
@@ -371,11 +344,6 @@
     margin-right:5%;
     padding: 5px;
   }
-
-  /*.box-card {
-    width: 800px;
-    height: 250px;
-  }*/
 
   .label{
     font-size: 15px;

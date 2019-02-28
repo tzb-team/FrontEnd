@@ -31,7 +31,7 @@
           <span>信用验证</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/UserSpace/NormalCheck">身份验证</el-menu-item>
+          <el-menu-item index="/UserSpace/InvestPools">身份验证</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
