@@ -13,8 +13,8 @@
               </el-input>
             </el-form-item>
             <el-form-item label="专利ID"
-                          prop="phone">
-              <el-input v-model.number="sizeForm.phone"
+                          prop="id">
+              <el-input v-model.number="sizeForm.id"
                         style="width:200px;"
                         placeholder="请输入专利号">
               </el-input>
@@ -28,8 +28,8 @@
               </el-select>
             </el-form-item>
             <el-form-item label="专利池号"
-                          prop="phone">
-              <el-input v-model.number="sizeForm.phone"
+                          prop="set">
+              <el-input v-model.number="sizeForm.set"
                         style="width:200px;"
                         placeholder="请输入专利池号">
               </el-input>
@@ -92,9 +92,9 @@
         sizeForm: {
           type: '',
           name: '',
-          phone: '',
-          price: 0,
+          id: '',
           desc: '',
+          set: ''
         },
         rules: {
           type: [
@@ -104,15 +104,19 @@
             { required: true, message: '请输入专利名称', trigger: 'blur' },
             { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
           ],
-          phone:[
-            { required: true, message: '联系方式不能为空'},
-            { type: 'number', message: '联系方式必须为数字'},
+          id:[
+            { required: true, message: '请输入专利号'},
+            // { type: 'number', message: '联系方式必须为数字'},
+          ],
+          set:[
+            { required: true, message: '请输入专利池号'},
+            // { type: 'number', message: '联系方式必须为数字'},
           ],
           pic: [
             { required: true, message: '请上传相关图片', trigger: 'blur' }
           ],
           desc: [
-            { required: true, message: '请填写物品详细信息', trigger: 'blur' },
+            { required: true, message: '请填写专利详细信息', trigger: 'blur' },
             { min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur' }
           ],
         },
@@ -133,7 +137,7 @@
           self.$axios.post('/flea/newTrade',{
             name: self.sizeForm.name,
             type: self.sizeForm.type,
-            contact: self.sizeForm.phone,
+            contact: self.sizeForm.id,
             picPath: self.proof,
             desc: self.sizeForm.desc,
             price: self.sizeForm.price,

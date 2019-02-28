@@ -23,7 +23,7 @@ import CrossCheck from '@/pages/CrossCheck'
 import LoanInformation from '@/pages/LoanInformation'
 import ProjectFavorite from '@/pages/ProjectFavorite'
 import InvestInformation from '@/pages/InvestInformation'
-import InvestEarnings from '@/pages/InvestEarnings'
+import MyPatent from '@/pages/MyPatent'
 import LoanStatistics from '@/pages/LoanStatistics'
 import SchoolPerformance from '@/pages/SchoolPerformance'
 import EnterVerify from '@/pages/EnterVerify'
@@ -210,9 +210,9 @@ export default new Router({
       },
     },
     {
-      path: '/UserSpace/InvestEarnings',
-      name: 'InvestEarnings',
-      component: InvestEarnings,
+      path: '/UserSpace/MyPatent',
+      name: 'MyPatent',
+      component: MyPatent,
       meta: {
         requireAuth: true
       },
