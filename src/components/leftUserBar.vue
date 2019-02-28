@@ -44,7 +44,7 @@
           <span>专利池管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/UserSpace/NormalCheck">我的专利池</el-menu-item>
+          <el-menu-item index="/UserSpace/InvestPools">我的专利池</el-menu-item>
           </el-menu-item-group>
       </el-submenu>
     </el-menu>

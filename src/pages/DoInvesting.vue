@@ -2,11 +2,15 @@
   <div id="Investing">
     <navi></navi>
     <rightBar></rightBar>
+    <!-- 顶部图片 -->
     <div>
       <img src="https://megsoftconsulting.com/wp-content/uploads/2016/04/web-design-packages-background.jpg" class="img-responsive gray" alt="Cinque Terre" style="opacity:0.7;top: 0;z-index: -1;width:100%;height:450px;position: absolute">
     </div>
+
+
     <div class="overview" style="padding: 60px 60px 40px 40px;font-size:18px;height: 400px">
       <el-row>
+        
         <el-col :span="12">
           <div style="padding-left: 70px;padding-right: 70px">
           <div style="color: white;text-align: center">
@@ -33,6 +37,7 @@
           </el-row>
           </div>
         </el-col>
+
         <el-col :span="12">
             <div style="color: white; " v-show="isShow">
               <countdown :time="leftTime">
@@ -57,9 +62,12 @@
               <br/>
               <el-button type="primary" @click="invest()" round>我要投资</el-button>
             </div>
+        
         </el-col>
+      
       </el-row>
     </div>
+
     <div style="display:flex;min-height:800px;border: 1px solid lightgrey;">
       <div class="market_out" style="height:100%;width:100%;">
         <el-tabs :tab-position="tabPostion" style="height:100%;" @tab-click="handleClick" v-model="activeName">
@@ -140,6 +148,8 @@
         </el-tabs>
       </div>
     </div>
+
+
     <footerBar></footerBar>
   </div>
 </template>

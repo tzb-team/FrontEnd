@@ -30,3 +30,20 @@ profile/todo todoList
                 address: res.livingPlace,
                 description: res.description,
                 IDcard: res.IDcard
+
+  this.$axios.get('/verify/getUserPools' 
+  tableData: [{
+          enterDate: '2016-05-02',
+          poolID: '001',
+          agent: '上海市XX公司',
+          tag: '电子',
+          details: '/userSpace'
+        },
+        {
+          enterDate: '2019-05-02',
+          poolID: '002',
+          agent: '北京市XX公司',
+          tag: '医药'
+        }]
+    
+    调用用户持有的专利池
