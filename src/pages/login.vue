@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <a href='/'><img src="/static/pic/logo3.png" style="width:12%;position:absolute;top:35px;left: 6%;" align=center></a><br>
+    <!-- 以下是主登录框 -->
     <div class="mainbox">
-    <img id="ad" src="/static/pic/loginPic.png" style="width:32%;display: inline-block;margin-left: 16%">
-
       <el-card class="box-card loginbody"
                v-loading="loading"
                element-loading-text="拼命加载中"
@@ -16,20 +15,11 @@
         <a style="float: right;margin-right: 8%;display: inline;margin-top: 3%" v-on:click="prompt">忘记密码？</a>
         <el-button type="primary" id="login" v-on:click="login()" round>登录</el-button>
         <div style="width: 100%;text-align: center;margin-top: 20px">
-          <a style="font-size: 16px;color: lightskyblue;" v-on:click="prompt2">即刻注册</a>
+          <a href='/signup' style="font-size: 16px;color: lightskyblue;">即刻注册</a>
         </div>
       </el-card>
-
-
-      <!--<div style="text-align: center; color: white;text-align: center;font-size: 20px; margin-top: 2%">-->
-        <!--<span style="color: white;text-align: center;font-size: 22px;font-family: 'Microsoft YaHei UI'">Trust,让你的大学生活更美好</span><br>-->
-        <!--<p style="color: white;text-align: center;display: block;padding-top: 40px">@怎么码都码不队</p>-->
-        <!--<div style="margin-top: 0;" class="bott">-->
-          <!--<a>关于我们</a>|<a>联系我们</a>|<a>微博</a>-->
-        <!--</div>-->
-      <!--</div>-->
-
     </div>
+
     <footer-bar style="margin-top: calc(50% - 430px)"></footer-bar>
   </div>
 
@@ -60,11 +50,6 @@
             dangerouslyUseHTMLString: true
           });
         },
-        prompt2() {
-          this.$alert('由于花旗用户的限制，暂时不提供注册', '注意', {
-            confirmButtonText: '确定',
-          });
-        },
         login: function () {
           let self = this;
           self.loading = true;
@@ -92,7 +77,6 @@
           password: "",
           remember: false,
           loading: false
-
         }
       },
     }
@@ -103,7 +87,7 @@
   .container {
     width:100%;
     background: #222;
-    background-image:url('/static/pic/loginBackground.jpg');
+    background-image:url('/static/pic/loginBackground1.png');
     background-size: cover;
     background-attachment:fixed;
     background-position: center center;
@@ -112,17 +96,17 @@
   }
 
   .mainbox{
-    margin-top: 100px;
+    margin-top: 10%;
     height: 330px;
   }
 
   .loginbody{
     width: 32%;
     height: 360px;
-    position: relative;
+    /* position: relative; */
     margin: auto;
-    right: 100px;
-    float: right;
+    /* right: 100px; */
+    /* float: right; */
   }
 
   .loginInput{
@@ -141,26 +125,5 @@
   .bott a{
     color: lightyellow;
   }
-
-  .el-carousel__item{
-    background-size: cover;
-    background-attachment:fixed;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .el-carousel__item:nth-child(3) {
-    background-image:url('/static/pic/loginBackground1.png');
-  }
-  .el-carousel__item:nth-child(4) {
-     background-image:url('/static/pic/signupBackground.png');
-   }
-
-  .el-carousel__item:nth-child(5) {
-    background-image:url('/static/pic/library.jpg');
-  }
-
-
-
 
 </style>

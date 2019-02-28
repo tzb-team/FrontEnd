@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import homepage from '@/pages/homepage'
 import login from '@/pages/login'
+import signup from '@/pages/signup'
 import enterLoan from '@/pages/enterLoan'
 import checkMyLoan from '@/pages/checkMyLoan'
 import loan from '@/pages/loan'
 import largeLoan from '@/pages/largeLoan'
 import repay from '@/pages/repay'
 import checkInvest from '@/pages/checkInvest'
-import signup from '@/pages/signup'
 import UserSpace from '@/pages/UserSpace'
 import InvestPools from '@/pages/InvestPools'
 import AdvancedCheck from '@/pages/AdvancedCheck'
@@ -44,7 +44,6 @@ import tradeMine from '@/pages/tradeMine'
 import tradeGoing from '@/pages/tradeGoing'
 import tradeFinished from '@/pages/tradeFinished'
 import backAdminData from '@/pages/backAdminData'
-import test from '@/pages/test'
 import subjectManage from '@/pages/subjectManage'
 import subjectManageDetail from '@/pages/subjectManageDetail'
 import findPassword from '@/pages/findPassword'
@@ -52,6 +51,7 @@ import resetPassword from '@/pages/resetPassword'
 import messageList from '@/pages/messageList'
 import guide from '@/pages/guide'
 import patentRegister from '@/pages/PatentRegister'
+import patentSetDetails from '@/pages/patentSetDetails'
 import myOrderList from '@/pages/MyOrderList'
 import wallet from '@/pages/Wallet'
 import poolDetails from '@/pages/poolDetails'
@@ -452,6 +452,11 @@ export default new Router({
       name:'PatentRegister',
       component:patentRegister
     },
+    {
+      path:'/trade/patentSetDetails',
+      name:'PatentSetDetails',
+      component:patentSetDetails
+    },
     //新增我的挂单page
     {
       path:'/UserSpace/MyOrderList',
@@ -469,6 +474,7 @@ export default new Router({
       name:'poolDetails',
       component:poolDetails
     }
+
   ],
   mode:"history"
 })
