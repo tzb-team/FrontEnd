@@ -76,58 +76,49 @@ Date: 2019/2/28
     <div style="display:flex;min-height:800px;border: 1px solid lightgrey;">
       <div class="market_out" style="height:100%;width:100%;">
         <el-tabs :tab-position="tabPostion" style="height:100%;" @tab-click="handleClick" v-model="activeName">
-          <el-tab-pane name="one" label="产品概要"
+          
+          <el-tab-pane name="one" label="专利概要"
                         style="padding:60px 60px 10px 30px;font-size:18px;line-height: 30px;">
             <div style="display: flex;">
-                <div style="padding:25px 70px;">
-                  <div>
-                    <img id="img" style="width: 400px;height: 300px;"/>
-                  </div>
-                  <label style="font-size:16px;font-style: oblique;text-align: center;font-weight: normal;color:grey">此图为用户上传的项目说明</label>
-                  <br/>
-                  <label>信用等级排序说明：</label>
-                  <label class="level">AA</label>
-                  <label>></label>
-                  <label class="level">A</label>
-                  <label >></label>
-                  <label class="level">B</label>
-                  <label>></label>
-                  <label class="level">C</label>
-                  <label>></label>
-                  <label class="level">D</label>
+              <div style="padding:0px 70px;">
+                <h1 style="font-weight:bold">佛山邦信知识产权代理商标专利版权注册</h1>
+                <div>
+                  <img id="img" style="width: 400px;height: 300px;"/>
                 </div>
-                <div style="padding:25px 70px;width:500px;">
-                  <el-card class="box-card" style="width:430px;">
-                    <div slot="header" class="clearfix">
-                      <strong><span style="font-size: 20px;">专利简介</span></strong>
-                    </div>
-                    <div>
-                      <div>专利持有人：{{username}}</div>
-                      <div>还款方式：{{payWay}}</div>
-                      <div>借款用途：{{useWay}}</div>
-                      <div>月还本息：{{monthInterest}}</div>
-                      <div>到期需还本金：{{payAll}}</div>
-                      <div>说明：在投资期限届满前，投资人{{PS}}转让，不可以赎回</div>
-                    </div>
-                    <hr/>
-                    <div>
-                      <label>用户信用评级：</label>
-                      <label class="level">{{userLevel}}&nbsp;&nbsp;</label>
-                      <label>项目风险评级:</label>
-                      <label class="level">{{projectLevel}}</label>
-                    </div>
-                  </el-card>
-
-                </div>
-
+                <label style="font-size:16px;font-style: oblique;text-align: center;font-weight: normal;color:grey">此图为用户上传的项目说明</label>
+                <br/>
               </div>
 
+              <div style="padding:25px 70px;width:500px;">
+                <el-card class="box-card" style="width:430px;">
+                  <div slot="header" class="clearfix">
+                    <strong><span style="font-size: 20px;">专利简介</span></strong>
+                  </div>
+                  <div>
+                    <div>专利持有人：{{username}}</div>
+                    <div>还款方式：{{payWay}}</div>
+                    <div>借款用途：{{useWay}}</div>
+                    <div>月还本息：{{monthInterest}}</div>
+                    <div>到期需还本金：{{payAll}}</div>
+                    <div>说明：在投资期限届满前，投资人{{PS}}转让，不可以赎回</div>
+                  </div>
+                  <hr/>
+                  <div>
+                    <label>用户信用评级：</label>
+                    <label class="level">{{userLevel}}&nbsp;&nbsp;</label>
+                    <label>项目风险评级:</label>
+                    <label class="level">{{projectLevel}}</label>
+                  </div>
+                </el-card>
+              </div>
 
-
+            </div>
           </el-tab-pane>
+          
           <el-tab-pane name="two" label="专利持有人信息" style="padding:60px 60px 10px 30px;font-size:18px;line-height: 30px;">
             <doInvestingLoanerInfo :username="username"></doInvestingLoanerInfo>
           </el-tab-pane>
+          
           <el-tab-pane name="three" label="投标记录" style="padding:80px 60px 10px 30px;font-size:18px;line-height: 30px;">
             <el-table
               :data="tableData"
