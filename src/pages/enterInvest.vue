@@ -12,7 +12,7 @@
 
     <div class="square">
       <br><br><br>
-      <p class="slogan">请选择投资项目类型</p><br><br><br>
+      <p class="slogan">交易大厅</p><br><br><br>
       <el-row>
         <el-col span="12">
           <div class="btn" onclick="location.href='/invest'">
@@ -20,7 +20,7 @@
               <font-awesome-icon :icon="['fas', 'coins']" size="4x" style="color: white;margin-left: 0px;margin-top: 50px;" />
             </div>
             <div class="name" style="margin-left: 0px">
-              小额短期项目
+              当前在售
             </div>
           </div>
         </el-col>
@@ -30,7 +30,7 @@
               <font-awesome-icon :icon="['fas', 'credit-card']" size="4x" style="color: white;margin-left: 3px;margin-top: 50px;" />
             </div>
             <div class="name" style="margin-left: 0px;">
-              大额长期项目
+              历史成交
             </div>
           </div>
         </el-col>
