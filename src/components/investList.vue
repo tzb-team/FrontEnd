@@ -13,7 +13,7 @@
               <!-- <p class="month" style="display: inline;">Profit : </p>
               <p class="profit" style="display: inline;">{{investList.profit}}</p>
               <p class="month" >/ per year</p> -->
-              <p style="font-size:10px;display: inline-block;">专利号码：</p>
+              <p style="font-size:10px;display: inline-block;margin-top:28%">专利号码：</p>
               <p style="display: inline-block;font-weight:800;">{{investList.id}}</p>
             </div>
           </div>
@@ -23,9 +23,9 @@
             <p class="center">{{investList.type}}</p>
           </div>
           <div class="grid-content bg-purple">
-            <p class="itemName">{{investList.name}}</p>
+            <p class="itemName" style="font-size:200%;margin-top:5%">{{investList.name}}</p>
             <!-- <p class="money">￥{{investList.remainMoney}}</p><p class="moneyName"> / 剩余金额</p> -->
-            <p>售价：{{investList.money}}积分</p>
+            <p style="margin-top:3%">售价：{{investList.money}}积分</p>
             <!-- <vm-progress :percentage="investList.finishProgress * 100"  :text-inside="true" :stroke-width="18" strokeColor="info" :striped="true">
               {{investList.finishProgress * 100}}%
             </vm-progress> -->

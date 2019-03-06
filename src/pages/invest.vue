@@ -8,25 +8,28 @@
     </div>
     <div style="margin: 20px 40px 20px 40px;">
       <el-row>
-        <el-col>
-          <el-tabs type="border-card" style="margin-left:14%;margin-right:14%"><!--左侧留白7%-->
+        <el-col span="16">
+          <el-tabs type="border-card" style="margin-left:7%"><!--左侧留白7%-->
             <el-tab-pane label="未成交">
               <div class="form">
               <el-form :inline="true" label-width="100px">
                 <el-form-item label="专利的分类" class="form_item">
                   <el-dropdown class="dropdown" @command="handleSmallCommand">
                     <el-button type="primary" plain>
-                      购物<i class="el-icon-arrow-down el-icon--right"></i>
+                      专利的分类<i class="el-icon-arrow-down el-icon--right"></i>
                     </el-button>
                     <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item command="鞋帽服饰">鞋帽服饰</el-dropdown-item>
-                      <el-dropdown-item command="生活用品">生活用品</el-dropdown-item>
-                      <el-dropdown-item command="护肤美妆">护肤美妆</el-dropdown-item>
-                      <el-dropdown-item command="游戏动漫">游戏动漫</el-dropdown-item>
-                      <el-dropdown-item command="电子产品">电子产品</el-dropdown-item>
+                      <el-dropdown-item command="人类生活必须">人类生活必须</el-dropdown-item>
+                      <el-dropdown-item command="作业，运输">作业，运输</el-dropdown-item>
+                      <el-dropdown-item command="化学，冶金">化学，冶金</el-dropdown-item>
+                      <el-dropdown-item command="纺织，造纸">纺织，造纸</el-dropdown-item>
+                      <el-dropdown-item command="物理">物理</el-dropdown-item>
+                      <el-dropdown-item command="电学">电学</el-dropdown-item>
+                      <el-dropdown-item command="机械工程；照明；加热；武器；爆破">机械工程；照明；加热；武器；爆破</el-dropdown-item>
+                      <el-dropdown-item command="其他">其他</el-dropdown-item>
                     </el-dropdown-menu>
                   </el-dropdown>
-                  <el-dropdown class="dropdown" @command="handleSmallCommand">
+                  <!-- <el-dropdown class="dropdown" @command="handleSmallCommand">
                     <el-button type="primary" plain>
                       学习<i class="el-icon-arrow-down el-icon--right"></i>
                     </el-button>
@@ -36,8 +39,8 @@
                       <el-dropdown-item command="培训考证">培训考证</el-dropdown-item>
                       <el-dropdown-item command="校际交换">校际交换</el-dropdown-item>
                     </el-dropdown-menu>
-                  </el-dropdown>
-                  <el-dropdown class="dropdown" @command="handleSmallCommand">
+                  </el-dropdown> -->
+                  <!-- <el-dropdown class="dropdown" @command="handleSmallCommand">
                     <el-button type="primary" plain>
                       娱乐<i class="el-icon-arrow-down el-icon--right"></i>
                     </el-button>
@@ -48,19 +51,19 @@
                       <el-dropdown-item command="外出旅游">外出旅游</el-dropdown-item>
                     </el-dropdown-menu>
                   </el-dropdown>
-                  <el-dropdown class="dropdown" @command="handleSmallCommand">
-                    <el-button type="primary" plain>
+                  <el-dropdown class="dropdown" @command="handleSmallCommand"> -->
+                    <!-- <el-button type="primary" plain>
                       医疗<i class="el-icon-arrow-down el-icon--right"></i>
                     </el-button>
                     <el-dropdown-menu slot="dropdown">
                       <el-dropdown-item command="诊断治疗">诊断治疗</el-dropdown-item>
                       <el-dropdown-item command="保健养生">保健养生</el-dropdown-item>
                     </el-dropdown-menu>
-                  </el-dropdown>
+                  </el-dropdown> -->
                   <el-tag type="success" style="margin-left: 20px" v-show="this.fundUse !== []" >{{ fundUse[0] }}</el-tag>
 
                 </el-form-item>
-                <el-form-item label="用户信用等级" class="form_item">
+                <!-- <el-form-item label="用户信用等级" class="form_item">
                     <el-select v-model="smallUserRating" multiple placeholder="请选择">
                       <el-option
                         v-for="item in userOptions"
@@ -69,13 +72,13 @@
                         :value="item.value">
                       </el-option>
                     </el-select>
-                  </el-form-item>
-                <el-form-item label="利率" class="form_item">
+                  </el-form-item> -->
+                <!-- <el-form-item label="利率" class="form_item">
                     <input type="number" v-model="smallInterestDown" class="selectInput" style="width:70px;"/>
                     <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
                     <input type="number" v-model="smallInterestUp" class="selectInput" style="width:70px;"/>
-                  </el-form-item>
-                <el-form-item label="项目风险评级" class="form_item">
+                  </el-form-item> -->
+                <!-- <el-form-item label="项目风险评级" class="form_item">
                     <el-select v-model="smallTargetRating" multiple placeholder="请选择">
                       <el-option
                         v-for="item in targetOptions"
@@ -84,19 +87,19 @@
                         :value="item.value">
                       </el-option>
                     </el-select>
-                  </el-form-item>
-                <el-form-item label="投资金额" class="form_item">
+                  </el-form-item> -->
+                <el-form-item label="价格" class="form_item">
                     <input type="number" v-model="smallInvestDown"  class="selectInput" style="width:100px;"/>
                     <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
                     <input type="number" v-model="smallInvestUp" class="selectInput" style="width:100px;"/>
                   </el-form-item>
-                <el-form-item label="还款期限" class="form_item">
+                <!-- <el-form-item label="还款期限" class="form_item">
                   <input type="number" v-model="smallDayDown" class="selectInput" style="width:83px;"/>
                   <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
                   <input type="number" v-model="smallDayUp" class="selectInput" style="width:83px;"/>
                   <p style="display: inline;margin-left:5px;margin-right:5px;">天</p>
-                </el-form-item>
-                <el-form-item label="开始时间" class="form_item">
+                </el-form-item> -->
+                <el-form-item label="上架时间" class="form_item">
                   <el-date-picker
                     v-model="smallDateDown"
                     type="date"
@@ -141,26 +144,23 @@
             </el-tab-pane>
           </el-tabs>
         </el-col>
-        <!-- <el-col span="8">
-          <el-card shadow="hover" style="margin-left: 10px;margin-right: 9%">
-            <!--右侧留白9%--><!--
+        <el-col span="8">
+          <el-card shadow="hover" style="margin-left: 10px;margin-right: 9%"><!--右侧留白9%-->
             <el-tabs>
-              <el-tab-pane label="标的推荐" >
+              <el-tab-pane label="立即求购" >
                 <el-form label-position="right">
-                  <el-form-item label="投资金额" class="form_item">
-                    <input v-model="recommendInvestDown" type="number" class="selectInput" style="width:80px;"/>
-                    <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
-                    <input v-model="recommendInvestUp" type="number" class="selectInput" style="width:80px;"/>
+                  <el-form-item label="求购内容" class="form_item">
+                    <input v-model="recommendInvestDown" type="text" class="selectInput" style="width:80%;"/>
+                   
                   </el-form-item>
-                    <el-form-item label="利率范围" class="form_item">
-                      <input v-model="recommendInterestDown" type="number" class="selectInput" style="width:70px;"/>
-                      <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
-                      <input v-model="recommendInterestUp" type="number" class="selectInput" style="width:70px;"/>
+                    <el-form-item label="手机号码" class="form_item">
+                      <input v-model="recommendInterestDown" type="text" class="selectInput" style="width:80%;"/>
+                      
                     </el-form-item>
-                  <el-form-item style="margin-top: 20px">
-                    <template slot-scope="scope">
+                  <el-form-item style="margin-top: 20px;align:center">
+                    <template slot-scope="">
                       <router-link to="/recommend">
-                        <el-button @click="recommend" type="primary">个性推荐</el-button>
+                        <el-button @click="recommend" type="primary" style="align:center">我要求购</el-button>
                       </router-link>
                     </template>
                   </el-form-item>
@@ -168,27 +168,30 @@
               </el-tab-pane>
             </el-tabs>
             <el-tabs>
-              <el-tab-pane label="标的比较" >
+              <el-tab-pane label="求购信息" >
                 <el-form :inline="true">
-                  <el-form-item label="编号">
+                  <!-- <el-form-item label="编号">
+                    
                     <el-input v-model="id1" placeholder="" style="width: 80px"></el-input>
                   </el-form-item>
                   <el-form-item label="编号" style="margin-left: 20px;">
                     <el-input v-model="id2" placeholder="" style="width: 80px"></el-input>
+                  </el-form-item> -->
+                  <el-form-item>
+                    <div id="myradar" style="width: 310px;height: 350px;margin-left:3%;">
+                      <div style="border:1px solid #f4f4f4;width:390px;height:360px"></div>
+                    </div>
                   </el-form-item>
                   <el-form-item>
-                    <div id="myradar" style="width: 310px;height: 350px;margin-left:3%;"></div>
-                  </el-form-item>
-                  <el-form-item>
-                    <el-button type="primary" @click="compareTarget">
+                    <!-- <el-button type="primary" @click="compareTarget">
                       标的比较
-                    </el-button>
+                    </el-button> -->
                   </el-form-item>
                 </el-form>
               </el-tab-pane>
             </el-tabs>
           </el-card>
-        </el-col> -->
+        </el-col>
       </el-row>
     </div>
     <div class="col-sm-12 col-md-12" style="float:bottom; padding:0;margin-top:100px;">
@@ -240,14 +243,15 @@
           for(let i of res.data) {
             invests.push({
               id: i.id,
+              //profit: (i.interestRate.toFixed(2) + "%"),
               name: i.name,
-              profit: (i.interestRate.toFixed(2) + "%"),
               money: i.money,
-              remainMoney: (i.money-i.collectedMoney),
+              //remainMoney: (i.money-i.collectedMoney),
               type: i.classification,
-              finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2) ,
-              pool: i.riskRating,
-              owner: i.startTime,
+              //finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2) ,
+              pool: i.pool,//startime-->pool
+              owner: i.owner,//endtime-->owner
+              addresswallet:i.addresswallet,
             })
           }
           console.log(invests)
@@ -260,13 +264,13 @@
       return{
         /* 未成交数据*/
         investInformation: [
-          {id:"0001", owner:"2018.09.01", walletaddress:"2018.10.08", name:"AJ13熊猫", type:"SHOES",  money:"1800", pool:"AA"},
-          {id:"0002", owner:"2018.09.14", walletaddress:"2018.10.03", name:"炉石砰砰计划", type:"GAME",  money:"388",pool:"AA"},
-          {id:"0003", owner:"2018.09.17", walletaddress:"2018.10.28", name:"国庆省内", type:"TRAVEL",  money:"2000", pool:"A"},
-          {id:"0004", owner:"2018.10.12", walletaddress:"2018.10.25", name:"托福考试", type:"EXAM", money:"1800",pool:"A"},
-          {id:"0005", owner:"2018.10.15", walletaddress:"2018.11.20", name:"方大同演唱会", type:"CONCERT",  money:"1000", pool:"A"},
-          {id:"0006", owner:"2018.10.22", walletaddress:"2018.11.21", name:"d'zzit地素连衣裙", type:"CLOTH",  money:"1300", pool:"B"},
-          {id:"0007", owner:"2018.10.26", walletaddress:"2018.11.22", name:"预购", type:"GAME",  money:"1800", pool:"B"},
+          {id:"97101765.4", owner:"2018.09.01", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"AJ13熊猫", type:"SHOES",  money:"1800", pool:"AA"},
+          {id:"97101765.4", owner:"2018.09.14", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"炉石砰砰计划", type:"GAME",  money:"388",pool:"AA"},
+          {id:"97101765.4", owner:"2018.09.17", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"国庆省内", type:"TRAVEL",  money:"2000", pool:"A"},
+          {id:"97101765.4", owner:"2018.10.12", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"托福考试", type:"EXAM", money:"1800",pool:"A"},
+          {id:"97101765.4", owner:"2018.10.15", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"方大同演唱会", type:"CONCERT",  money:"1000", pool:"A"},
+          {id:"97101765.4", owner:"2018.10.22", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"d'zzit地素连衣裙", type:"CLOTH",  money:"1300", pool:"B"},
+          {id:"97101765.4", owner:"2018.10.26", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"预购", type:"GAME",  money:"1800", pool:"B"},
           // {id:"0008", owner:"2018.10.30", walletaddress:"2018.11.23", name:"生活费周转", type:"TURNOVER", profit:"5.27%", money:"1000", remainMoney:"140", finishProgress:0.86,pool:"C"},
           // {id:"0009", owner:"2018.11.03", walletaddress:"2018.12.01", name:"Chanel香水", type:"CONSMETIC", profit:"8.56%", money:"800", remainMoney:"320", finishProgress:0.6,pool:"C"},
           ],
@@ -282,7 +286,7 @@
         /*单选按钮默认值及样式*/
         value_radio: '标的金额',
         /*分类信息*/
-        fundUse: [ '鞋帽服饰', '生活用品', '护肤美妆', '游戏动漫', '电子产品', '学习用品', '书籍报刊', '培训考证', '校际交换',
+        fundUse: [ '人类生活必须', '生活用品', '护肤美妆', '游戏动漫', '电子产品', '学习用品', '书籍报刊', '培训考证', '校际交换',
         '聚餐轰趴', '运动健身', '观看演出', '外出旅游', '诊断治疗', '保健养生'],
         fundUse2: [ '鞋帽服饰', '生活用品', '护肤美妆', '游戏动漫', '电子产品', '学习用品', '书籍报刊', '培训考证', '校际交换',
           '聚餐轰趴', '运动健身', '观看演出', '外出旅游', '诊断治疗', '保健养生'],
@@ -357,13 +361,14 @@
               invests.push({
                 id: i.id,
                 name: i.name,
-                profit: (i.interestRate.toFixed(2) + "%"),
+                //profit: (i.interestRate.toFixed(2) + "%"),
                 money: i.money,
-                remainMoney: (i.money-i.collectedMoney),
+                //remainMoney: (i.money-i.collectedMoney),
                 type: i.classification,
-                finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2)  ,
+                //finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2)  ,
                 pool: i.riskRating,
                 owner: i.startTime,
+                addresswallet:i.addresswallet,
               })
             }
             console.log(invests)
@@ -394,9 +399,9 @@
           size: self.size,
           properties: 'money',
           money: [self.smallInvestDown, self.smallInvestUp],
-          time: [self.smallDateDown, self.smallDateUp],
-          interestRate: [self.smallInterestDown, self.smallInterestUp],
-          repaymentDuration: [self.smallDayDown, self.smallDayUp],
+          time: [self.smallDateDown, self.smallDateUp],//begintime-endtime
+          interestRate: [self.smallInterestDown, self.smallInterestUp],//risk rate
+          repaymentDuration: [self.smallDayDown, self.smallDayUp],//profit rate
           userCreditRating: self.smallUserRating == null? []:self.smallUserRating ,
           targetRating: self.smallTargetRating == null? []:self.smallTargetRating,
           useOfFunds: self.fundUse
@@ -477,40 +482,40 @@
         }
 
       },
-      /*标的比较*/
-      compareTarget() {
-        const self = this;
-        this.$axios.get("/loan/getTarget", {
-          params: {
-            id: self.id1
-          }
-        }).then(res=>{
-          console.log(res)
-          self.target1 = []
-          self.target1.push(res.data.money)
-          self.target1.push(self.getRisk(res.data.riskRating))
-          self.target1.push(res.data.interestRate)
-          self.drawRadar()
+      // /*标的比较*/
+      // compareTarget() {
+      //   const self = this;
+      //   this.$axios.get("/loan/getTarget", {
+      //     params: {
+      //       id: self.id1
+      //     }
+      //   }).then(res=>{
+      //     console.log(res)
+      //     self.target1 = []
+      //     self.target1.push(res.data.money)
+      //     self.target1.push(self.getRisk(res.data.riskRating))
+      //     self.target1.push(res.data.interestRate)
+      //     self.drawRadar()
 
-        }).catch(e=>{
-          console.log(e)
-        })
-        this.$axios.get("/loan/getTarget", {
-          params: {
-            id: self.id2
-          }
-        }).then(res=>{
-          console.log(res)
-          self.target2 = []
-          self.target2.push(res.data.money)
-          self.target2.push(self.getRisk(res.data.riskRating))
-          self.target2.push(res.data.interestRate)
-          self.drawRadar()
+      //   }).catch(e=>{
+      //     console.log(e)
+      //   })
+      //   this.$axios.get("/loan/getTarget", {
+      //     params: {
+      //       id: self.id2
+      //     }
+      //   }).then(res=>{
+      //     console.log(res)
+      //     self.target2 = []
+      //     self.target2.push(res.data.money)
+      //     self.target2.push(self.getRisk(res.data.riskRating))
+      //     self.target2.push(res.data.interestRate)
+      //     self.drawRadar()
 
-        }).catch(e=>{
-          console.log(e)
-        })
-      },
+      //   }).catch(e=>{
+      //     console.log(e)
+      //   })
+      // },
       // /* 绘制雷达图*/
       // drawRadar() {
       //   let myChart = echarts.init(document.getElementById('myradar'),'infographic')
