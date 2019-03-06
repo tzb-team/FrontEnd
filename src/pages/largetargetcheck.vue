@@ -55,8 +55,8 @@
                 <el-form-item label="开始时间">{{ tableData[tempindex].startTime }}</el-form-item>
                 <el-form-item label="结束时间">{{ tableData[tempindex].endTime }}</el-form-item>
               </el-form>
-              <el-button style="margin-top: 12px;margin-left:35%;"type="primary" size="mini" v-show="control.part2" @click="last(control)">上一步</el-button>
-              <el-button style="margin-top: 12px;margin-left:5%;" type="primary" size="mini"v-show="control.part2" @click="next(control)">下一步</el-button>
+              <el-button style="margin-top: 12px;margin-left:35%;" type="primary" size="mini" v-show="control.part2" @click="last(control)">上一步</el-button>
+              <el-button style="margin-top: 12px;margin-left:5%;" type="primary" size="mini" v-show="control.part2" @click="next(control)">下一步</el-button>
 
               <el-form   v-show="control.part3"
                          style="margin-left:5%;margin-right:5%">
@@ -68,8 +68,8 @@
                   </template>
                 </el-form-item>
               </el-form>
-              <el-button style="margin-top: 12px;margin-left:35%;" type="primary" size="mini"v-show="control.part3"@click="last(control)">上一步</el-button>
-              <el-button style="margin-top: 12px;margin-left:5%;"type="primary" size="mini" v-show="control.part3"@click="next(control)">下一步</el-button>
+              <el-button style="margin-top: 12px;margin-left:35%;" type="primary" size="mini" v-show="control.part3" @click="last(control)">上一步</el-button>
+              <el-button style="margin-top: 12px;margin-left:5%;" type="primary" size="mini" v-show="control.part3" @click="next(control)">下一步</el-button>
 
               <el-form   v-show="control.part4"
                          style="margin-left:30%">
@@ -78,7 +78,7 @@
                 <el-form-item label="还款期数">{{ tableData[tempindex].repayDate }}</el-form-item>
                 <el-form-item label="还款方式">{{ tableData[tempindex].returntype }}</el-form-item>
               </el-form>
-              <el-button style="margin-top: 12px;margin-left:45%;"type="primary" size="mini" v-show="control.part4"@click="last(control)">上一步</el-button>
+              <el-button style="margin-top: 12px;margin-left:45%;" type="primary" size="mini" v-show="control.part4" @click="last(control)">上一步</el-button>
 
               <div slot="footer" class="dialog-footer">
                 <el-button

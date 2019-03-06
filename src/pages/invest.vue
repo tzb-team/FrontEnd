@@ -142,7 +142,8 @@
           </el-tabs>
         </el-col>
         <!-- <el-col span="8">
-          <el-card shadow="hover" style="margin-left: 10px;margin-right: 9%"><!--右侧留白9%--
+          <el-card shadow="hover" style="margin-left: 10px;margin-right: 9%">
+            <!--右侧留白9%--><!--
             <el-tabs>
               <el-tab-pane label="标的推荐" >
                 <el-form label-position="right">
