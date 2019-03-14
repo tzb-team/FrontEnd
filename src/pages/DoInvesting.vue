@@ -20,23 +20,24 @@ Date: 2019/3/1
         <div style="display: flex;">
           <!-- 图片 标题 -->
           <div style="padding:0px 50px;width:40%">
-            <h1 style="font-weight:bold">佛山邦信知识产权代理商标专利版权注册</h1>
+            <h1 style="font-weight:bold">{{name}}</h1>
             <div>
-              <img id="img" style="width: 400px;height: 300px;"/>
+              <img id="img" src="../assets/logo.png" style="width: 400px;height: 300px;"/>
             </div>
             <label style="font-size:16px;font-style: oblique;text-align: center;font-weight: normal;color:grey">此图为用户上传的项目说明</label>
             <br/>
           </div>
            <!-- 基本信息 购买栏目  -->
-          <div style="padding:25px 70px;width:60%;">
-            <el-card class="box-card" style="width:550px;">
+          <div style="padding:25px 70px;width:60%;margin-top:70px">
+            <el-card class="box-card" style="width:700px;">
               <div slot="header" class="clearfix">
                 <strong><span style="font-size: 20px;">专利简介</span></strong>
               </div>
               <div>
-                <div>专利ID：{{patentID}}</div>
-                <div>专利持有人：{{username}}</div>
-                <div>专利概要：{{patentInfo}}</div>
+                <div><b>专利ID：</b>{{target_id}}</div>
+                <div><b>专利持有人：</b>{{username}}</div>
+                <div><b>专利所在地址：</b>{{target_address}}</div>
+                <div><b>专利概要：</b>{{patentInfo}}</div>
               </div>
               <hr/>
             </el-card>
@@ -47,7 +48,7 @@ Date: 2019/3/1
               </countdown>
               <label>剩余时间：{{leftTime}}</label><br/><br/>
               <el-input-number v-model="buyNum" @change="handleNumChange" :min="1" :max="10" label="描述文字"></el-input-number>&nbsp;&nbsp;&nbsp;
-              <el-button type="primary" @click="invest()" round>我要投资</el-button>
+              <el-button type="primary" @click="invest()" round>我要购买</el-button>
             </div>
             
             
@@ -63,11 +64,9 @@ Date: 2019/3/1
           <div slot="header" class="clearfix">
             <strong><span style="font-size: 20px;">推荐专利</span></strong>
             </div>
-            <div>
-              <div>专利ID：{{patentID}}</div>
-              <div>专利持有人：{{username}}</div>
-              <div>专利概要：{{patentInfo}}</div>
-            </div>
+            <!-- <div>
+              <el-card v-for="item ">
+            </div> -->
           <hr/>
         </el-card>
 
@@ -130,10 +129,10 @@ Date: 2019/3/1
               money: '400'
             },
           ],
-          // userLevel:"",
-          // projectLevel:"",
-          username:"Mike丁",
+          name:"A专利",
+          username:"A公司",
           target_id:"723972",
+          target_address:"0x11111111111111111111111111111",
           percentage:80,
           leftTime:2 * 24 * 60 * 60 * 1000,
           lifeOfLoan:"2年",
@@ -141,14 +140,16 @@ Date: 2019/3/1
           leftNeeds:1600,
           userMoney:1000,
           money: 1000,
-          DoInvest:"确认投资",
+          DoInvest:"确认购买",
 
           //产品详细信息
-          patentInfo:"XXXXXXXXXXXX",
+          patentInfo:"我们拥有热诚的知识产权顾问和强大的专业代理人团队，快速响应客户需求，为客户提供一对一的贴心服务，解决客户知识产权问题，助力客户利用知识产权这个工具获得更大的商业成功。",
         }
       },
       mounted: function () {
         this.target_id = this.$route.params.id;
+        this.name = this.$route.params.name;
+        this.target_address = this.$route.params.walletaddress;
         this.isShow = this.$route.params.isShow;
         console.log("this.isShow:"+this.isShow);
         console.log(this.$route.params);
@@ -160,7 +161,7 @@ Date: 2019/3/1
       methods: {
         invest: function (){
           let self = this;
-          this.$confirm('您真的要投资吗?', '提示', {
+          this.$confirm('您真的要购买吗?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'
@@ -176,7 +177,7 @@ Date: 2019/3/1
               //console.log(data)
               if(data.success){
                 self.$message({
-                  message:'投资成功！',
+                  message:'购买成功！',
                   type:'success',
                 });
                 self.getInvestmentDetail(Number(self.target_id))
@@ -192,7 +193,7 @@ Date: 2019/3/1
           }).catch(() => {
             this.$message({
               type: 'info',
-              message: '已取消投资'
+              message: '已取消购买'
             });
           });
         },

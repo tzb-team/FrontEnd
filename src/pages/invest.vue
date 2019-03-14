@@ -251,7 +251,7 @@
               //finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2) ,
               pool: i.pool,//startime-->pool
               owner: i.owner,//endtime-->owner
-              addresswallet:i.addresswallet,
+              walletaddress:i.walletaddress,
             })
           }
           console.log(invests)
@@ -368,7 +368,7 @@
                 //finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2)  ,
                 pool: i.riskRating,
                 owner: i.startTime,
-                addresswallet:i.addresswallet,
+                walletaddress:i.walletaddress,
               })
             }
             console.log(invests)
@@ -413,6 +413,7 @@
             for(let i of res.data) {
               invests.push({
                 id: i.id,
+                walletaddress: i.walletaddress,
                 name: i.name,
                 profit: (i.interestRate.toFixed(2) + "%"),
                 money: i.money,
@@ -450,6 +451,7 @@
             for(let i of res.data) {
               invests.push({
                 id: i.id,
+                walletaddress: i.walletaddress,
                 name: i.name,
                 profit: (i.interestRate.toFixed(2) + "%"),
                 money: i.money,

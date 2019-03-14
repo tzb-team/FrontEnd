@@ -58,6 +58,8 @@
       return{
         a:{
           id:0,
+          name:"A专利",
+          walletaddress:"0xcE780971b22b8316531dbfbF31B36d183D43C6a0",
           isShow:true
         }
       }
@@ -65,9 +67,13 @@
     methods: {
       showDetails(){
         //console.log(this.investList.id)
+        // console.log(this.investList.walletaddress)
         this.a.id = this.investList.id;
+        this.a.name = this.investList.name;
+        // console.log(this.investList.name)
+        this.a.walletaddress = this.investList.walletaddress;
         this.a.isShow = true;
-        this.$router.push({name:'DoInvesting',params:{id:this.a.id, isShow:this.a.isShow}})
+        this.$router.push({name:'DoInvesting',params:{id:this.a.id, name:this.a.name, walletaddress:this.a.walletaddress, isShow:this.a.isShow}})
       }
     },
 
