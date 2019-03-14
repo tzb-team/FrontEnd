@@ -76,7 +76,7 @@
             var email=$('#email').val();
             var mc=$('#messageCode').val();
             var ec=$('#emailCode').val();
-            this.$axios.post("http://localhost:8000/api/auth/signup", {"account": ac, "password": pw,"phone":phone,"email":email,"messageCode":mc,"emailCode":ec}).then(res => {
+            this.$axios.post("http://localhost:8084/user/userRegister", {"account": ac, "password": pw,"email":email,"realname":"name","idcard":"11111","walletaddress":"111--"}).then(res => {
               var data=res.data;
               if(data.result==1){
                 alert("注册成功!");
