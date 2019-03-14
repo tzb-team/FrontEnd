@@ -158,7 +158,7 @@
                       
                     </el-form-item>
                   <el-form-item style="margin-top: 20px;align:center">
-                    <template slot-scope="scope">
+                    <template slot-scope="">
                       <router-link to="/recommend">
                         <el-button @click="recommend" type="primary" style="align:center">我要求购</el-button>
                       </router-link>
