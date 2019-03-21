@@ -26,6 +26,8 @@
         name: "signup",
       components: {footerBar},
       mounted: function(){
+
+        //下面是检验用户名的合法性
         $("#account").change(function () {
           if($("#account").val().length<2){
             alert("用户名长度过短");
@@ -41,6 +43,8 @@
             $('#signup').attr("disabled",false);
           }
         });
+
+        //下面是检验密码的合法性
         $("#password").change(function () {
           if($("#password").val().length<6){
             alert("密码长度过短");
@@ -56,6 +60,8 @@
             $('#signup').attr("disabled",false);
           }
         });
+
+        //下面是对确认密码的校验
         $("#passwordConfirm").change(function () {
           if($("#passwordConfirm").val()!=$("#password").val()){
             alert("密码前后不一致");
@@ -66,58 +72,87 @@
             $('#signup').attr("disabled",false);
           }
         });
+
+        //下面是检验邮箱地址是否重复
+        $("#email").change(function(){
+          this.$axios.post("http://localhost:8084/user/checkEmail", {"emailaddress":this.val()}).then(res => {
+              var data=res.data;
+              if(data.isEmailUsed==true){
+                alert("邮箱地址重复");
+                $('#signup').attr("disabled",true);
+                this.focus();
+              }
+              else{
+                $('#signup').attr("disabled",false);
+              }
+            });
+        });
+
+        //下面是检验用户名是否重复
+        $("#account").change(function(){
+          this.$axios.post("http://localhost:8084/user/checkAcc", {"account":this.val()}).then(res => {
+              var data = res.data;
+              if(data.isAccUsed==true){
+                alert("用户名重复");
+                $('#signup').attr("disabled",true);
+                this.focus();
+              }
+              else{
+                $('#signup').attr("disabled",false);
+              }
+            });
+        });
+
       },
 
       methods:{
           signup: function () {
             var ac=$('#account').val();
             var pw=$('#password').val();
-            var phone=$('#phone').val();
             var email=$('#email').val();
-            var mc=$('#messageCode').val();
-            var ec=$('#emailCode').val();
-            this.$axios.post("http://localhost:8084/user/userRegister", {"account": ac, "password": pw,"email":email,"realname":"name","idcard":"11111","walletaddress":"111--"}).then(res => {
+            var name=$('#realName').val();
+            var idcard=$('#IDcard').val();
+
+            //TODO:跟随注册一起生成的钱包地址未实现,先暂定为下面的地址
+            var walletAdd="0x10Ad2F4BB73e23e8B72C56b9EFdc3B7aD8Bb808E";
+
+            this.$axios.post("http://localhost:8084/user/userRegister", {"account": ac, "password": pw,"emailaddress":email,"realname":name,"idcard":idcard,"walletaddress":walletAdd}).then(res => {
               var data=res.data;
               if(data.result==1){
                 alert("注册成功!");
                 this.$router.replace('/login');
-              }else if(data.result==2){
-                alert("用户名重复，请另取");
-                $('account').focus();
-              }else if(data.result==3){
-                alert("验证码错误");
               }else{
                 alert("请重试");
               }
 
             });
           },
-          sendEmail: function () {
-            var email=$('#email').val();
-            this.$axios.post("http://localhost:8000/api/auth/signup/sendEmail", {"email":email}).then(res => {
-              var data=res.data;
-              if(data.result==1){
-                $('#sendEmail').attr("disabled",true);
-                var time=60;
-                var myScroll = setInterval(() => {
-                  time--;
-                  if(time>=0) {
-                    $('#sendEmail').html(time + "s后重发送");
-                  }else{
-                    $('#sendEmail').html("发送验证码");
-                    $('#sendEmail').attr("disabled",false);   //倒计时结束能够重新点击发送的按钮
-                    clearTimeout(timer);    //清除定时器
-                    time = 60;   //设置循环重新开始条件
-                  }
-                }, 1000);
-              }else if(data.result==2){
-                alert("邮箱地址有误");
-              }else{
-                alert("发送失败");
-              }
+          // sendEmail: function () {
+          //   var email=$('#email').val();
+          //   this.$axios.post("http://localhost:8000/api/auth/signup/sendEmail", {"email":email}).then(res => {
+          //     var data=res.data;
+          //     if(data.result==1){
+          //       $('#sendEmail').attr("disabled",true);
+          //       var time=60;
+          //       var myScroll = setInterval(() => {
+          //         time--;
+          //         if(time>=0) {
+          //           $('#sendEmail').html(time + "s后重发送");
+          //         }else{
+          //           $('#sendEmail').html("发送验证码");
+          //           $('#sendEmail').attr("disabled",false);   //倒计时结束能够重新点击发送的按钮
+          //           clearTimeout(timer);    //清除定时器
+          //           time = 60;   //设置循环重新开始条件
+          //         }
+          //       }, 1000);
+          //     }else if(data.result==2){
+          //       alert("邮箱地址有误");
+          //     }else{
+          //       alert("发送失败");
+          //     }
 
-            });
-          },
+          //   });
+          // },
           sendMessage: function () {
             var phone=$('#phone').val();
             this.$axios.post("http://localhost:8000/api/auth/signup/sendMessage", {"phone":phone}).then(res => {
