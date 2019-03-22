@@ -53,10 +53,13 @@
         login: function () {
           let self = this;
           self.loading = true;
-          this.$axios.post('/user/signin', {username: self.account, password: self.password}).then(
-            res => {
-              store.commit(types.LOGIN, res.data);
-              localStorage.ifUnread=1;
+          this.$axios.post('/user/userLog', {account: self.account, password: self.password}).then(
+            res => {            
+              if(!res.LogRes){
+                alert("登陆成功！！！！！")
+              }
+              // store.commit(types.LOGIN, res.data);
+              // localStorage.ifUnread=1;
               self.$router.replace({
                 path: '/',
                 query: { redirect: self.$router.currentRoute.path }})

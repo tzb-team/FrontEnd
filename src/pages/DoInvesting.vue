@@ -4,14 +4,7 @@ Date: 2019/3/1
 <template>
   <div id="Investing">
     <navi></navi>
-    <rightBar></rightBar>
-    <!-- 顶部图片 -->
-    <!-- <div>
-      <img src="https://megsoftconsulting.com/wp-content/uploads/2016/04/web-design-packages-background.jpg" class="img-responsive gray" alt="Cinque Terre" style="opacity:0.7;top: 0;z-index: -1;width:100%;height:450px;position: absolute">
-    </div> -->
-
-
-    
+    <rightBar></rightBar>    
 
     <div style="min-height:800px;border: 1px solid lightgrey;">
       
@@ -153,29 +146,27 @@ Date: 2019/3/1
         this.isShow = this.$route.params.isShow;
         console.log("this.isShow:"+this.isShow);
         console.log(this.$route.params);
-        //console.log("in mount:")
-        //console.log(this.target_id)
-        //console.log("detail:")
         this.getInvestmentDetail(Number(this.target_id))
       },
       methods: {
         invest: function (){
           let self = this;
-          this.$confirm('您真的要购买吗?', '提示', {
+          this.$confirm('您确定要购买吗?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'
           }).then(() => {
-            self.$axios.get('/loan/investment/target',{
+            self.$axios.get('/transaction/transaction',{
               params:{
-                targetId : parseInt(self.target_id),
-                money: self.money
+                patentID: target_id,
+                from: localStorage.username,
+                to: self.username,
+                price: money
               }
-            }).then(function (response) {
+            })
+            .then(function (response) {
               var data = response.data
-              //console.log("data:")
-              //console.log(data)
-              if(data.success){
+              if(data.isSucceed==0){
                 self.$message({
                   message:'购买成功！',
                   type:'success',
@@ -246,26 +237,26 @@ Date: 2019/3/1
         },
         handleClick(tab,event) {
           if(tab.name==="two"){
-            
-          }else if(tab.name==="3"){
-            var _this = this;
-              this.$axios.get('/loan/investmentRecord', {
-                params: {
-                  targetId:parseInt(_this.target_id)
-                }
-              }).then(function (response) {
-                //console.log("invest record:")
-                var data = response.data
-                //console.log(data)
-                for(var i=0;i<data.length;i++){
-                  _this.tableData.push({date:data[i].date,name:data[i].name,money:data[i].money})
-                }
-
-              }).catch(function (error) {
-                console.log("error:")
-                console.log(error)
-              });
           }
+          // }else if(tab.name==="3"){
+          //   var _this = this;
+          //     this.$axios.get('/loan/investmentRecord', {
+          //       params: {
+          //         targetId:parseInt(_this.target_id)
+          //       }
+          //     }).then(function (response) {
+          //       //console.log("invest record:")
+          //       var data = response.data
+          //       //console.log(data)
+          //       for(var i=0;i<data.length;i++){
+          //         _this.tableData.push({date:data[i].date,name:data[i].name,money:data[i].money})
+          //       }
+
+          //     }).catch(function (error) {
+          //       console.log("error:")
+          //       console.log(error)
+          //     });
+          // }
         }
       }
     }

@@ -92,58 +92,58 @@
 
             });
           },
-          sendEmail: function () {
-            var email=$('#email').val();
-            this.$axios.post("http://localhost:8000/api/auth/signup/sendEmail", {"email":email}).then(res => {
-              var data=res.data;
-              if(data.result==1){
-                $('#sendEmail').attr("disabled",true);
-                var time=60;
-                var myScroll = setInterval(() => {
-                  time--;
-                  if(time>=0) {
-                    $('#sendEmail').html(time + "s后重发送");
-                  }else{
-                    $('#sendEmail').html("发送验证码");
-                    $('#sendEmail').attr("disabled",false);   //倒计时结束能够重新点击发送的按钮
-                    clearTimeout(timer);    //清除定时器
-                    time = 60;   //设置循环重新开始条件
-                  }
-                }, 1000);
-              }else if(data.result==2){
-                alert("邮箱地址有误");
-              }else{
-                alert("发送失败");
-              }
+          // sendEmail: function () {
+          //   var email=$('#email').val();
+          //   this.$axios.post("http://localhost:8000/api/auth/signup/sendEmail", {"email":email}).then(res => {
+          //     var data=res.data;
+          //     if(data.result==1){
+          //       $('#sendEmail').attr("disabled",true);
+          //       var time=60;
+          //       var myScroll = setInterval(() => {
+          //         time--;
+          //         if(time>=0) {
+          //           $('#sendEmail').html(time + "s后重发送");
+          //         }else{
+          //           $('#sendEmail').html("发送验证码");
+          //           $('#sendEmail').attr("disabled",false);   //倒计时结束能够重新点击发送的按钮
+          //           clearTimeout(timer);    //清除定时器
+          //           time = 60;   //设置循环重新开始条件
+          //         }
+          //       }, 1000);
+          //     }else if(data.result==2){
+          //       alert("邮箱地址有误");
+          //     }else{
+          //       alert("发送失败");
+          //     }
 
-            });
-          },
-          sendMessage: function () {
-            var phone=$('#phone').val();
-            this.$axios.post("http://localhost:8000/api/auth/signup/sendMessage", {"phone":phone}).then(res => {
-              var data=res.data;
-              if(data.result==1){
-                $('#sendMessage').attr("disabled",true);
-                var time=60;
-                var myScroll = setInterval(() => {
-                  time--;
-                  if(time>=0) {
-                    $('#sendMessage').html(time + "s后重发送");
-                  }else{
-                    $('#sendMessage').html("发送验证码");
-                    $('#sendMessage').attr("disabled",false);   //倒计时结束能够重新点击发送的按钮
-                    clearTimeout(timer);    //清除定时器
-                    time = 60;   //设置循环重新开始条件
-                  }
-                }, 1000);
-              }else if(data.result==2){
-                alert("手机号码有误");
-              }else{
-                alert("发送失败");
-              }
+          //   });
+          // },
+          // sendMessage: function () {
+          //   var phone=$('#phone').val();
+          //   this.$axios.post("http://localhost:8000/api/auth/signup/sendMessage", {"phone":phone}).then(res => {
+          //     var data=res.data;
+          //     if(data.result==1){
+          //       $('#sendMessage').attr("disabled",true);
+          //       var time=60;
+          //       var myScroll = setInterval(() => {
+          //         time--;
+          //         if(time>=0) {
+          //           $('#sendMessage').html(time + "s后重发送");
+          //         }else{
+          //           $('#sendMessage').html("发送验证码");
+          //           $('#sendMessage').attr("disabled",false);   //倒计时结束能够重新点击发送的按钮
+          //           clearTimeout(timer);    //清除定时器
+          //           time = 60;   //设置循环重新开始条件
+          //         }
+          //       }, 1000);
+          //     }else if(data.result==2){
+          //       alert("手机号码有误");
+          //     }else{
+          //       alert("发送失败");
+          //     }
 
-            });
-          }
+          //   });
+          // }
       }
 
     }
