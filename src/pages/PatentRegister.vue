@@ -14,7 +14,7 @@
             </el-form-item>
             <el-form-item label="专利ID"
                           prop="id">
-              <el-input v-model.number="sizeForm.id"
+              <el-input v-model="sizeForm.id"
                         style="width:200px;"
                         placeholder="请输入专利号">
               </el-input>
@@ -29,7 +29,7 @@
             </el-form-item>
             <el-form-item label="专利池号"
                           prop="set">
-              <el-input v-model.number="sizeForm.set"
+              <el-input v-model="sizeForm.set"
                         style="width:200px;"
                         placeholder="请输入专利池号">
               </el-input>
@@ -52,7 +52,7 @@
         <el-input type="textarea"
                   style="width:360px"
                   minRows="1"
-                  maxRows="3"
+                  maxRows="5"
                   autosize
                   placeholder="请输入专利的详细信息"
                   v-model="sizeForm.desc"></el-input>
@@ -73,6 +73,7 @@
 <script>
   import personalCenter from "../components/personalCenter";
   import ProjectList from "../components/projectList";
+import { type } from 'os';
 
   export default {
     name:"patentRegister",
@@ -102,7 +103,7 @@
           ],
           name: [
             { required: true, message: '请输入专利名称', trigger: 'blur' },
-            { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
+            // { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
           ],
           id:[
             { required: true, message: '请输入专利号'},
@@ -117,7 +118,7 @@
           ],
           desc: [
             { required: true, message: '请填写专利详细信息', trigger: 'blur' },
-            { min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur' }
+            // { min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur' }
           ],
         },
       };
@@ -129,28 +130,33 @@
       },
       onSubmit() {
         const self = this;
-        this.$confirm('确认发布这条信息吗', '提示', {
+        this.$confirm('确认在平台上登记此专利吗？', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$axios.post('/flea/newTrade',{
+          self.$axios.post('http://localhost:8084/patent/patRegister',{
+            //TODO: 登记上链的专利信息的具体数据格式如下，未实现与区块链的交互
+            //FIXME: owner是realname，必须于当前登录用户相对应
+            ID: self.sizeForm.id,
             name: self.sizeForm.name,
+            owner: "组织",
+            walletaddress: "0x10Ad2F4BB73e23e8B72C56b9EFdc3B7aD8Bb808E",
             type: self.sizeForm.type,
-            contact: self.sizeForm.id,
-            picPath: self.proof,
-            desc: self.sizeForm.desc,
-            price: self.sizeForm.price,
+            pool: self.sizeForm.set,
+            content: self.sizeForm.desc,
+            state: 1,
+
           })
             .then(function (response) {
               console.log(response)
               self.$message({
                 type: 'success',
-                message: '发布成功!'
+                message: '登记成功!'
               });
               self.$router.push('/trade');
             }).catch(function (error) {
-            console.log("error:"+error)
+            console.log(error)
           });
         }).catch(() => {
           self.$message({
