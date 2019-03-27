@@ -19,6 +19,10 @@ Date: 2019/3/1
             </div>
             <label style="font-size:16px;font-style: oblique;text-align: center;font-weight: normal;color:grey">此图为用户上传的项目说明</label>
             <br/>
+            <h2>出售价格：</h2>
+            <div class="keypoint"> 
+               {{price}}
+            </div>
           </div>
            <!-- 基本信息 购买栏目  -->
           <div style="padding:25px 70px;width:60%;margin-top:70px">
@@ -100,43 +104,18 @@ Date: 2019/3/1
           buyNum:1,//购买个数
           isShow:true,
           activeName:'one',
-          tableData:[
-            {date: '2018-05-03',
-            name: '陈文博',
-            money: '5000'
-            },
-            {date: '2018-06-13',
-              name: '罗子俊',
-              money: '500'
-            },
-            {date: '2018-08-08',
-              name: '付贺然',
-              money: '100'
-            },
-            {date: '2018-08-20',
-              name: '吴欣怡',
-              money: '400'
-            },
-            {date: '2018-08-29',
-              name: '王刚',
-              money: '400'
-            },
-          ],
-          name:"A专利",
-          username:"A公司",
-          target_id:"723972",
-          target_address:"0x11111111111111111111111111111",
-          percentage:80,
+          name:"A专利", //专利名称
+          username:"A公司", //专利持有人姓名
+          target_id:"723972", //专利号
+          target_address:"0x11111111111111111111111111111", //专利所在链上地址
+          price: "1000", //专利价格
+          orderState: "出售/转让",
           leftTime:2 * 24 * 60 * 60 * 1000,
-          lifeOfLoan:"2年",
-          totalLoan:8000,
-          leftNeeds:1600,
-          userMoney:1000,
-          money: 1000,
           DoInvest:"确认购买",
-
           //产品详细信息
           patentInfo:"我们拥有热诚的知识产权顾问和强大的专业代理人团队，快速响应客户需求，为客户提供一对一的贴心服务，解决客户知识产权问题，助力客户利用知识产权这个工具获得更大的商业成功。",
+        
+          
         }
       },
       mounted: function () {
@@ -151,20 +130,25 @@ Date: 2019/3/1
       methods: {
         invest: function (){
           let self = this;
+          let testpos = -1;
           this.$confirm('您确定要购买吗?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'
           }).then(() => {
-            self.$axios.get('/transaction/transaction',{
+            testpos=1
+            target_id = 111
+            
+            self.$axios.post('/transaction/transaction',{
               params:{
                 patentID: target_id,
                 from: localStorage.username,
                 to: self.username,
-                price: money
+                price: parseInt(price)
               }
             })
             .then(function (response) {
+              testpos=2
               var data = response.data
               if(data.isSucceed==0){
                 self.$message({
@@ -172,59 +156,83 @@ Date: 2019/3/1
                   type:'success',
                 });
                 self.getInvestmentDetail(Number(self.target_id))
+                // self.update()
               }else {
                 self.$message({
-                  message: data.message,
+                  // message: data.message,
+                  message: "交易失败",
                   type: 'error',
                 });
               }
             }).catch(function (error) {
               console.log(error)
             });
-          }).catch(() => {
+          }).catch((e) => {
             this.$message({
               type: 'info',
-              message: '已取消购买'
+              message: testpos
             });
           });
         },
+        // dateFormat(time) {
+				// 	var date=new Date(time);
+			  //   var year=date.getFullYear();
+			  //   /* 在日期格式中，月份是从0开始的，因此要加0
+			  //    * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
+				// 	 * */
+			  //   var month= date.getMonth()+1<10 ? "0"+(date.getMonth()+1) : date.getMonth()+1;
+			  //   var day=date.getDate()<10 ? "0"+date.getDate() : date.getDate();
+			  //   var hours=date.getHours()<10 ? "0"+date.getHours() : date.getHours();
+			  //   var minutes=date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes();
+			  //   var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
+			  //   // 拼接
+			  //   return year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
+  			// },
         getInvestmentDetail(id){
           var self = this;
-          this.$axios.get('/loan/details',{
+          alert("调用了getInvDet");
+          this.$axios.get('/order/details',{
             params:{
-              targetId : parseInt(id)
+              targetId : id
             }
           }).then(function (response) {
             //console.log("response:")
+            alert("成功调用了invDet的api")
             var data = response.data
-            //console.log(data)
+            alert(data)
             
-            self.percentage = (data.progress * 100).toFixed(2);
-            self.leftTime = data.leftDays * 24 * 60 * 60 * 1000;
-            self.lifeOfLoan = data.lifeOfLoan
-            self.totalLoan = data.totalLoan
-            self.leftNeeds = data.leftNeeds
-            //  userMoney:1000,
-            //  num1: 1000,
-            switch (data.payWay) {
-              case "EQUAL_PRINCIPAL": self.payWay = '等额本金'; break;
-              case "EQUAL_INSTALLMENT_OF_PRINCIPAL_AND_INTEREST": self.payWay = '等额本息'; break;
-              case "ONE_TIME_PAYMENT": self.payWay = '一次性还付本息'; break;
-              case "PRE_INTEREST": self.payWay = '先息后本'; break;
+          
+            // this.name = data.name//unknown
+            this.username = data.owner
+            this.target_id = data.patentID
+            this.target_address = data.walletaddress
+            this.price = data.price
+            this.patentInfo = data.comment
+            this.orderState = data.orderState
 
-            }
-            // self.useWay = data.useWay
-            self.monthInterest = data.monthInterest
-            self.payAll = data.payAll
-            // self.PS = data.PS;
-            self.username = data.username
-            // self.userLevel = data.userLevel
-            // self.projectLevel = data.projectLevel
+            // self.percentage = (data.progress * 100).toFixed(2);
+            // self.leftTime = data.leftDays * 24 * 60 * 60 * 1000;
+           
             document.getElementById("img").src=data.picPath
             //console.log(data)
           }).catch(function (error) {
             console.log(error)
           });
+        },
+        update(){
+          this.$axios.get('/order/cancelPend', {
+            params:{
+              patentID: this.patentID
+            }
+          })
+          .then(function(res){
+            if (res.data.isSucceed==0){
+              console.log("交易成功！")
+            }
+            else{
+              console.log("交易失败！")
+            }
+          })
         },
         formatTooltip(val) {
           return val;
@@ -238,25 +246,7 @@ Date: 2019/3/1
         handleClick(tab,event) {
           if(tab.name==="two"){
           }
-          // }else if(tab.name==="3"){
-          //   var _this = this;
-          //     this.$axios.get('/loan/investmentRecord', {
-          //       params: {
-          //         targetId:parseInt(_this.target_id)
-          //       }
-          //     }).then(function (response) {
-          //       //console.log("invest record:")
-          //       var data = response.data
-          //       //console.log(data)
-          //       for(var i=0;i<data.length;i++){
-          //         _this.tableData.push({date:data[i].date,name:data[i].name,money:data[i].money})
-          //       }
-
-          //     }).catch(function (error) {
-          //       console.log("error:")
-          //       console.log(error)
-          //     });
-          // }
+          
         }
       }
     }
