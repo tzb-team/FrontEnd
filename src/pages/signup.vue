@@ -75,7 +75,8 @@
 
         //下面是检验邮箱地址是否重复
         $("#email").change(function(){
-          this.$axios.post("http://localhost:8084/user/checkEmail", {"emailaddress":this.val()}).then(res => {
+          let self1 = this;
+          self1.$axios.post("http://localhost:8084/user/checkEmail", {"emailaddress":this.val()}).then(res => {
               var data=res.data;
               if(data.isEmailUsed==true){
                 alert("邮箱地址重复");
@@ -90,7 +91,8 @@
 
         //下面是检验用户名是否重复
         $("#account").change(function(){
-          this.$axios.post("http://localhost:8084/user/checkAcc", {"account":this.val()}).then(res => {
+          let self2 = this;
+          self2.$axios.post("http://localhost:8084/user/checkAcc", {"account":this.val()}).then(res => {
               var data = res.data;
               if(data.isAccUsed==true){
                 alert("用户名重复");

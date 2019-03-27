@@ -45,7 +45,7 @@
       },
       methods: {
         prompt() {
-          this.$alert('您可以使用以下花旗虚拟用户<br/> 用户:SandboxUser1 密码:P@ssUser1$ <br/> 用户:SandboxUser2 密码:P@ssUser2$ <br/> 用户:SandboxUser3 密码:P@ssUser3$ ', '注意', {
+          this.$alert('此功能亟待实现', '注意', {
             confirmButtonText: '确定',
             dangerouslyUseHTMLString: true
           });
@@ -53,13 +53,21 @@
         login: function () {
           let self = this;
           self.loading = true;
-          this.$axios.post('/user/userLog', {account: self.account, password: self.password}).then(
-            res => {            
-              if(!res.LogRes){
+          
+          this.$axios.post('http://localhost:8084/user/userLog', {"acc": self.account, "password": self.password}).then(
+            res => {
+              // console.log(res);
+              var data = res.data;            
+              if(data.LogRes==true){
                 alert("登陆成功！！！！！")
               }
-              // store.commit(types.LOGIN, res.data);
-              // localStorage.ifUnread=1;
+              data = {
+                "accessToken": "1",
+                "username": self.account,
+                "roles": "user"
+              }
+              store.commit(types.LOGIN, data);
+              localStorage.ifUnread=1;
               self.$router.replace({
                 path: '/',
                 query: { redirect: self.$router.currentRoute.path }})
@@ -68,7 +76,7 @@
           });
           console.log(this.remember)
           if(this.remember) {
-            store.commit(types.REMEMBER, {username: this.username , password: this.password })
+            store.commit(types.REMEMBER, {username: this.account , password: this.password })
           } else {
             store.commit(types.CANCELREMEMBER)
           }
