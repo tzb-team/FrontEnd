@@ -31,9 +31,9 @@ Date: 2019/3/1
                 <strong><span style="font-size: 20px;">专利简介</span></strong>
               </div>
               <div>
-                <div><b>专利ID：</b>{{target_id}}</div>
+                <div><b>专利ID：</b>{{patentID}}</div>
                 <div><b>专利持有人：</b>{{username}}</div>
-                <div><b>专利所在地址：</b>{{target_address}}</div>
+                <div><b>专利所在地址：</b>{{walletaddress}}</div>
                 <div><b>专利概要：</b>{{patentInfo}}</div>
               </div>
               <hr/>
@@ -95,10 +95,10 @@ Date: 2019/3/1
     import rightBar from '@/components/rightBar.vue';
     import doInvestingLoanerInfo from '@/components/doInvestingLoanerInfo.vue';
     import footerBar from '@/components/footerBar.vue';
-    import LoanInformationPane from "../components/LoanInformationPane"
+    // import LoanInformationPane from "../components/LoanInformationPane"
     export default {
       name: "DoInvesting",
-      components:{navi,rightBar,doInvestingLoanerInfo,footerBar,LoanInformationPane},
+      components:{navi,rightBar,doInvestingLoanerInfo,footerBar},
       data(){
         return{
           buyNum:1,//购买个数
@@ -106,8 +106,8 @@ Date: 2019/3/1
           activeName:'one',
           name:"A专利", //专利名称
           username:"A公司", //专利持有人姓名
-          target_id:"723972", //专利号
-          target_address:"0x11111111111111111111111111111", //专利所在链上地址
+          patentID:"723972", //专利号
+          walletaddress:"0x11111111111111111111111111111", //专利所在链上地址
           price: "1000", //专利价格
           orderState: "出售/转让",
           leftTime:2 * 24 * 60 * 60 * 1000,
@@ -119,13 +119,13 @@ Date: 2019/3/1
         }
       },
       mounted: function () {
-        this.target_id = this.$route.params.id;
+        this.patentID = this.$route.params.id;
         this.name = this.$route.params.name;
-        this.target_address = this.$route.params.walletaddress;
+        this.walletaddress = this.$route.params.walletaddress;
         this.isShow = this.$route.params.isShow;
         console.log("this.isShow:"+this.isShow);
         console.log(this.$route.params);
-        this.getInvestmentDetail(Number(this.target_id))
+        this.getInvestmentDetail(Number(this.patentID))
       },
       methods: {
         invest: function (){
@@ -137,30 +137,30 @@ Date: 2019/3/1
             type: 'warning'
           }).then(() => {
             testpos=1
-            target_id = 111
+            patentID = "111"
             
             self.$axios.post('/transaction/transaction',{
               params:{
-                patentID: target_id,
-                from: localStorage.username,
-                to: self.username,
-                price: parseInt(price)
+                "patentID": patentID,
+                "from": localStorage.username,//买家账户
+                "to": self.username,//专利持有人
+                "price": parseInt(price)
               }
             })
             .then(function (response) {
               testpos=2
               var data = response.data
-              if(data.isSucceed==0){
+              if(data.isSucc=="true"){
                 self.$message({
                   message:'购买成功！',
                   type:'success',
                 });
-                self.getInvestmentDetail(Number(self.target_id))
+                self.getInvestmentDetail(String(self.patentID))//更新订单状态
                 // self.update()
               }else {
                 self.$message({
-                  // message: data.message,
-                  message: "交易失败",
+                  message: data.msg,
+                  // message: "交易失败",
                   type: 'error',
                 });
               }
@@ -188,14 +188,17 @@ Date: 2019/3/1
 			  //   // 拼接
 			  //   return year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
   			// },
-        getInvestmentDetail(id){
+        getInvestmentDetail(patentID){
           var self = this;
           alert("调用了getInvDet");
-          this.$axios.get('/order/details',{
+          patentID = "111" //暂时设为数据库中有的
+          this.$axios.post('/order/details',{
             params:{
-              targetId : id
+              "patentID" : patentID
             }
           }).then(function (response) {
+            // patentID(String) owner(String) walletaddress(String) comment(String)
+            // orderState(boolean) price(int)endDate(Calendar) emailaddress(String)
             //console.log("response:")
             alert("成功调用了invDet的api")
             var data = response.data
@@ -204,8 +207,8 @@ Date: 2019/3/1
           
             // this.name = data.name//unknown
             this.username = data.owner
-            this.target_id = data.patentID
-            this.target_address = data.walletaddress
+            this.patentID = data.patentID
+            this.walletaddress = data.walletaddress
             this.price = data.price
             this.patentInfo = data.comment
             this.orderState = data.orderState
@@ -219,21 +222,21 @@ Date: 2019/3/1
             console.log(error)
           });
         },
-        update(){
-          this.$axios.get('/order/cancelPend', {
-            params:{
-              patentID: this.patentID
-            }
-          })
-          .then(function(res){
-            if (res.data.isSucceed==0){
-              console.log("交易成功！")
-            }
-            else{
-              console.log("交易失败！")
-            }
-          })
-        },
+        // update(){
+        //   this.$axios.get('/order/cancelPend', {
+        //     params:{
+        //       "patentID": this.patentID
+        //     }
+        //   })
+        //   .then(function(res){
+        //     if (res.data.isSucceed==0){
+        //       console.log("交易成功！")
+        //     }
+        //     else{
+        //       console.log("交易失败！")
+        //     }
+        //   })
+        // },
         formatTooltip(val) {
           return val;
         },
