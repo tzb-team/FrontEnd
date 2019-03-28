@@ -157,33 +157,33 @@
           useOfFunds: []
         }
 
-        this.$axios.post("/loan/recommendSmall",small_data )
-          .then(res => {
-            console.log(res)
-            let invests = []
-            for(let i of res.data) {
-              invests.push({
-                id: i.id,
-                name: i.name,
-                profit: (i.interestRate + "%"),
-                money: i.money,
-                remainMoney: (i.money-i.collectedMoney),
-                type: i.classification,
-                finishProgress: i.completionRate*1.0/100,
-                range: i.riskRating,
-                beginTime: i.startTime,
-              })
-            }
-            console.log(invests)
-            // if(invests.length > 4) {
-            //   self.investInformation = invests.slice(0, 4)
-              // self.investInformation2 = invests.slice(4, invests.length)
-            // }else {
-              self.investInformation = invests
-              // self.investInformation2 = []
-            // }
-          })
-          .catch(e => {console.log(e)})
+        // this.$axios.post("/loan/recommendSmall",small_data )
+        //   .then(res => {
+        //     console.log(res)
+        //     let invests = []
+        //     for(let i of res.data) {
+        //       invests.push({
+        //         id: i.id,
+        //         name: i.name,
+        //         profit: (i.interestRate + "%"),
+        //         money: i.money,
+        //         remainMoney: (i.money-i.collectedMoney),
+        //         type: i.classification,
+        //         finishProgress: i.completionRate*1.0/100,
+        //         range: i.riskRating,
+        //         beginTime: i.startTime,
+        //       })
+        //     }
+        //     console.log(invests)
+        //     // if(invests.length > 4) {
+        //     //   self.investInformation = invests.slice(0, 4)
+        //       // self.investInformation2 = invests.slice(4, invests.length)
+        //     // }else {
+        //       self.investInformation = invests
+        //       // self.investInformation2 = []
+        //     // }
+        //   })
+        //   .catch(e => {console.log(e)})
       },
       beforeCreate: function () {
         localStorage.route="#homepage";
