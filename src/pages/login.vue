@@ -58,7 +58,7 @@
             res => {
               // console.log(res);
               var data = res.data;            
-              if(data.LogRes==true){
+              if(data.LogRes=="true"){
                 alert("登陆成功！！！！！")
               }
               data = {

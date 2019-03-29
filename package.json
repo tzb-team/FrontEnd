@@ -35,7 +35,8 @@
     "vue-multiple-progress": "^1.5.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vux": "^2.9.2"
+    "vux": "^2.9.2",
+    "web3": "^0.19.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
