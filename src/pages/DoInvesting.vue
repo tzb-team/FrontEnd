@@ -138,7 +138,7 @@ Date: 2019/3/1
           }).then(() => {
             testpos=1
             patentID = "111"
-            
+            console.log("self.username",self.username)
             self.$axios.post('/transaction/transaction',{
               params:{
                 "patentID": patentID,

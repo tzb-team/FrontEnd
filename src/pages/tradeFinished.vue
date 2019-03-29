@@ -491,7 +491,7 @@
         goodsName: '',
         username: localStorage.username
       }
-      this.$axios.post('/flea/getNew', getData).then(function (response) {
+      this.$axios.post('http://localhost:8084/', getData).then(function (response) {
         console.log(response)
         let topNewData = []
         for(let i=0;i<response.data.tradeInfoList.length;i++){
@@ -604,7 +604,7 @@
 
   /*消息框*/
   .mesboxborder{
-  //width:850px;
+    width:850px;
     margin-right: 10%;
     margin-left: 5%;
     margin-top: 30px;

@@ -54,7 +54,7 @@
                             </div>
                             <el-button slot="reference">
                               <!--<img src="../../static/pic/dhc.jpeg" style="width:422px;height:250px;" class="picbox" alt="User_pic">-->
-                              <img v-bind:src=topData[i-1].pic style="width:422px;height:250px;" class="picbox" alt="User_pic">
+                              <a href="/trade/patentSetDetails"><button ><img v-bind:src=topData[i-1].pic style="width:422px;height:250px;" class="picbox" alt="User_pic"></button></a>
                             </el-button>
                           </el-popover>
                         </el-carousel-item>
@@ -71,7 +71,8 @@
                 <el-tab-pane >
                   <span slot="label" style="font-size:19px;"><i class="el-icon-search"></i>&nbsp;&nbsp;推荐排序</span>
                   <el-row :gutter="20">
-                    <el-col :span="20"><template>
+                    <el-col :span="20">
+                      <template>
                       <div style="margin-top: 20px">
                         <span><strong>&nbsp;&nbsp;排序标准&nbsp;&nbsp;</strong></span>
                         <br/>
@@ -83,15 +84,32 @@
                           <el-button @click="search" slot="append" icon="el-icon-search"></el-button>
                         </el-input>
                       </div>
-                    </template></el-col>
-                    <el-col :span="4"><div style="margin-top: 15px;">
+                      <div>
+                        <el-table :data="tableData">
+                          <el-table-column prop="patentSetname" label="专利池名称">
+                          </el-table-column>
+                          <el-table-column prop="patentSetid" label="专利池ID">
+                          </el-table-column>
+                          <el-table-column prop="amount" label="专利数量">
+                          </el-table-column>
+                          <el-table-column prop="type" label="专利池所属行业" >
+                          </el-table-column>
+                          <el-table-column prop="dateFound" label="建池日期" >
+                          </el-table-column>
+                          <el-table-column prop="ownerid" label="专利池持有人">
+                          </el-table-column>         
+                        </el-table>
+                      </div>
+                    </template>
+                    </el-col>
+                    <el-col :span="4">
+                      <div style="margin-top: 15px;">
                       <br/>
                       <el-button type="primary" icon="el-icon-search" @click="filter">查询</el-button>
                       <br/>
-                      <br/>>
+                      <br/>
                       <a href="/trade/patentSetDetails"><el-button type="primary" icon="el-icon-search">专利池详情</el-button></a>
-
-                    </div>
+                      </div>
                     </el-col>
                   </el-row>
                   <el-row :gutter="5" v-for="r in 2" :key="r" style="position:relative;top:20px;">
@@ -166,12 +184,23 @@
   import rightBar from '@/components/rightBar.vue';
   import leftTradeBar from "@/components/leftTradeBar.vue";
   const typeOptions = ['专利池主', '池中专利数量', '专利池估值' ];
+    
   export default {
     name: "trade",
     components:{ leftTradeBar, navi, footerBar, rightBar},
     types:typeOptions,
    data() {
+     const item = {
+        dateFound: '2016-05-02',
+        patentSetname: '时光传送机',
+        type:'信息技术',
+        patentSetid: '0000000001',
+        ownerid: '222222',
+        amount:'6',
+        patentSetid:'0000001'
+      };
       return {
+        tableData: Array(6).fill(item),
         back:{
           backgroundImage:"url(" + require("../../static/pic/investListBack.jpg") + ")",
           backgroundRepeat:"no-repeat",
@@ -191,56 +220,56 @@
         totalNum: 0,
         checkboxGroup:['数码零件'],
         topData:[{
-          num:'000001',
+          num:'0000000001',
           type:'化妆洗漱',
-          name:'0000000000000001',
-          description:'0000000000000002',
-          price:'0000000000000003',
-          PatentNum:'0000000000000004',
-          PatentNum1:'000000000000000y',
-          PatentNum2:'000000000000000x',
+          name:'0000000001',
+          description:'0000000001',
+          price:'0000000001',
+          PatentNum:'0000000001',
+          PatentNum1:'0000000001',
+          PatentNum2:'0000000001',
           pic:"../../static/pic/dhc.jpeg",
           // headPic:'../../static/pic/person-flat.png',ddddddddddddddddddddddddddddddddddddddddddddddddddddd了注释
           date:"2018/06/04",
           state: true
         },
           {
-          num:'000002',
+          num:'000001',
           type:'化妆洗漱',
-          name:'0000000000000005',
-          description:'0000000000000006',
-          price:'0000000000000007',
-          PatentNum:'0000000000000008',
-          PatentNum1:'000000000000000y',
-          PatentNum2:'000000000000000x',
+          name:'0000000001',
+          description:'0000000001',
+          price:'0000000001',
+          PatentNum:'0000000001',
+          PatentNum1:'0000000001',
+          PatentNum2:'0000000001',
           pic:'../../static/pic/wylp.jpeg',
           // headPic:'../../static/pic/person-flat.png',dddddddddddddddddddddddddddddd
           date:"2018/05/02",
           state: true
           },
           {
-            num:'0000000000000009',
+            num:'0000000001',
             type:'影音家电',
-            name:'000000000000000z',
+            name:'0000000001',
             // description:'自用一年，音质良好。',
-            price:'0000000000000002',
-            PatentNum:'000000000000000h',
-            PatentNum1:'000000000000000x',
-            PatentNum2:'000000000000000y',
+            price:'0000000001',
+            PatentNum:'0000000001',
+            PatentNum1:'0000000001',
+            PatentNum2:'0000000001',
             pic:'../../static/pic/msr.jpg',
             // headPic:'../../static/pic/person-flat.png',
             date:"2018/8/12",
             state: true
           },
           {
-            num:'0000000000000002',
+            num:'0000000001',
             type:'化妆洗漱',
-            name:'0000000000000001',
+            name:'0000000001',
             // description:'因为皮肤偏干，这款比较哑光，不适合我，仅用过一次',
-            price:'0000000000000003',
-            PatentNum:'000000000000000z',
-            PatentNum1:'000000000000000y',
-            PatentNum2:'000000000000000x',
+            price:'0000000001',
+            PatentNum:'0000000001',
+            PatentNum1:'0000000001',
+            PatentNum2:'0000000001',
             pic:'../../static/pic/ysl.JPG',
             headPic:'../../static/pic/person-flat.png',
 
@@ -248,14 +277,14 @@
             state: true
           },
           {
-            num:'000005',
+            num:'0000000001',
             type:'影音家电',
-            name:'000000000000000y',
+            name:'0000000001',
             description:'自用2年半，硬件全原装，第四代i5标压版 8g(ddr3) gtx840m2g 120g（三星固态，自己加的，根据需求另卖）+1000g。',
-            price:'000000000000000l',
-            PatentNum:'000000000000000z',
-            PatentNum1:'0000000000000004',
-            PatentNum2:'000000000000000x',
+            price:'0000000001',
+            PatentNum:'0000000001',
+            PatentNum1:'0000000001',
+            PatentNum2:'0000000001',
             pic:'../../static/pic/acer.jpg',
             headPic:'../../static/pic/person-flat.png',
 
@@ -264,75 +293,75 @@
           }
 
         ],
-        // commData:[{
-        //   num:'000000',
-        //   type:'鞋服配饰',
-        //   name:'名创优品粉红顽皮帽子',
-        //   description:'名创优品39.9入 带过一次 可小刀',
-        //   price:'35',
-        //   PatentNum:'13323389923',
-        //   pic:"../../static/pic/hat.jpg",
-        //   state: true
-        // },
-        //   {
-        //     num:'000001',
-        //     type:'化妆洗漱',
-        //     name:'DHC橄榄润唇膏',
-        //     description:'日本 大国药妆店购入 全新未拆封',
-        //     price:'50',
-        //     PatentNum:'123456',
-        //     pic:"../../static/pic/dhc.jpeg",
-        //     state: true
-        //   },
-        //   {
-        //     num:'000002',
-        //     type:'化妆洗漱',
-        //     name:'无印良品卸妆啫喱',
-        //     description:'日本 大国药妆店购入 全新未拆封',
-        //     price:'70',
-        //     PatentNum:'13329048392',
-        //     pic:'../../static/pic/wylp.jpeg',
-        //     state: true
-        //   },
-        //   {
-        //     num:'000003',
-        //     type:'影音家电',
-        //     name:'铁三角msr',
-        //     description:'自用一年，音质良好。',
-        //     price:'750',
-        //     PatentNum:'1997939399',
-        //     pic:'../../static/pic/msr.jpg',
-        //     state: true
-        //   },
-        //   {
-        //     num:'000004',
-        //     type:'化妆洗漱',
-        //     name:'YSL粉底液B10色号',
-        //     description:'因为皮肤偏干，这款比较哑光，不适合我，仅用过一次',
-        //     price:'300',
-        //     PatentNum:'1997939399',
-        //     pic:'../../static/pic/ysl.JPG',
-        //     state: true
-        //   },
-        //   {
-        //     num:'000005',
-        //     type:'影音家电',
-        //     name:'Acer宏碁572G-528R',
-        //     description:'，硬件全原装，第四代i5标压版 8g(ddr3) gtx840m2g 120g（三星固态，自己加的，根据需求另卖）+1000g。',
-        //     price:'2500',
-        //     PatentNum:'1997939399',
-        //     pic:'../../static/pic/acer.jpg',
-        //     state: true
-        //   }
-        // ],
+        commData:[{
+          num:'000000',
+          type:'鞋服配饰',
+          name:'名创优品粉红顽皮帽子',
+          description:'名创优品39.9入 带过一次 可小刀',
+          price:'35',
+          PatentNum:'13323389923',
+          pic:"../../static/pic/hat.jpg",
+          state: true
+        },
+          {
+            num:'000001',
+            type:'化妆洗漱',
+            name:'DHC橄榄润唇膏',
+            description:'日本 大国药妆店购入 全新未拆封',
+            price:'50',
+            PatentNum:'123456',
+            pic:"../../static/pic/dhc.jpeg",
+            state: true
+          },
+          {
+            num:'000002',
+            type:'化妆洗漱',
+            name:'无印良品卸妆啫喱',
+            description:'日本 大国药妆店购入 全新未拆封',
+            price:'70',
+            PatentNum:'13329048392',
+            pic:'../../static/pic/wylp.jpeg',
+            state: true
+          },
+          {
+            num:'000003',
+            type:'影音家电',
+            name:'铁三角msr',
+            description:'自用一年，音质良好。',
+            price:'750',
+            PatentNum:'1997939399',
+            pic:'../../static/pic/msr.jpg',
+            state: true
+          },
+          {
+            num:'000004',
+            type:'化妆洗漱',
+            name:'YSL粉底液B10色号',
+            description:'因为皮肤偏干，这款比较哑光，不适合我，仅用过一次',
+            price:'300',
+            PatentNum:'1997939399',
+            pic:'../../static/pic/ysl.JPG',
+            state: true
+          },
+          {
+            num:'000005',
+            type:'影音家电',
+            name:'Acer宏碁572G-528R',
+            description:'，硬件全原装，第四代i5标压版 8g(ddr3) gtx840m2g 120g（三星固态，自己加的，根据需求另卖）+1000g。',
+            price:'2500',
+            PatentNum:'1997939399',
+            pic:'../../static/pic/acer.jpg',
+            state: true
+          }
+        ],
         commData: [],
 
       }
     },
     mounted() {
-      // this.list = this.states.map(item => {
-      //   return { value: item, label: item };
-      // });
+      this.list = this.states.map(item => {
+        return { value: item, label: item };
+      });
       const self = this;
       let getData = {
         size: 5,
@@ -347,25 +376,25 @@
         goodsName: '',
         username: ''
       }
-      // this.$axios.post('/flea/getNew', getData).then(function (response) {
-      //   let topNewData = []
-      //   for(let i=0;i<response.data.tradeInfoList.length;i++){
-      //     topNewData.push({
-      //       num: response.data.tradeInfoList[i].id,
-      //       type: response.data.tradeInfoList[i].goodsType,
-      //       name: response.data.tradeInfoList[i].goodsName,
-      //       description: response.data.tradeInfoList[i].goodsDesc,
-      //       price: response.data.tradeInfoList[i].price,
-      //       PatentNum: response.data.tradeInfoList[i].PatentNum,
-      //       headPic:'../../static/pic/person-flat.png',
-      //       pic: response.data.tradeInfoList[i].pic,
-      //     })
-      //   }
-      //   self.topData = topNewData;
+      this.$axios.post('/flea/getNew', getData).then(function (response) {
+        let topNewData = []
+        for(let i=0;i<response.data.tradeInfoList.length;i++){
+          topNewData.push({
+            num: response.data.tradeInfoList[i].id,
+            type: response.data.tradeInfoList[i].goodsType,
+            name: response.data.tradeInfoList[i].goodsName,
+            description: response.data.tradeInfoList[i].goodsDesc,
+            price: response.data.tradeInfoList[i].price,
+            PatentNum: response.data.tradeInfoList[i].PatentNum,
+            headPic:'../../static/pic/person-flat.png',
+            pic: response.data.tradeInfoList[i].pic,
+          })
+        }
+        self.topData = topNewData;
 
-      // }).catch(function (error) {
-      //   console.log("error:"+error)
-      // });
+      }).catch(function (error) {
+        console.log("error:"+error)
+      });
       getData = {
         size: 6,
         page: 0,
@@ -379,24 +408,24 @@
         goodsName: '',
         username: ''
       }
-      // this.$axios.post('/flea/getNew', getData).then(function (response) {
-      //   let topNewData = []
-      //   for(let i=0;i<response.data.tradeInfoList.length;i++){
-      //     topNewData.push({
-      //       num: response.data.tradeInfoList[i].id,
-      //       type: response.data.tradeInfoList[i].goodsType,
-      //       name: response.data.tradeInfoList[i].goodsName,
-      //       description: response.data.tradeInfoList[i].goodsDesc,
-      //       price: response.data.tradeInfoList[i].price,
-      //       PatentNum: response.data.tradeInfoList[i].PatentNum,
-      //       pic: response.data.tradeInfoList[i].pic,
-      //     })
-      //   }
-      //   self.commData = topNewData;
-      //   self.totalNum = response.data.total;
-      // }).catch(function (error) {
-      //   console.log("error:"+error)
-      // });
+      this.$axios.post('/flea/getNew', getData).then(function (response) {
+        let topNewData = []
+        for(let i=0;i<response.data.tradeInfoList.length;i++){
+          topNewData.push({
+            num: response.data.tradeInfoList[i].id,
+            type: response.data.tradeInfoList[i].goodsType,
+            name: response.data.tradeInfoList[i].goodsName,
+            description: response.data.tradeInfoList[i].goodsDesc,
+            price: response.data.tradeInfoList[i].price,
+            PatentNum: response.data.tradeInfoList[i].PatentNum,
+            pic: response.data.tradeInfoList[i].pic,
+          })
+        }
+        self.commData = topNewData;
+        self.totalNum = response.data.total;
+      }).catch(function (error) {
+        console.log("error:"+error)
+      });
 
     },
     methods: {
@@ -415,26 +444,26 @@
           goodsName: '',
           username: ''
         }
-        // this.$axios.post('/flea/getNew', getData).then(function (response) {
-        //   console.log(response)
-        //   let topNewData = []
-        //   for(let i=0;i<response.data.tradeInfoList.length;i++){
-        //     topNewData.push({
-        //       num: response.data.tradeInfoList[i].id,
-        //       type: response.data.tradeInfoList[i].goodsType,
-        //       name: response.data.tradeInfoList[i].goodsName,
-        //       description: response.data.tradeInfoList[i].goodsDesc,
-        //       price: response.data.tradeInfoList[i].price,
-        //       PatentNum: response.data.tradeInfoList[i].PatentNum,
-        //       pic: response.data.tradeInfoList[i].pic,
-        //     })
-        //   }
-        //   self.commData = topNewData;
-        //   self.totalNum = response.data.total;
+        this.$axios.post('/flea/getNew', getData).then(function (response) {
+          console.log(response)
+          let topNewData = []
+          for(let i=0;i<response.data.tradeInfoList.length;i++){
+            topNewData.push({
+              num: response.data.tradeInfoList[i].id,
+              type: response.data.tradeInfoList[i].goodsType,
+              name: response.data.tradeInfoList[i].goodsName,
+              description: response.data.tradeInfoList[i].goodsDesc,
+              price: response.data.tradeInfoList[i].price,
+              PatentNum: response.data.tradeInfoList[i].PatentNum,
+              pic: response.data.tradeInfoList[i].pic,
+            })
+          }
+          self.commData = topNewData;
+          self.totalNum = response.data.total;
 
-        // }).catch(function (error) {
-        //   console.log("error:"+error)
-        // });
+        }).catch(function (error) {
+          console.log("error:"+error)
+        });
       },
       search() {
         const self = this;
@@ -451,26 +480,26 @@
           goodsName: self.searchText,
           username: ''
         }
-        // this.$axios.post('/flea/getNew', getData).then(function (response) {
-        //   console.log(response)
-        //   let topNewData = []
-        //   for(let i=0;i<response.data.tradeInfoList.length;i++){
-        //     topNewData.push({
-        //       num: response.data.tradeInfoList[i].id,
-        //       type: response.data.tradeInfoList[i].goodsType,
-        //       name: response.data.tradeInfoList[i].goodsName,
-        //       description: response.data.tradeInfoList[i].goodsDesc,
-        //       price: response.data.tradeInfoList[i].price,
-        //       PatentNum: response.data.tradeInfoList[i].PatentNum,
-        //       pic: response.data.tradeInfoList[i].pic,
-        //     })
-        //   }
-        //   self.commData = topNewData;
-        //   self.totalNum = response.data.total;
+        this.$axios.post('/flea/getNew', getData).then(function (response) {
+          console.log(response)
+          let topNewData = []
+          for(let i=0;i<response.data.tradeInfoList.length;i++){
+            topNewData.push({
+              num: response.data.tradeInfoList[i].id,
+              type: response.data.tradeInfoList[i].goodsType,
+              name: response.data.tradeInfoList[i].goodsName,
+              description: response.data.tradeInfoList[i].goodsDesc,
+              price: response.data.tradeInfoList[i].price,
+              PatentNum: response.data.tradeInfoList[i].PatentNum,
+              pic: response.data.tradeInfoList[i].pic,
+            })
+          }
+          self.commData = topNewData;
+          self.totalNum = response.data.total;
 
-        // }).catch(function (error) {
-        //   console.log("error:"+error)
-        // });
+        }).catch(function (error) {
+          console.log("error:"+error)
+        });
       },
       handleCurrentChange(val) {
         const self = this;
@@ -487,26 +516,26 @@
           goodsName: '',
           username: ''
         }
-        // this.$axios.post('/flea/getNew', getData).then(function (response) {
-        //   console.log(response)
-        //   let topNewData = []
-        //   for(let i=0;i<response.data.tradeInfoList.length;i++){
-        //     topNewData.push({
-        //       num: response.data.tradeInfoList[i].id,
-        //       type: response.data.tradeInfoList[i].goodsType,
-        //       name: response.data.tradeInfoList[i].goodsName,
-        //       description: response.data.tradeInfoList[i].goodsDesc,
-        //       price: response.data.tradeInfoList[i].price,
-        //       PatentNum: response.data.tradeInfoList[i].PatentNum,
-        //       pic: response.data.tradeInfoList[i].pic,
-        //     })
-        //   }
-        //   self.commData = topNewData;
-        //   console.log(self.commData)
+        this.$axios.post('/flea/getNew', getData).then(function (response) {
+          console.log(response)
+          let topNewData = []
+          for(let i=0;i<response.data.tradeInfoList.length;i++){
+            topNewData.push({
+              num: response.data.tradeInfoList[i].id,
+              type: response.data.tradeInfoList[i].goodsType,
+              name: response.data.tradeInfoList[i].goodsName,
+              description: response.data.tradeInfoList[i].goodsDesc,
+              price: response.data.tradeInfoList[i].price,
+              PatentNum: response.data.tradeInfoList[i].PatentNum,
+              pic: response.data.tradeInfoList[i].pic,
+            })
+          }
+          self.commData = topNewData;
+          console.log(self.commData)
 
-        // }).catch(function (error) {
-        //   console.log("error:"+error)
-        // });
+        }).catch(function (error) {
+          console.log("error:"+error)
+        });
 
       },
       remoteMethod(query) {
