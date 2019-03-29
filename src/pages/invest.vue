@@ -88,18 +88,18 @@
                       </el-option>
                     </el-select>
                   </el-form-item> -->
-                <el-form-item label="价格" class="form_item">
+                <!-- <el-form-item label="价格" class="form_item">
                     <input type="number" v-model="smallInvestDown"  class="selectInput" style="width:100px;"/>
                     <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
                     <input type="number" v-model="smallInvestUp" class="selectInput" style="width:100px;"/>
-                  </el-form-item>
+                  </el-form-item> -->
                 <!-- <el-form-item label="还款期限" class="form_item">
                   <input type="number" v-model="smallDayDown" class="selectInput" style="width:83px;"/>
                   <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
                   <input type="number" v-model="smallDayUp" class="selectInput" style="width:83px;"/>
                   <p style="display: inline;margin-left:5px;margin-right:5px;">天</p>
                 </el-form-item> -->
-                <el-form-item label="上架时间" class="form_item">
+                <!-- <el-form-item label="上架时间" class="form_item">
                   <el-date-picker
                     v-model="smallDateDown"
                     type="date"
@@ -111,7 +111,7 @@
                     type="date"
                     placeholder="选择日期">
                   </el-date-picker>
-                </el-form-item>
+                </el-form-item> -->
                 <el-form-item style="width:60px;margin: auto;">
                   <el-button type="primary" @click="small_fil">过滤</el-button>
                 </el-form-item>
@@ -229,29 +229,32 @@
         properties: 'money',
         money: [null, null],
         time: [null, null],
-        interestRate: [null, null],
-        repaymentDuration: [null, null],
-        userCreditRating: self.smallUserRating == null? []:self.smallUserRating ,
-        targetRating: self.smallTargetRating == null? []:self.smallTargetRating,
+        // interestRate: [null, null],
+        // repaymentDuration: [null, null],
+        // userCreditRating: self.smallUserRating == null? []:self.smallUserRating ,
+        // targetRating: self.smallTargetRating == null? []:self.smallTargetRating,
         useOfFunds: self.fundUse
       }
 
-      this.$axios.post("/loan/smallTargetList",small_data )
+      this.$axios.post("http://localhost:8084/order/orders",small_data )
         .then(res => {
           console.log(res)
           let invests = []
-          for(let i of res.data) {
+          var all_orders = res.data
+          for(var i = 0;i<all_orders.length;i++) {
             invests.push({
-              id: i.id,
+              id: all_orders[i].patentID,
               //profit: (i.interestRate.toFixed(2) + "%"),
-              name: i.name,
-              money: i.money,
+              name: all_orders[i].patentName,
+              money: all_orders[i].price,
               //remainMoney: (i.money-i.collectedMoney),
-              type: i.classification,
+              type: all_orders[i].type,
               //finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2) ,
-              pool: i.pool,//startime-->pool
-              owner: i.owner,//endtime-->owner
-              walletaddress:i.walletaddress,
+              pool: all_orders[i].poolID,//startime-->pool
+              owner: all_orders[i].owner,//endtime-->owner
+              walletaddress:all_orders[i].walletAddress,
+              startTime:all_orders[i].startDate,
+              endTime:all_orders[i].endDate
             })
           }
           console.log(invests)
@@ -286,10 +289,11 @@
         /*单选按钮默认值及样式*/
         value_radio: '标的金额',
         /*分类信息*/
-        fundUse: [ '人类生活必须', '生活用品', '护肤美妆', '游戏动漫', '电子产品', '学习用品', '书籍报刊', '培训考证', '校际交换',
-        '聚餐轰趴', '运动健身', '观看演出', '外出旅游', '诊断治疗', '保健养生'],
-        fundUse2: [ '鞋帽服饰', '生活用品', '护肤美妆', '游戏动漫', '电子产品', '学习用品', '书籍报刊', '培训考证', '校际交换',
-          '聚餐轰趴', '运动健身', '观看演出', '外出旅游', '诊断治疗', '保健养生'],
+        // fundUse: [ '人类生活必须', '生活用品', '护肤美妆', '游戏动漫', '电子产品', '学习用品', '书籍报刊', '培训考证', '校际交换',
+        // '聚餐轰趴', '运动健身', '观看演出', '外出旅游', '诊断治疗', '保健养生'],
+        // fundUse2: [ '鞋帽服饰', '生活用品', '护肤美妆', '游戏动漫', '电子产品', '学习用品', '书籍报刊', '培训考证', '校际交换',
+        //   '聚餐轰趴', '运动健身', '观看演出', '外出旅游', '诊断治疗', '保健养生'],
+        fundUse: ['全部','人类生活必须','作业，运输','化学，冶金','纺织，造纸','物理','电学','机械工程；照明；加热；武器；爆破','其他'],
         /*选择信息*/
         userOptions: [
           { label: 'AA', value: 'AA'},
