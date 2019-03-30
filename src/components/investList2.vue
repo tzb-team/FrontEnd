@@ -1,20 +1,24 @@
 <template>
   <div class="investList">
-    <div style="height:130px;text-align: center;">
+    <div style="height:100px;text-align: center;">
       <el-row :gutter="20">
         <el-col :span="6">
           <div style="display: inline;float: left;margin: -2px;padding: 0">
-            <p class="text">{{investList.range}}</p>
+            <p class="text">{{investList.transactionid}}</p>
             <div class="triangle-topleft">
             </div>
           </div>
-          <div class="grid-content bg-purple" style="margin-left:30%;">
+          <div class="grid-content bg-purple" style="margin-left:5%;">
             <div style="margin-top:10%;">
-              <p class="month" style="display: inline;">Profit : </p>
-              <p class="profit" style="display: inline;">{{investList.profit}}</p>
-              <p class="month" >/ per year</p>
-              <p style="font-size:10px;display: inline-block;">标的编号：</p>
-              <p style="display: inline-block;font-weight:800;">{{investList.id}}</p>
+              <br>
+              <p class="month" style="display: inline;">专利名称:<strong>{{investList.profit}}</strong></p><br>
+              <!-- <p class="profit" style="display: inline;"></p><br> -->
+              <br>
+              <p class="month" style="display: inline;">专利号:<strong>{{investList.id}}</strong> </p>
+              <!-- <p class="profit" style="display: inline;"><b>{{investList.id}}</b></p> -->
+              <!-- <p class="month" >/ per year</p> -->
+              <!-- <p style="font-size:10px;display: inline-block;">标的编号：</p>
+              <p style="display: inline-block;font-weight:800;">{{investList.id}}</p> -->
             </div>
           </div>
         </el-col>
@@ -22,25 +26,27 @@
           <div class="type" style="text-align: center;">
             <p class="center">{{investList.type}}</p>
           </div>
-          <div class="grid-content bg-purple">
-            <p class="itemName">{{investList.name}}</p>
-            <p class="money">￥{{investList.remainMoney}}</p><p class="moneyName"> / 剩余金额</p>
-            <p>借款总金额：￥{{investList.money}}</p>
-            <vm-progress :percentage="investList.finishProgress * 100"  :text-inside="true" :stroke-width="18" strokeColor="#F88562" :striped="true">
+          <div class="grid-content bg-purple" style="margin-top:20px">
+            <!-- <p class="itemName">{{investList.name}}</p> -->
+            <!-- <p class="money">￥{{investList.remainMoney}}</p>-->
+            <!-- <p class="moneyName">&#32;</p> -->
+            <p>from：<font color=blue>{{investList.money}}</font></p>
+            <p>to：<font color=blue>{{investList.money}}</font></p>
+            <!-- <vm-progress :percentage="investList.finishProgress * 100"  :text-inside="true" :stroke-width="18" strokeColor="#F88562" :striped="true">
               {{investList.finishProgress * 100}}%
-            </vm-progress>
+            </vm-progress> -->  
           </div>
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <div class="itemDescription" style="margin-top: 10px">
+            <div class="itemDescription" style="margin-top: 23px">
               <div>
                 <el-row>
-                  <el-button type="primary" round @click="showDetails" class="showDetails">查看详情</el-button>
+                  <el-button type="primary" round @click="showDetails" class="showDetails">view transaction</el-button>
                 </el-row>
                 <br/>
-                <p style="font-size:10px;">借款截止：{{investList.beginTime}}</p>
-                <p style="font-size:10px;">还款日期：{{investList.endTime}}</p>
+                <p style="font-size:12px;">交易价格：{{investList.beginTime}}</p>
+                <!-- <p style="font-size:10px;">还款日期：{{investList.endTime}}</p> -->
               </div>
             </div>
           </div>
@@ -87,8 +93,8 @@
   .triangle-topleft{
     width: 0;
     height: 0;
-    border-top: 80px solid #E73826;
-    border-right: 100px solid transparent;
+    border-top: 70px solid #E73826;
+    border-right: 90px solid transparent;
     display: block;
     position:absolute;
     z-index:10;
@@ -131,7 +137,7 @@
   }
   .month{
     color:#616363;
-    font-size:12px;
+    font-size:13px;
     font-weight: 500;
   }
   .profit{
@@ -148,7 +154,7 @@
     background: #A6A3A3;
     max-width:50%;
     color:white;
-    font-size:10px;
+    font-size:13px;
     height:15px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;

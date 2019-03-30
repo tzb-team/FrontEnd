@@ -88,18 +88,18 @@
                       </el-option>
                     </el-select>
                   </el-form-item> -->
-                <!-- <el-form-item label="价格" class="form_item">
+                <el-form-item label="价格" class="form_item">
                     <input type="number" v-model="smallInvestDown"  class="selectInput" style="width:100px;"/>
                     <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
                     <input type="number" v-model="smallInvestUp" class="selectInput" style="width:100px;"/>
-                  </el-form-item> -->
+                  </el-form-item>
                 <!-- <el-form-item label="还款期限" class="form_item">
                   <input type="number" v-model="smallDayDown" class="selectInput" style="width:83px;"/>
                   <p style="display: inline;margin-left:5px;margin-right:5px;">-</p>
                   <input type="number" v-model="smallDayUp" class="selectInput" style="width:83px;"/>
                   <p style="display: inline;margin-left:5px;margin-right:5px;">天</p>
                 </el-form-item> -->
-                <!-- <el-form-item label="上架时间" class="form_item">
+                <el-form-item label="上架时间" class="form_item">
                   <el-date-picker
                     v-model="smallDateDown"
                     type="date"
@@ -111,7 +111,7 @@
                     type="date"
                     placeholder="选择日期">
                   </el-date-picker>
-                </el-form-item> -->
+                </el-form-item>
                 <el-form-item style="width:60px;margin: auto;">
                   <el-button type="primary" @click="small_fil">过滤</el-button>
                 </el-form-item>

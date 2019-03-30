@@ -4,7 +4,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <div style="display: inline;float: left;margin: -2px;padding: 0">
-            <p class="text">{{investList.pool}}</p>
+            <p class="text">{{investList.orderid}}</p>
             <div class="triangle-topleft">
             </div>
           </div>
@@ -33,14 +33,14 @@
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <div class="itemDescription" style="margin-top: 10px">
+            <div class="itemDescription" style="margin-top: 45px">
               <div>
                 <el-row>
                   <el-button type="primary" round @click="showDetails">查看详情</el-button>
                 </el-row>
                 <br/>
-                <p style="font-size:10px;">专利所有者：{{investList.owner}}</p>
-                <p style="font-size:10px;">专利所在地址：{{investList.walletaddress}}</p>
+                <!-- <p style="font-size:10px;">专利所有者：{{investList.owner}}</p>
+                <p style="font-size:10px;">专利所在地址：{{investList.walletaddress}}</p> -->
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@
     background: #A6A3A3;
     max-width:50%;
     color:white;
-    font-size:10px;
+    font-size:13px;
     height:15px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
