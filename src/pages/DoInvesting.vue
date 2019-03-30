@@ -20,9 +20,10 @@ Date: 2019/3/1
             <label style="font-size:16px;font-style: oblique;text-align: center;font-weight: normal;color:grey">此图为用户上传的项目说明</label>
             <br/>
             <h2>出售价格：</h2>
-            <div class="keypoint"> 
+            <!-- <div class="keypoint"> 
                {{price}}
-            </div>
+            </div> -->
+            <h1 style="font-size: 100px">{{price}}</h1>
           </div>
            <!-- 基本信息 购买栏目  -->
           <div style="padding:25px 70px;width:60%;margin-top:70px">
@@ -140,14 +141,12 @@ Date: 2019/3/1
             patentID = "111"
             console.log("self.username",self.username)
             self.$axios.post('/transaction/transaction',{
-              params:{
-                "patentID": patentID,
-                "from": localStorage.username,//买家账户
-                "to": self.username,//专利持有人
-                "price": parseInt(price)
-              }
+              "patentID": patentID,
+              "from": localStorage.username,//买家账户
+              "to": self.username,//专利持有人
+              "price": parseInt(price)
             })
-            .then(function (response) {
+            .then(response => {
               testpos=2
               var data = response.data
               if(data.isSucc=="true"){
@@ -191,12 +190,9 @@ Date: 2019/3/1
         getInvestmentDetail(patentID){
           var self = this;
           alert("调用了getInvDet");
-          patentID = "111" //暂时设为数据库中有的
-          this.$axios.post('/order/details',{
-            params:{
-              "patentID" : patentID
-            }
-          }).then(function (response) {
+          patentID = "11111" //暂时设为数据库中有的
+          this.$axios.post('/order/details',{"patentID" : patentID}).then(
+            response => {
             // patentID(String) owner(String) walletaddress(String) comment(String)
             // orderState(boolean) price(int)endDate(Calendar) emailaddress(String)
             //console.log("response:")
