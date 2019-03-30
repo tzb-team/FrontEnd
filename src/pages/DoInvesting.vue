@@ -105,9 +105,9 @@ Date: 2019/3/1
           buyNum:1,//购买个数
           isShow:true,
           activeName:'one',
-          name:"A专利", //专利名称
-          username:"A公司", //专利持有人姓名
-          patentID:"723972", //专利号
+          name:"", //专利名称
+          username:"", //专利持有人姓名
+          patentID:"", //专利号
           walletaddress:"0x11111111111111111111111111111", //专利所在链上地址
           price: "1000", //专利价格
           orderState: "出售/转让",
@@ -116,16 +116,23 @@ Date: 2019/3/1
           //产品详细信息
           patentInfo:"我们拥有热诚的知识产权顾问和强大的专业代理人团队，快速响应客户需求，为客户提供一对一的贴心服务，解决客户知识产权问题，助力客户利用知识产权这个工具获得更大的商业成功。",
         
-          
+          patent: {},
+          state: "",
         }
       },
       mounted: function () {
-        this.patentID = this.$route.params.id;
-        this.name = this.$route.params.name;
-        this.walletaddress = this.$route.params.walletaddress;
+        // this.patent = this.$route.params.patent;
+        this.state = this.$route.params.state;
+        // console.log(this.$route.params.patent)
+        this.patentID = this.$route.params.patentID;
+        this.username = this.$route.params.owner;
+        this.name = this.$route.params.patentName;
+        this.walletaddress = this.$route.params.walletAddress;
+        this.patentInfo = this.$route.params.description;
         this.isShow = this.$route.params.isShow;
+
         console.log("this.isShow:"+this.isShow);
-        console.log(this.$route.params);
+        console.log("this.$route.params:"+this.$route.params);
         this.getInvestmentDetail(Number(this.patentID))
       },
       methods: {
@@ -173,29 +180,12 @@ Date: 2019/3/1
             });
           });
         },
-        // dateFormat(time) {
-				// 	var date=new Date(time);
-			  //   var year=date.getFullYear();
-			  //   /* 在日期格式中，月份是从0开始的，因此要加0
-			  //    * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
-				// 	 * */
-			  //   var month= date.getMonth()+1<10 ? "0"+(date.getMonth()+1) : date.getMonth()+1;
-			  //   var day=date.getDate()<10 ? "0"+date.getDate() : date.getDate();
-			  //   var hours=date.getHours()<10 ? "0"+date.getHours() : date.getHours();
-			  //   var minutes=date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes();
-			  //   var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
-			  //   // 拼接
-			  //   return year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
-  			// },
         getInvestmentDetail(patentID){
           var self = this;
           alert("调用了getInvDet");
           patentID = "11111" //暂时设为数据库中有的
           this.$axios.post('/order/details',{"patentID" : patentID}).then(
             response => {
-            // patentID(String) owner(String) walletaddress(String) comment(String)
-            // orderState(boolean) price(int)endDate(Calendar) emailaddress(String)
-            //console.log("response:")
             alert("成功调用了invDet的api")
             var data = response.data
             alert(data)

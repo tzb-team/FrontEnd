@@ -61,8 +61,16 @@
           name:"A专利",
           walletaddress:"0xcE780971b22b8316531dbfbF31B36d183D43C6a0",
           isShow:true
-        }
+        },
+        patent: {},
+        state: ""
+
       }
+    },
+    mounted: function (){
+      // this.getInvestmentDetail(Number(this.patentID))
+      this.patent = this,investList.patent
+      this.state = this.investList.state
     },
     methods: {
       showDetails(){
@@ -73,8 +81,57 @@
         // console.log(this.investList.name)
         this.a.walletaddress = this.investList.walletaddress;
         this.a.isShow = true;
-        this.$router.push({name:'DoInvesting',params:{id:this.a.id, name:this.a.name, walletaddress:this.a.walletaddress, isShow:this.a.isShow}})
-      }
+        this.$router.push({
+          name:'DoInvesting',
+          params:{
+              id:this.investList.id, 
+              owner:this.investList.owner,
+              walletaddress:this.investList.walletaddress, 
+              name:this.investList.name, 
+              type:this.investList.type,
+              isShow:this.a.isShow,
+              price: this.investList.price,
+              pool:this.investList.pool,
+              description: this.investList.desc,
+
+
+              // patent: this.patent,
+              state: this.state
+          }
+        })
+        
+      },
+      getInvestmentDetail(patentID){
+          var self = this;
+          alert("调用了getInvDet");
+          patentID = "11111" //暂时设为数据库中有的
+          this.$axios.post('/order/details',{"patentID" : patentID}).then(
+            response => {
+            // patentID(String) owner(String) walletaddress(String) comment(String)
+            // orderState(boolean) price(int)endDate(Calendar) emailaddress(String)
+            //console.log("response:")
+            alert("成功调用了invDet的api")
+            var data = response.data
+            alert(data)
+            
+          
+            // this.name = data.name//unknown
+            this.username = data.owner
+            this.patentID = data.patentID
+            this.walletaddress = data.walletaddress
+            this.price = data.price
+            this.patentInfo = data.comment
+            this.orderState = data.orderState
+
+            // self.percentage = (data.progress * 100).toFixed(2);
+            // self.leftTime = data.leftDays * 24 * 60 * 60 * 1000;
+           
+            document.getElementById("img").src=data.picPath
+            //console.log(data)
+          }).catch(function (error) {
+            console.log(error)
+          });
+        },
     },
 
   }

@@ -235,45 +235,20 @@
         // targetRating: self.smallTargetRating == null? []:self.smallTargetRating,
         useOfFunds: self.fundUse
       }
-
-      this.$axios.post("http://localhost:8084/order/orders",small_data )
-        .then(res => {
-          console.log(res)
-          let invests = []
-          var all_orders = res.data
-          for(var i = 0;i<all_orders.length;i++) {
-            invests.push({
-              id: all_orders[i].patentID,
-              //profit: (i.interestRate.toFixed(2) + "%"),
-              name: all_orders[i].patentName,
-              money: all_orders[i].price,
-              //remainMoney: (i.money-i.collectedMoney),
-              type: all_orders[i].type,
-              //finishProgress: (i.collectedMoney* 1.0/i.money).toFixed(2) ,
-              pool: all_orders[i].poolID,//startime-->pool
-              owner: all_orders[i].owner,//endtime-->owner
-              walletaddress:all_orders[i].walletAddress,
-              startTime:all_orders[i].startDate,
-              endTime:all_orders[i].endDate
-            })
-          }
-          console.log(invests)
-          self.investInformation = invests
-        })
-        .catch(e => {console.log(e)})
-      this.drawRadar();
+      this.getOrderList() //从后端调用订单列表
+      
     },
     data: function(){
       return{
         /* 未成交数据*/
         investInformation: [
-          {id:"97101765.4", owner:"2018.09.01", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"AJ13熊猫", type:"SHOES",  money:"1800", pool:"AA"},
-          {id:"97101765.4", owner:"2018.09.14", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"炉石砰砰计划", type:"GAME",  money:"388",pool:"AA"},
-          {id:"97101765.4", owner:"2018.09.17", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"国庆省内", type:"TRAVEL",  money:"2000", pool:"A"},
-          {id:"97101765.4", owner:"2018.10.12", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"托福考试", type:"EXAM", money:"1800",pool:"A"},
-          {id:"97101765.4", owner:"2018.10.15", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"方大同演唱会", type:"CONCERT",  money:"1000", pool:"A"},
-          {id:"97101765.4", owner:"2018.10.22", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"d'zzit地素连衣裙", type:"CLOTH",  money:"1300", pool:"B"},
-          {id:"97101765.4", owner:"2018.10.26", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"预购", type:"GAME",  money:"1800", pool:"B"},
+          // {id:"97101765.4", owner:"2018.09.01", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"AJ13熊猫", type:"SHOES",  money:"1800", pool:"AA"},
+          // {id:"97101765.4", owner:"2018.09.14", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"炉石砰砰计划", type:"GAME",  money:"388",pool:"AA"},
+          // {id:"97101765.4", owner:"2018.09.17", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"国庆省内", type:"TRAVEL",  money:"2000", pool:"A"},
+          // {id:"97101765.4", owner:"2018.10.12", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"托福考试", type:"EXAM", money:"1800",pool:"A"},
+          // {id:"97101765.4", owner:"2018.10.15", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"方大同演唱会", type:"CONCERT",  money:"1000", pool:"A"},
+          // {id:"97101765.4", owner:"2018.10.22", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"d'zzit地素连衣裙", type:"CLOTH",  money:"1300", pool:"B"},
+          // {id:"97101765.4", owner:"2018.10.26", walletaddress:"0xd407BcD55cb76DEDbaB833e22645a0b4132Ae011", name:"预购", type:"GAME",  money:"1800", pool:"B"},
           // {id:"0008", owner:"2018.10.30", walletaddress:"2018.11.23", name:"生活费周转", type:"TURNOVER", profit:"5.27%", money:"1000", remainMoney:"140", finishProgress:0.86,pool:"C"},
           // {id:"0009", owner:"2018.11.03", walletaddress:"2018.12.01", name:"Chanel香水", type:"CONSMETIC", profit:"8.56%", money:"800", remainMoney:"320", finishProgress:0.6,pool:"C"},
           ],
@@ -350,6 +325,61 @@
       localStorage.route = "#invest";
     },
     methods:{
+      getOrderList() {
+        this.$axios.get("/order/orders",{} )
+        .then(res => {
+          self = this
+          // let invests = []
+          var all_orders = res.data
+          // console.log(all_orders)
+          // console.log(all_orders.length)
+          for(var i = 0;i < all_orders.length;i++){
+            var patent = all_orders[i].patent
+            // var patentDetails = all_orders[i].patent
+            // var patent = {
+            //   patentID: patentDetails.patentID,
+            //   patentName: patentDetails.patentName,
+            //   owner:{
+            //     id: patentDetails.owner.id,
+            //     account: patentDetails.owner.account,
+            //     password: patentDetails.owner.password,
+            //     realName: patentDetails.owner.realName,
+            //     idcard: patentDetails.owner.idcard,
+            //     walletAddress: patentDetails.owner.walletAddress,
+            //     emailAddress: patentDetails.owner.emailAddress,
+            //   },
+            //   walletAddress: patentDetails.walletAddress,
+            //   type: patentDetails.type,
+            //   poolID: patentDetails.poolID,
+            //   description: patentDetails.description,
+            //   patentState: patentDetails.patentState,
+            //   regState: patentDetails.regState,
+            //   price: patentDetails.price,
+            //   num: patentDetails.num,
+            //   valid: patentDetails.valid
+            // };
+            // console.log("account:"+patent.owner.account)
+            this.investInformation.push({
+              id: patent.patentID,
+              name: patent.patentName,
+              money: patent.price,
+              type: patent.type,
+              pool: patent.poolID,//startime-->pool
+              owner: patent.owner.account,//endtime-->owner
+              walletaddress: patent.owner.walletAddress,
+              startTime: all_orders[i].startDate,
+              endTime: all_orders[i].endDate,
+              desc: patent.description,
+
+
+              // patent: patent,
+              state: all_orders[i].state,
+            })
+          }
+          console.log(invests)
+        })
+        .catch(e => {console.log(e)})
+      },
       search(){
         const self = this
         this.$axios.get("/loan/searchTarget",
