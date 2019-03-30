@@ -14,6 +14,7 @@
     <p>Network: {{ web3.networkId }}</p>
     <p>Account: {{ web3.coinbase }}</p>
     <p>Balance: {{ web3.balance }} Wei // {{ web3.ethBalance }} Eth</p>
+    <button id="test" v-on:click="register()">test</button>
   </div>
 
     <div style="width: 100%;padding-bottom: 50px;padding-top: 20px">
@@ -133,6 +134,9 @@
 
       mounted: function () {
 
+        console.log('dispatching getContractInstance')
+        this.$store.dispatch('getContractInstance')
+
 
         $(".whole").css("background-color","transparent");
         $(".wholeNav").css("background-color","transparent");
@@ -173,6 +177,26 @@
             this.$router.push('/signup')
           }
 
+        },
+        register:function() {
+          var patentId = "201703564758";
+          var owner = "0x10Ad2F4BB73e23e8B72C56b9EFdc3B7aD8Bb808E";
+          var poolId = "0023";
+          console.log('开始执行');
+          
+          // console.log(this.$store.state.contractInstance().methods)
+          this.$store.state.contractInstance().regPatent(patentId,owner,poolId,{
+            gas: 300000,
+            value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
+            from: this.$store.state.web3.coinbase
+          },(err, result) => {
+            if(err){
+              console.log(err);
+            }
+            else{
+              console.log(result);
+            }
+          })
         },
 
         shiftRecommend:function () {
