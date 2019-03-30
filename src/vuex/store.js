@@ -2,6 +2,8 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import * as types from './types'
 import getWeb3 from '../util/getWeb3'
+import getContract from '../util/getContract'
+import pollWeb3 from '../util/pollWeb3'
 Vue.use(Vuex);
 
 /**
@@ -38,6 +40,16 @@ export default new Vuex.Store({
         console.log('error in action registerWeb3', e)
       })
     },
+    getContractInstance ({commit}) {
+      getContract.then(result => {
+        commit('registerContractInstance', result)
+      }).catch(e => console.log(e))
+    },
+    pollWeb3 ({commit}, payload) {
+      console.log('pollWeb3 action being executed')
+      commit('pollWeb3Instance', payload)
+    }
+
   },
   getters: {
     isLogin: state => {
@@ -105,7 +117,15 @@ export default new Vuex.Store({
       state.web3 = web3Copy
       pollWeb3()
     },
-
+    registerContractInstance (state, payload) {
+      console.log('Casino contract instance: ', payload)
+      state.contractInstance = () => payload
+    },
+    pollWeb3Instance (state, payload) {
+      console.log('pollWeb3Instance mutation being executed', payload)
+      state.web3.coinbase = payload.coinbase
+      state.web3.balance = parseInt(payload.balance, 10)
+    }
   }
 })
 
