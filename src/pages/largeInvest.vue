@@ -140,11 +140,11 @@
                   </el-input>
                 </div> -->
               </div>
-              <invest-list
+              <invest-list2
                 v-for="item in investInformation"
                 v-bind:investList="item" 
                 v-bind:key="item.id"
-              ></invest-list>
+              ></invest-list2>
               <div></div>
               <el-pagination style="width: 100px;margin: auto" @current-change="smallCurrentChange"
                 layout="prev, pager, next" :current-page.sync="page"
